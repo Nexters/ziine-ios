@@ -6,8 +6,28 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		1A95D61B2D44CA00008B7DEA /* DesignSystem.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A95D61A2D44CA00008B7DEA /* DesignSystem.framework */; };
+		1A95D61C2D44CA00008B7DEA /* DesignSystem.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1A95D61A2D44CA00008B7DEA /* DesignSystem.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		1A95D61D2D44CA00008B7DEA /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				1A95D61C2D44CA00008B7DEA /* DesignSystem.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		1A95D5952D44BF16008B7DEA /* ZiineApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZiineApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1A95D61A2D44CA00008B7DEA /* DesignSystem.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DesignSystem.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -36,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A95D61B2D44CA00008B7DEA /* DesignSystem.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -46,6 +67,7 @@
 			isa = PBXGroup;
 			children = (
 				1A95D5972D44BF16008B7DEA /* ZiineApp */,
+				1A95D6192D44CA00008B7DEA /* Frameworks */,
 				1A95D5962D44BF16008B7DEA /* Products */,
 			);
 			sourceTree = "<group>";
@@ -58,6 +80,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		1A95D6192D44CA00008B7DEA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1A95D61A2D44CA00008B7DEA /* DesignSystem.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -68,6 +98,7 @@
 				1A95D5912D44BF16008B7DEA /* Sources */,
 				1A95D5922D44BF16008B7DEA /* Frameworks */,
 				1A95D5932D44BF16008B7DEA /* Resources */,
+				1A95D61D2D44CA00008B7DEA /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
