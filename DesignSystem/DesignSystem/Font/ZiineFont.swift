@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 public struct ZiineFont {
     /// FontStyle에서 벗어나는 Custom Font 대응
@@ -54,4 +55,34 @@ public extension UIFont {
         public static let p5 = ZiineFont.p5
         public static let p6 = ZiineFont.p6
     }
+}
+
+fileprivate struct FontPreviewView: View {
+    private let sampleText = "Hello world!"
+    
+    var body: some View {
+        ScrollView {
+            VStack(alignment: .leading, spacing: 10) {
+                ForEach(FontStyle.allCases, id: \.self) { style in
+                    VStack(alignment: .leading) {
+                        Text(sampleText + style.rawValue)
+                            .font(Font(uiFont: style.font))
+                            .foregroundColor(.gray)
+                    }
+                    .padding(.bottom, 8)
+                }
+            }
+            .padding()
+        }
+    }
+}
+
+extension Font {
+    init(uiFont: UIFont) {
+        self = Font.custom(uiFont.fontName, size: uiFont.pointSize)
+    }
+}
+
+#Preview {
+    FontPreviewView()
 }

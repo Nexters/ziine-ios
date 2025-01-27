@@ -15,7 +15,7 @@ public enum FontWeight: String {
 }
 
 /// Figma의 Font System 기반 스타일 정의
-public enum FontStyle {
+public enum FontStyle: String, CaseIterable {
     case h3, h4, h5
     case s1, s2, s3
     case p1, p2, p3, p4, p5, p6
