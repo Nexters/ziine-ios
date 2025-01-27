@@ -1,10 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Workspace
    version = "1.0">
-   <FileRef
-      location = "group:App/ZiineApp.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:DesignSystem/DesignSystem.xcodeproj">
-   </FileRef>
+   <Group
+      location = "group:Core"
+      name = "Core">
+      <FileRef
+         location = "group:DesignSystem.xcodeproj">
+      </FileRef>
+   </Group>
+   <Group
+      location = "group:Features"
+      name = "Features">
+      <FileRef
+         location = "group:PostingFeature/PostingFeature.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:ArtworkFeature/ArtworkFeature.xcodeproj">
+      </FileRef>
+   </Group>
+   <Group
+      location = "group:App"
+      name = "App">
+      <FileRef
+         location = "group:ZiineApp.xcodeproj">
+      </FileRef>
+   </Group>
 </Workspace>
