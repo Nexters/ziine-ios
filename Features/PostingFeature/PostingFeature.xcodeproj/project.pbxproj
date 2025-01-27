@@ -6,10 +6,43 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		1A9648E72D47CF7600268B29 /* PostingFeatureInterface.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A0B4B442D478032002D10DE /* PostingFeatureInterface.framework */; };
+		1A9648E82D47CF7600268B29 /* PostingFeatureInterface.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1A0B4B442D478032002D10DE /* PostingFeatureInterface.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1A9648F02D47CFA600268B29 /* DesignSystem.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A9648EF2D47CFA600268B29 /* DesignSystem.framework */; };
+		1A9648F12D47CFA600268B29 /* DesignSystem.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1A9648EF2D47CFA600268B29 /* DesignSystem.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		1A9648E92D47CF7600268B29 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1A0B4B2D2D478020002D10DE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1A0B4B432D478032002D10DE;
+			remoteInfo = PostingFeatureInterface;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		1A9648EB2D47CF7600268B29 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				1A9648E82D47CF7600268B29 /* PostingFeatureInterface.framework in Embed Frameworks */,
+				1A9648F12D47CFA600268B29 /* DesignSystem.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		1A0B4B442D478032002D10DE /* PostingFeatureInterface.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PostingFeatureInterface.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A9648182D47827300268B29 /* libArtworkFeature.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libArtworkFeature.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A96481F2D4783E600268B29 /* PostingFeature.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PostingFeature.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1A9648EF2D47CFA600268B29 /* DesignSystem.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DesignSystem.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -50,6 +83,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A9648E72D47CF7600268B29 /* PostingFeatureInterface.framework in Frameworks */,
+				1A9648F02D47CFA600268B29 /* DesignSystem.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +113,7 @@
 		1A9648172D47827300268B29 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1A9648EF2D47CFA600268B29 /* DesignSystem.framework */,
 				1A9648182D47827300268B29 /* libArtworkFeature.a */,
 			);
 			name = Frameworks;
@@ -134,10 +170,12 @@
 				1A96481B2D4783E600268B29 /* Sources */,
 				1A96481C2D4783E600268B29 /* Frameworks */,
 				1A96481D2D4783E600268B29 /* Resources */,
+				1A9648EB2D47CF7600268B29 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				1A9648EA2D47CF7600268B29 /* PBXTargetDependency */,
 			);
 			name = PostingFeature;
 			packageProductDependencies = (
@@ -217,6 +255,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1A9648EA2D47CF7600268B29 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1A0B4B432D478032002D10DE /* PostingFeatureInterface */;
+			targetProxy = 1A9648E92D47CF7600268B29 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		1A0B4B3A2D478020002D10DE /* Debug */ = {
@@ -441,6 +487,10 @@
 				PRODUCT_BUNDLE_IDENTIFIER = kr.com.PostingFeature;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_VERSION = 5.0;
@@ -475,6 +525,10 @@
 				PRODUCT_BUNDLE_IDENTIFIER = kr.com.PostingFeature;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_VERSION = 5.0;

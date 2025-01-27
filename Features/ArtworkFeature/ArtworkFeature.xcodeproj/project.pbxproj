@@ -6,9 +6,43 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		1A9648E22D47CF7100268B29 /* ArtworkFeatureInterface.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A0B4B242D477FFB002D10DE /* ArtworkFeatureInterface.framework */; };
+		1A9648E32D47CF7100268B29 /* ArtworkFeatureInterface.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1A0B4B242D477FFB002D10DE /* ArtworkFeatureInterface.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1A9648ED2D47CF9C00268B29 /* DesignSystem.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A9648EC2D47CF9C00268B29 /* DesignSystem.framework */; };
+		1A9648EE2D47CF9C00268B29 /* DesignSystem.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1A9648EC2D47CF9C00268B29 /* DesignSystem.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		1A9648E42D47CF7100268B29 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1A0B4B0D2D477FED002D10DE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1A0B4B232D477FFB002D10DE;
+			remoteInfo = ArtworkFeatureInterface;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		1A9648E62D47CF7100268B29 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				1A9648E32D47CF7100268B29 /* ArtworkFeatureInterface.framework in Embed Frameworks */,
+				1A9648EE2D47CF9C00268B29 /* DesignSystem.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		1A0B4B242D477FFB002D10DE /* ArtworkFeatureInterface.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ArtworkFeatureInterface.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A9648D52D47CD7700268B29 /* ArtworkFeature.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ArtworkFeature.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1A9648DE2D47CF1500268B29 /* PostingFeatureInterface.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = PostingFeatureInterface.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1A9648EC2D47CF9C00268B29 /* DesignSystem.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DesignSystem.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -59,6 +93,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A9648E22D47CF7100268B29 /* ArtworkFeatureInterface.framework in Frameworks */,
+				1A9648ED2D47CF9C00268B29 /* DesignSystem.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,6 +106,7 @@
 			children = (
 				1A0B4B252D477FFB002D10DE /* ArtworkFeatureInterface */,
 				1A9648D62D47CD7700268B29 /* ArtworkFeature */,
+				1A9648DD2D47CF1500268B29 /* Frameworks */,
 				1A0B4B162D477FED002D10DE /* Products */,
 			);
 			sourceTree = "<group>";
@@ -81,6 +118,15 @@
 				1A9648D52D47CD7700268B29 /* ArtworkFeature.framework */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		1A9648DD2D47CF1500268B29 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1A9648EC2D47CF9C00268B29 /* DesignSystem.framework */,
+				1A9648DE2D47CF1500268B29 /* PostingFeatureInterface.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -134,10 +180,12 @@
 				1A9648D12D47CD7700268B29 /* Sources */,
 				1A9648D22D47CD7700268B29 /* Frameworks */,
 				1A9648D32D47CD7700268B29 /* Resources */,
+				1A9648E62D47CF7100268B29 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				1A9648E52D47CF7100268B29 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				1A9648D62D47CD7700268B29 /* ArtworkFeature */,
@@ -164,6 +212,7 @@
 					};
 					1A9648D42D47CD7700268B29 = {
 						CreatedOnToolsVersion = 16.0;
+						LastSwiftMigration = 1600;
 					};
 				};
 			};
@@ -220,6 +269,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1A9648E52D47CF7100268B29 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1A0B4B232D477FFB002D10DE /* ArtworkFeatureInterface */;
+			targetProxy = 1A9648E42D47CF7100268B29 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		1A0B4B1A2D477FED002D10DE /* Debug */ = {
@@ -421,6 +478,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -442,8 +500,13 @@
 				PRODUCT_BUNDLE_IDENTIFIER = kr.com.ArtworkFeature;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -455,6 +518,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -476,6 +540,10 @@
 				PRODUCT_BUNDLE_IDENTIFIER = kr.com.ArtworkFeature;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_VERSION = 5.0;
