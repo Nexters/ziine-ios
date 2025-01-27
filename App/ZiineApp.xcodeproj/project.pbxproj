@@ -28,6 +28,8 @@
 /* Begin PBXFileReference section */
 		1A95D5952D44BF16008B7DEA /* ZiineApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZiineApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A95D61A2D44CA00008B7DEA /* DesignSystem.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DesignSystem.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1A9648122D47826200268B29 /* ArtworkFeatureInterface.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ArtworkFeatureInterface.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1A9648132D47826200268B29 /* libArtworkFeature.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libArtworkFeature.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -83,6 +85,8 @@
 		1A95D6192D44CA00008B7DEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1A9648122D47826200268B29 /* ArtworkFeatureInterface.framework */,
+				1A9648132D47826200268B29 /* libArtworkFeature.a */,
 				1A95D61A2D44CA00008B7DEA /* DesignSystem.framework */,
 			);
 			name = Frameworks;
