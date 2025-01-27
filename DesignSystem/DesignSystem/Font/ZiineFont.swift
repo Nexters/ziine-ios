@@ -41,20 +41,18 @@ public struct ZiineFont {
 
 /// `UIFont.Ziine.h3` 같은 형태로 사용 가능하도록 확장
 public extension UIFont {
-    struct Ziine {
-        public static let h3 = ZiineFont.h3
-        public static let h4 = ZiineFont.h4
-        public static let h5 = ZiineFont.h5
-        public static let s1 = ZiineFont.s1
-        public static let s2 = ZiineFont.s2
-        public static let s3 = ZiineFont.s3
-        public static let p1 = ZiineFont.p1
-        public static let p2 = ZiineFont.p2
-        public static let p3 = ZiineFont.p3
-        public static let p4 = ZiineFont.p4
-        public static let p5 = ZiineFont.p5
-        public static let p6 = ZiineFont.p6
-    }
+    static let h3 = ZiineFont.h3
+    static let h4 = ZiineFont.h4
+    static let h5 = ZiineFont.h5
+    static let s1 = ZiineFont.s1
+    static let s2 = ZiineFont.s2
+    static let s3 = ZiineFont.s3
+    static let p1 = ZiineFont.p1
+    static let p2 = ZiineFont.p2
+    static let p3 = ZiineFont.p3
+    static let p4 = ZiineFont.p4
+    static let p5 = ZiineFont.p5
+    static let p6 = ZiineFont.p6
 }
 
 fileprivate struct FontPreviewView: View {
