@@ -7,22 +7,79 @@
 
 import UIKit
 
+class UploadViewController: UIViewController {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = .green
+    }
+}
+
 // MARK: - Builder
 
-final class ArtworkViewBuilder { }
+public protocol ArtworkListener: AnyObject { }
+
+public protocol ArtworkViewBuildable {
+    func build(withListener listener: ArtworkListener?) -> ArtworkRouting
+}
+
+public final class ArtworkViewBuilder: ArtworkViewBuildable {
+    let navigationController: UINavigationController
+    
+    init(navigationController: UINavigationController) {
+        self.navigationController = navigationController
+        
+        // TODO: - replace dependency
+    }
+    
+    public func build(withListener listener: ArtworkListener?) -> ArtworkRouting {
+        let viewController = ArtworkViewController()
+        
+        let interactor = ArtworkInteractor(presenter: viewController)
+        interactor.listener = listener
+        
+        let router = ArtworkRouter(
+            navigationController: navigationController,
+            interactor: interactor
+        )
+        
+        return router
+    }
+}
 
 // MARK: - Router
 
-protocol ArtworkRouting: AnyObject {
+public protocol ArtworkRouting: AnyObject {
+    var viewController: UIViewController { get }
     
+    func pushToUpload()
 }
 
-final class ArtworRouter: ArtworkRouting {
-    var navigationContoller: UINavigationController?
+final class ArtworkRouter: ArtworkRouting {
     
-    init(navigationContoller: UINavigationController) {
-        self.navigationContoller = navigationContoller
+    var viewController: UIViewController { self.navigationController }
+    let navigationController: UINavigationController
+    
+    weak var interactor: ArtworkInteractorable?
+    
+    init(
+        navigationController: UINavigationController,
+        interactor: ArtworkInteractorable
+    ) {
+        self.navigationController = navigationController
+        self.interactor = interactor
+        
+        interactor.router = self
     }
+    
+    // MARK: - Upload
+    
+    func pushToUpload() {
+        print(#function)
+        
+        let viewController = UploadViewController()
+        navigationController.pushViewController(viewController, animated: true)
+    }
+    
 }
 
 // MARK: - Interactor
@@ -31,16 +88,14 @@ protocol ArtworkInteractorOutput: AnyObject { }
 
 protocol ArtworkInteractorable: AnyObject {
     var router: ArtworkRouting? { get set }
-    
-    // !!!: - add to listener
+    var listener: ArtworkListener? { get set }
 }
 
 final class ArtworkInteractor: ArtworkInteractorable,
                                ArtworkViewPresentableListener
 {
     weak var router: ArtworkRouting?
-    weak var listener: ArtworkViewPresentableListener?
-    
+    weak var listener: ArtworkListener?
     weak var presenter: ArtworkViewPresentable?
     
     init(presenter: ArtworkViewPresentable) {
@@ -53,8 +108,9 @@ final class ArtworkInteractor: ArtworkInteractorable,
     
     func itemSelected(indexPath: IndexPath) {
         print(#file, #function)
+        
+        router?.pushToUpload()
     }
-    
 }
 
 // MARK: - Presneter
@@ -75,6 +131,7 @@ final class ArtworkViewController: UIViewController,
     
     init() {
         super.init(nibName: nil, bundle: nil)
+        
         configureUI()
     }
     
