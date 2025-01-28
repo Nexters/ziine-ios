@@ -35,7 +35,7 @@ class ViewController: UIViewController {
 
     func push() {
         let builder = ArtworkViewBuilder(navigationController: self.navigationController!)
-        let routing = builder.build(withListener: nil)
+        let routing = builder.build(with: nil)
         let viewContorller = routing
 //
         print(#function, self.navigationController, routing.viewController)

@@ -10,7 +10,7 @@ import UIKit
 public protocol ArtworkListener: AnyObject { }
 
 public protocol ArtworkViewBuildable {
-    func build(withListener listener: ArtworkListener?) -> ArtworkRouting
+    func build(with listener: ArtworkListener?) -> ArtworkRouting
 }
 
 public protocol ArtworkRouting: AnyObject {

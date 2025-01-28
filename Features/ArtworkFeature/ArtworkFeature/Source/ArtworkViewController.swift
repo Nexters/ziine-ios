@@ -30,10 +30,10 @@ public final class ArtworkViewBuilder: ArtworkViewBuildable {
         // TODO: - replace dependency
     }
     
-    public func build(withListener listener: ArtworkListener?) -> ArtworkRouting {
+    public func build(with listener: ArtworkListener?) -> ArtworkRouting {
         let viewController = ArtworkViewController()
         
-        let interactor = ArtworkInteractor(presenter: viewController)
+        let interactor = ArtworkInteractor()
         
         let router = ArtworkRouter(
             navigationController: navigationController,
@@ -88,11 +88,7 @@ final class ArtworkInteractor: ArtworkInteractorable,
     weak var listener: ArtworkListener?
     weak var presenter: ArtworkViewPresentable?
     
-    init(presenter: ArtworkViewPresentable) {
-        self.presenter = presenter
-        
-        presenter.listener = self
-    }
+    init() {}
     
     func fetch() { }
     
@@ -123,6 +119,8 @@ final class ArtworkViewController: UIViewController,
         super.init(nibName: nil, bundle: nil)
         
         configureUI()
+        
+        listener?.itemSelected(indexPath: .init(row: 0, section: 0))
     }
     
     required init?(coder: NSCoder) {
