@@ -10,14 +10,9 @@ import ArtworkFeatureInterface
 
 final class ArtworkRouter: ArtworkRouting {
     
-    private let navigationController: UINavigationController
     var viewController: UIViewController
     
-    init(
-        navigationController: UINavigationController,
-        viewController: UIViewController
-    ) {
-        self.navigationController = navigationController
+    init(viewController: UIViewController) {
         self.viewController = viewController
     }
     
@@ -28,7 +23,9 @@ final class ArtworkRouter: ArtworkRouting {
         
         let vc = UIViewController()
         vc.view.backgroundColor = .systemBlue
-        navigationController.pushViewController(viewController, animated: true)
+//        navigationController.pushViewController(viewController, animated: true)
+        
+        viewController.navigationController?.pushViewController(vc, animated: true)
     }
     
 }

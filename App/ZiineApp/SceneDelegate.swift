@@ -18,7 +18,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window = UIWindow(windowScene: windowScene)
         window?.backgroundColor = .systemBackground
-        window?.rootViewController = UINavigationController(rootViewController: ViewController())
+//        window?.rootViewController = UINavigationController(rootViewController: ViewController())
+        
+        let router = AppRootBuilder().build()
+        
+        window?.rootViewController = router.artworkRouting?.viewController
+        
         window?.makeKeyAndVisible()
     }
 }
