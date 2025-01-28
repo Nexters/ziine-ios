@@ -14,7 +14,7 @@ public protocol ArtworkViewBuildable {
 }
 
 public protocol ArtworkRouting: AnyObject {
-    var viewController: UIViewController? { get }
+    var viewController: UIViewController { get }
     
     func pushToUpload()
 }
