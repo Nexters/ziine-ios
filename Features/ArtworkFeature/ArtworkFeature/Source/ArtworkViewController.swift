@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import ArtworkFeatureInterface
 
 class UploadViewController: UIViewController {
     override func viewDidLoad() {
@@ -16,11 +17,9 @@ class UploadViewController: UIViewController {
 
 // MARK: - Builder
 
-public protocol ArtworkListener: AnyObject { }
 
-public protocol ArtworkViewBuildable {
-    func build(withListener listener: ArtworkListener?) -> ArtworkRouting
-}
+
+
 
 public final class ArtworkViewBuilder: ArtworkViewBuildable {
     let navigationController: UINavigationController
@@ -50,12 +49,6 @@ public final class ArtworkViewBuilder: ArtworkViewBuildable {
 }
 
 // MARK: - Router
-
-public protocol ArtworkRouting: AnyObject {
-    var viewController: UIViewController? { get }
-    
-    func pushToUpload()
-}
 
 final class ArtworkRouter: ArtworkRouting {
     

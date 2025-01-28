@@ -7,6 +7,7 @@
 
 import UIKit
 import ArtworkFeature
+import ArtworkFeatureInterface
 
 class ViewController: UIViewController {
 
