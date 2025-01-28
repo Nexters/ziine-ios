@@ -25,7 +25,7 @@ public protocol ArtworkViewBuildable {
 public final class ArtworkViewBuilder: ArtworkViewBuildable {
     let navigationController: UINavigationController
     
-    init(navigationController: UINavigationController) {
+    public init(navigationController: UINavigationController) {
         self.navigationController = navigationController
         
         // TODO: - replace dependency
@@ -35,12 +35,15 @@ public final class ArtworkViewBuilder: ArtworkViewBuildable {
         let viewController = ArtworkViewController()
         
         let interactor = ArtworkInteractor(presenter: viewController)
-        interactor.listener = listener
         
         let router = ArtworkRouter(
             navigationController: navigationController,
-            interactor: interactor
+            viewController: viewController
         )
+        
+        interactor.presenter = viewController
+        interactor.listener = listener
+        interactor.router = router
         
         return router
     }
@@ -49,26 +52,22 @@ public final class ArtworkViewBuilder: ArtworkViewBuildable {
 // MARK: - Router
 
 public protocol ArtworkRouting: AnyObject {
-    var viewController: UIViewController { get }
+    var viewController: UIViewController? { get }
     
     func pushToUpload()
 }
 
 final class ArtworkRouter: ArtworkRouting {
     
-    var viewController: UIViewController { self.navigationController }
     let navigationController: UINavigationController
-    
-    weak var interactor: ArtworkInteractorable?
+    var viewController: UIViewController?
     
     init(
         navigationController: UINavigationController,
-        interactor: ArtworkInteractorable
+        viewController: UIViewController?
     ) {
         self.navigationController = navigationController
-        self.interactor = interactor
-        
-        interactor.router = self
+        self.viewController = viewController
     }
     
     // MARK: - Upload
@@ -83,8 +82,6 @@ final class ArtworkRouter: ArtworkRouting {
 }
 
 // MARK: - Interactor
-
-protocol ArtworkInteractorOutput: AnyObject { }
 
 protocol ArtworkInteractorable: AnyObject {
     var router: ArtworkRouting? { get set }
@@ -141,15 +138,17 @@ final class ArtworkViewController: UIViewController,
     
     // MARK: - UIComponents
     
-    private let collectionView = UICollectionView()
+//    private let collectionView = UICollectionView()
     
     private func configureUI() {
         // TODO: - 스냅킷 도입 예정
+        
+        view.backgroundColor = .red
     }
     
     // TODO: - 컬렉션 UI 도입해서 분리할 예정
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        listener?.itemSelected(indexPath: indexPath)
-    }
+//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        listener?.itemSelected(indexPath: indexPath)
+//    }
 }
