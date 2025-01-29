@@ -19,8 +19,9 @@ protocol ArtworkInteractorable: AnyObject {
 
 protocol ArtworkInteractorDependency: AnyObject { }
 
-final class ArtworkInteractor: ArtworkInteractorable,
-                               ArtworkViewPresentableListener
+final class ArtworkInteractor:
+    ArtworkInteractorable,
+    ArtworkViewPresentableListener
 {
     var router: ArtworkRouting?
     var listener: ArtworkListener?
@@ -30,8 +31,6 @@ final class ArtworkInteractor: ArtworkInteractorable,
     func fetch() { }
     
     func itemSelected(indexPath: IndexPath) {
-        print(#file, #function)
-        
         router?.pushToUpload()
     }
 }

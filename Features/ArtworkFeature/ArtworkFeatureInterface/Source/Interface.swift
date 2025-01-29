@@ -1,6 +1,6 @@
 //
-//  ArtworkViewBuildable.swift
-//  ArtworkFeature
+//  Interface.swift
+//  ArtworkFeatureInterface
 //
 //  Created by Geon Woo lee on 1/28/25.
 //

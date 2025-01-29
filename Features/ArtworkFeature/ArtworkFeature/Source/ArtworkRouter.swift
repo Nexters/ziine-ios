@@ -14,15 +14,11 @@ final class ArtworkRouter: ArtworkRouting {
     
     init(viewController: UIViewController) {
         self.viewController = viewController
-        
-        print("🍋🍋🍋", viewController)
     }
     
     // MARK: - Upload
     
     func pushToUpload() {
-        print(#function)
-        
         let vc = UIViewController()
         vc.view.backgroundColor = .systemBlue
 //        navigationController.pushViewController(viewController, animated: true)

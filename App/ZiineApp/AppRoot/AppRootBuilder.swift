@@ -18,7 +18,6 @@ final class AppRootBuilder: AppRootBuildable {
     func build() -> AppRootRouting {
         let interactor = AppRootInteractor()
         
-        
         let artworkBuilder = ArtworkViewBuilder()
         
         let router = AppRootRouter(
