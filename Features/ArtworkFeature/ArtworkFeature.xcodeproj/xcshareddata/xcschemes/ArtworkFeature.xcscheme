@@ -15,7 +15,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "1A9648B72D47CD4600268B29"
+               BlueprintIdentifier = "1A9648D42D47CD7700268B29"
                BuildableName = "ArtworkFeature.framework"
                BlueprintName = "ArtworkFeature"
                ReferencedContainer = "container:ArtworkFeature.xcodeproj">
@@ -50,7 +50,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "1A9648B72D47CD4600268B29"
+            BlueprintIdentifier = "1A9648D42D47CD7700268B29"
             BuildableName = "ArtworkFeature.framework"
             BlueprintName = "ArtworkFeature"
             ReferencedContainer = "container:ArtworkFeature.xcodeproj">

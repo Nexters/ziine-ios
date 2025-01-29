@@ -5,7 +5,10 @@
       location = "group:Core"
       name = "Core">
       <FileRef
-         location = "group:DesignSystem.xcodeproj">
+         location = "group:DesignSystem/DesignSystem.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:ThirdParty/ThirdParty.xcodeproj">
       </FileRef>
    </Group>
    <Group

@@ -11,6 +11,8 @@
 		1A9649872D4A8B4800268B29 /* PostingFeatureInterface.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1A0B4B442D478032002D10DE /* PostingFeatureInterface.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1A96498A2D4A8B4800268B29 /* DesignSystem.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A9649852D4A8B4800268B29 /* DesignSystem.framework */; };
 		1A96498B2D4A8B4800268B29 /* DesignSystem.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1A9649852D4A8B4800268B29 /* DesignSystem.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1A9649D92D4A935900268B29 /* ThirdParty.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A9649D82D4A935900268B29 /* ThirdParty.framework */; };
+		1A9649DA2D4A935900268B29 /* ThirdParty.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1A9649D82D4A935900268B29 /* ThirdParty.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,6 +33,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				1A9649872D4A8B4800268B29 /* PostingFeatureInterface.framework in Embed Frameworks */,
+				1A9649DA2D4A935900268B29 /* ThirdParty.framework in Embed Frameworks */,
 				1A96498B2D4A8B4800268B29 /* DesignSystem.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -44,6 +47,7 @@
 		1A9648EF2D47CFA600268B29 /* DesignSystem.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DesignSystem.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A96496E2D4A538600268B29 /* PostingFeature.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PostingFeature.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A9649852D4A8B4800268B29 /* DesignSystem.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DesignSystem.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1A9649D82D4A935900268B29 /* ThirdParty.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ThirdParty.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -95,6 +99,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1A9649862D4A8B4800268B29 /* PostingFeatureInterface.framework in Frameworks */,
+				1A9649D92D4A935900268B29 /* ThirdParty.framework in Frameworks */,
 				1A96498A2D4A8B4800268B29 /* DesignSystem.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -124,6 +129,7 @@
 		1A9648172D47827300268B29 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1A9649D82D4A935900268B29 /* ThirdParty.framework */,
 				1A9649852D4A8B4800268B29 /* DesignSystem.framework */,
 				1A9648EF2D47CFA600268B29 /* DesignSystem.framework */,
 				1A9648182D47827300268B29 /* libArtworkFeature.a */,
