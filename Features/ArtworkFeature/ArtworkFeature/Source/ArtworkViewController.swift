@@ -16,11 +16,7 @@ final class ArtworkViewController: UIViewController,
                                    ArtworkViewPresentable,
                                    UICollectionViewDelegate
 {
-    var listener: ArtworkViewPresentableListener? {
-        didSet {
-            print("🍋🍋", listener)
-        }
-    }
+    var listener: ArtworkViewPresentableListener?
     
     init() {
         super.init(nibName: nil, bundle: nil)

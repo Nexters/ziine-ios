@@ -10,7 +10,7 @@ import ArtworkFeature
 import ArtworkFeatureInterface
 
 protocol AppRootBuildable {
-    
+    func build() -> AppRootRouting
 }
 
 final class AppRootBuilder: AppRootBuildable {
@@ -23,17 +23,46 @@ final class AppRootBuilder: AppRootBuildable {
     }
 }
 
+
+final class AppRootInteractor {}
+
 protocol AppRootRouting {
-    var artworkRouting: ArtworkRouting? { get }
+    func configureTabs() -> [UIViewController]
 }
 
 final class AppRootRouter: AppRootRouting {
     
     private let artworkBuildable: ArtworkViewBuildable
-    var artworkRouting: ArtworkRouting?
+    private var artworkRouting: ArtworkRouting?
     
     init(artworkBuildable: ArtworkViewBuildable) {
         self.artworkBuildable = artworkBuildable
-        self.artworkRouting = artworkBuildable.build(with: nil)
+    }
+    
+    func configureTabs() -> [UIViewController] {
+        let artworkRouting = artworkBuildable.build(with: nil)
+        
+        self.artworkRouting = artworkRouting
+        
+        let viewControllers = [
+            artworkRouting.viewController
+        ]
+        
+        return viewControllers
+    }
+}
+
+final class AppRootTabBarController: UITabBarController {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        tabBar.isTranslucent = false
+        tabBar.tintColor = .black
+        tabBar.backgroundColor = .white
+    }
+    
+    func setViewControllers(_ viewControllers: [UIViewController]) {
+        super.setViewControllers(viewControllers, animated: false)
     }
 }
