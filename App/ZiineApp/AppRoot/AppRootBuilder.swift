@@ -16,15 +16,24 @@ protocol AppRootBuildable {
 final class AppRootBuilder: AppRootBuildable {
     
     func build() -> AppRootRouting {
+        let interactor = AppRootInteractor()
+        
+        
         let artworkBuilder = ArtworkViewBuilder()
-        let router = AppRootRouter(artworkBuildable: artworkBuilder)
+        
+        let router = AppRootRouter(
+            interactor: interactor,
+            artworkBuildable: artworkBuilder
+        )
         
         return router
     }
 }
 
 
-final class AppRootInteractor {}
+protocol AppRootInteractable: ArtworkListener { }
+
+final class AppRootInteractor: AppRootInteractable {}
 
 protocol AppRootRouting {
     func configureTabs() -> [UIViewController]
@@ -32,16 +41,22 @@ protocol AppRootRouting {
 
 final class AppRootRouter: AppRootRouting {
     
+    var interactor: AppRootInteractable?
+    
     private let artworkBuildable: ArtworkViewBuildable
     private var artworkRouting: ArtworkRouting?
     
-    init(artworkBuildable: ArtworkViewBuildable) {
+    init(
+        interactor :AppRootInteractable,
+        artworkBuildable: ArtworkViewBuildable
+    ) {
+        self.interactor = interactor
+        
         self.artworkBuildable = artworkBuildable
     }
     
     func configureTabs() -> [UIViewController] {
-        let artworkRouting = artworkBuildable.build(with: nil)
-        
+        let artworkRouting = artworkBuildable.build(with: interactor)
         self.artworkRouting = artworkRouting
         
         let viewControllers = [
@@ -52,7 +67,12 @@ final class AppRootRouter: AppRootRouting {
     }
 }
 
-final class AppRootTabBarController: UITabBarController {
+protocol AppRootTabBarControllable {
+    func build() -> UITabBarController
+    func setViewControllers(_ viewControllers: [UIViewController])
+}
+
+final class AppRootTabBarController: UITabBarController, AppRootTabBarControllable {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,5 +84,9 @@ final class AppRootTabBarController: UITabBarController {
     
     func setViewControllers(_ viewControllers: [UIViewController]) {
         super.setViewControllers(viewControllers, animated: false)
+    }
+    
+    func build() -> UITabBarController {
+        return self
     }
 }
