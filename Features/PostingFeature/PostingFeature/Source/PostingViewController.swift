@@ -35,10 +35,10 @@ final class PostingViewController: UIViewController,
     private func configureUI() {
         // TODO: - 스냅킷 도입 예정
         
-        view.backgroundColor = .red
+        view.backgroundColor = .green
         
         let btn = UIButton()
-        btn.setTitle("Go to Detail", for: .normal)
+        btn.setTitle("Posting Detail", for: .normal)
         btn.addTarget(self, action: #selector(onTapGoToDetail), for: .touchUpInside)
         btn.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(btn)
