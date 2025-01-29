@@ -9,19 +9,27 @@ import UIKit
 import ArtworkFeature
 import ArtworkFeatureInterface
 
-final class AppRootBuilder {
+protocol AppRootBuildable {
     
-    func build() -> AppRootRouter {
-        let artworkBuilder = ArtworkViewBuilder()  
+}
+
+final class AppRootBuilder: AppRootBuildable {
+    
+    func build() -> AppRootRouting {
+        let artworkBuilder = ArtworkViewBuilder()
         let router = AppRootRouter(artworkBuildable: artworkBuilder)
         
         return router
     }
 }
 
-final class AppRootRouter {
+protocol AppRootRouting {
+    var artworkRouting: ArtworkRouting? { get }
+}
+
+final class AppRootRouter: AppRootRouting {
     
-    let artworkBuildable: ArtworkViewBuildable
+    private let artworkBuildable: ArtworkViewBuildable
     var artworkRouting: ArtworkRouting?
     
     init(artworkBuildable: ArtworkViewBuildable) {

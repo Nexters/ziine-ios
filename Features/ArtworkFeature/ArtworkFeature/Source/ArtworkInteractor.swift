@@ -22,9 +22,8 @@ protocol ArtworkInteractorDependency: AnyObject { }
 final class ArtworkInteractor: ArtworkInteractorable,
                                ArtworkViewPresentableListener
 {
-    weak var router: ArtworkRouting?
-    weak var listener: ArtworkListener?
-    weak var presenter: ArtworkViewPresentable?
+    var router: ArtworkRouting?
+    var listener: ArtworkListener?
     
     init() {}
     

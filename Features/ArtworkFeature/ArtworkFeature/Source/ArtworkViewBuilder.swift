@@ -20,7 +20,12 @@ public final class ArtworkViewBuilder: ArtworkViewBuildable {
             viewController: viewController
         )
         
-        interactor.presenter = viewController
+        print(viewController.listener, interactor)
+        
+        viewController.listener = interactor
+        
+        print(viewController.listener, interactor)
+        print("🥕",viewController)
         interactor.listener = listener
         interactor.router = router
         

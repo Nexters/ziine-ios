@@ -10,10 +10,12 @@ import ArtworkFeatureInterface
 
 final class ArtworkRouter: ArtworkRouting {
     
-    var viewController: UIViewController
+    var viewController: UIViewController 
     
     init(viewController: UIViewController) {
         self.viewController = viewController
+        
+        print("🍋🍋🍋", viewController)
     }
     
     // MARK: - Upload
@@ -24,7 +26,7 @@ final class ArtworkRouter: ArtworkRouting {
         let vc = UIViewController()
         vc.view.backgroundColor = .systemBlue
 //        navigationController.pushViewController(viewController, animated: true)
-        
+//        viewController.present(vc, animated: true)
         viewController.navigationController?.pushViewController(vc, animated: true)
     }
     

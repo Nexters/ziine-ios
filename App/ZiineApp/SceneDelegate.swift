@@ -21,8 +21,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //        window?.rootViewController = UINavigationController(rootViewController: ViewController())
         
         let router = AppRootBuilder().build()
-        
-        window?.rootViewController = router.artworkRouting?.viewController
+        let nc = UINavigationController(rootViewController: router.artworkRouting!.viewController)
+        window?.rootViewController = nc
         
         window?.makeKeyAndVisible()
     }
