@@ -1,5 +1,5 @@
 //
-//  ArtworkInteractorable.swift
+//  ArtworkInteractor.swift
 //  ArtworkFeature
 //
 //  Created by Geon Woo lee on 1/28/25.
