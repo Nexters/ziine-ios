@@ -8,6 +8,8 @@
 import UIKit
 import ArtworkFeature
 import ArtworkFeatureInterface
+import PostingFeature
+import PostingFeatureInterface
 
 protocol AppRootBuildable {
     func build() -> AppRootRouting

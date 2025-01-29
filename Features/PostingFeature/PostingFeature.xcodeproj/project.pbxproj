@@ -6,43 +6,11 @@
 	objectVersion = 77;
 	objects = {
 
-/* Begin PBXBuildFile section */
-		1A9648E72D47CF7600268B29 /* PostingFeatureInterface.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A0B4B442D478032002D10DE /* PostingFeatureInterface.framework */; };
-		1A9648E82D47CF7600268B29 /* PostingFeatureInterface.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1A0B4B442D478032002D10DE /* PostingFeatureInterface.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		1A9648F02D47CFA600268B29 /* DesignSystem.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A9648EF2D47CFA600268B29 /* DesignSystem.framework */; };
-		1A9648F12D47CFA600268B29 /* DesignSystem.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1A9648EF2D47CFA600268B29 /* DesignSystem.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-/* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		1A9648E92D47CF7600268B29 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1A0B4B2D2D478020002D10DE /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 1A0B4B432D478032002D10DE;
-			remoteInfo = PostingFeatureInterface;
-		};
-/* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		1A9648EB2D47CF7600268B29 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				1A9648E82D47CF7600268B29 /* PostingFeatureInterface.framework in Embed Frameworks */,
-				1A9648F12D47CFA600268B29 /* DesignSystem.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
 		1A0B4B442D478032002D10DE /* PostingFeatureInterface.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PostingFeatureInterface.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A9648182D47827300268B29 /* libArtworkFeature.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libArtworkFeature.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		1A96481F2D4783E600268B29 /* PostingFeature.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PostingFeature.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A9648EF2D47CFA600268B29 /* DesignSystem.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DesignSystem.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1A96496E2D4A538600268B29 /* PostingFeature.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PostingFeature.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -52,6 +20,13 @@
 				PostingFeatureInterface.h,
 			);
 			target = 1A0B4B432D478032002D10DE /* PostingFeatureInterface */;
+		};
+		1A9649722D4A538600268B29 /* Exceptions for "PostingFeature" folder in "PostingFeature" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			publicHeaders = (
+				PostingFeature.h,
+			);
+			target = 1A96496D2D4A538600268B29 /* PostingFeature */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
@@ -64,8 +39,11 @@
 			path = PostingFeatureInterface;
 			sourceTree = "<group>";
 		};
-		1A9648592D4784A800268B29 /* PostingFeature */ = {
+		1A96496F2D4A538600268B29 /* PostingFeature */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				1A9649722D4A538600268B29 /* Exceptions for "PostingFeature" folder in "PostingFeature" target */,
+			);
 			path = PostingFeature;
 			sourceTree = "<group>";
 		};
@@ -79,12 +57,10 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		1A96481C2D4783E600268B29 /* Frameworks */ = {
+		1A96496B2D4A538600268B29 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1A9648E72D47CF7600268B29 /* PostingFeatureInterface.framework in Frameworks */,
-				1A9648F02D47CFA600268B29 /* DesignSystem.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,7 +71,7 @@
 			isa = PBXGroup;
 			children = (
 				1A0B4B452D478032002D10DE /* PostingFeatureInterface */,
-				1A9648592D4784A800268B29 /* PostingFeature */,
+				1A96496F2D4A538600268B29 /* PostingFeature */,
 				1A9648172D47827300268B29 /* Frameworks */,
 				1A0B4B362D478020002D10DE /* Products */,
 			);
@@ -105,7 +81,7 @@
 			isa = PBXGroup;
 			children = (
 				1A0B4B442D478032002D10DE /* PostingFeatureInterface.framework */,
-				1A96481F2D4783E600268B29 /* PostingFeature.framework */,
+				1A96496E2D4A538600268B29 /* PostingFeature.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -129,7 +105,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		1A96481A2D4783E600268B29 /* Headers */ = {
+		1A9649692D4A538600268B29 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -162,26 +138,27 @@
 			productReference = 1A0B4B442D478032002D10DE /* PostingFeatureInterface.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		1A96481E2D4783E600268B29 /* PostingFeature */ = {
+		1A96496D2D4A538600268B29 /* PostingFeature */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1A9648242D4783E600268B29 /* Build configuration list for PBXNativeTarget "PostingFeature" */;
+			buildConfigurationList = 1A9649732D4A538600268B29 /* Build configuration list for PBXNativeTarget "PostingFeature" */;
 			buildPhases = (
-				1A96481A2D4783E600268B29 /* Headers */,
-				1A96481B2D4783E600268B29 /* Sources */,
-				1A96481C2D4783E600268B29 /* Frameworks */,
-				1A96481D2D4783E600268B29 /* Resources */,
-				1A9648EB2D47CF7600268B29 /* Embed Frameworks */,
+				1A9649692D4A538600268B29 /* Headers */,
+				1A96496A2D4A538600268B29 /* Sources */,
+				1A96496B2D4A538600268B29 /* Frameworks */,
+				1A96496C2D4A538600268B29 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				1A9648EA2D47CF7600268B29 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				1A96496F2D4A538600268B29 /* PostingFeature */,
 			);
 			name = PostingFeature;
 			packageProductDependencies = (
 			);
 			productName = PostingFeature;
-			productReference = 1A96481F2D4783E600268B29 /* PostingFeature.framework */;
+			productReference = 1A96496E2D4A538600268B29 /* PostingFeature.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -198,7 +175,7 @@
 						CreatedOnToolsVersion = 16.0;
 						LastSwiftMigration = 1600;
 					};
-					1A96481E2D4783E600268B29 = {
+					1A96496D2D4A538600268B29 = {
 						CreatedOnToolsVersion = 16.0;
 					};
 				};
@@ -218,7 +195,7 @@
 			projectRoot = "";
 			targets = (
 				1A0B4B432D478032002D10DE /* PostingFeatureInterface */,
-				1A96481E2D4783E600268B29 /* PostingFeature */,
+				1A96496D2D4A538600268B29 /* PostingFeature */,
 			);
 		};
 /* End PBXProject section */
@@ -231,7 +208,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		1A96481D2D4783E600268B29 /* Resources */ = {
+		1A96496C2D4A538600268B29 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -248,7 +225,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		1A96481B2D4783E600268B29 /* Sources */ = {
+		1A96496A2D4A538600268B29 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -256,14 +233,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		1A9648EA2D47CF7600268B29 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 1A0B4B432D478032002D10DE /* PostingFeatureInterface */;
-			targetProxy = 1A9648E92D47CF7600268B29 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		1A0B4B3A2D478020002D10DE /* Debug */ = {
@@ -466,7 +435,7 @@
 			};
 			name = Release;
 		};
-		1A9648252D4783E600268B29 /* Debug */ = {
+		1A9649742D4A538600268B29 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
@@ -491,10 +460,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = kr.com.PostingFeature;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_VERSION = 5.0;
@@ -504,7 +469,7 @@
 			};
 			name = Debug;
 		};
-		1A9648262D4783E600268B29 /* Release */ = {
+		1A9649752D4A538600268B29 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
@@ -529,10 +494,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = kr.com.PostingFeature;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_VERSION = 5.0;
@@ -563,11 +524,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		1A9648242D4783E600268B29 /* Build configuration list for PBXNativeTarget "PostingFeature" */ = {
+		1A9649732D4A538600268B29 /* Build configuration list for PBXNativeTarget "PostingFeature" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				1A9648252D4783E600268B29 /* Debug */,
-				1A9648262D4783E600268B29 /* Release */,
+				1A9649742D4A538600268B29 /* Debug */,
+				1A9649752D4A538600268B29 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
