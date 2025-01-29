@@ -28,9 +28,7 @@ final class PostingInteractor:
     
     init() {}
     
-    func fetch() { }
-    
-    func itemSelected(indexPath: IndexPath) {
-        router?.pushToUpload()
+    func uploadButtonTapped() {
+        router?.pushUploadView()
     }
 }

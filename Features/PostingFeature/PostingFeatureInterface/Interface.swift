@@ -16,5 +16,5 @@ public protocol PostingViewBuildable {
 public protocol PostingRouting: AnyObject {
     var viewController: UIViewController { get }
     
-    func pushToUpload()
+    func pushUploadView()
 }

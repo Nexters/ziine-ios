@@ -16,14 +16,9 @@ final class PostingRouter: PostingRouting {
         self.viewController = viewController
     }
     
-    // MARK: - Upload
-    
-    func pushToUpload() {
-        let vc = UIViewController()
-        vc.view.backgroundColor = .systemBlue
-//        navigationController.pushViewController(viewController, animated: true)
-//        viewController.present(vc, animated: true)
-        viewController.navigationController?.pushViewController(vc, animated: true)
+    /// 업로드 화면 푸시
+    func pushUploadView() {
+        
     }
     
 }

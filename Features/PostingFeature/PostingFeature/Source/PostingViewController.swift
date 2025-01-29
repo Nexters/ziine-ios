@@ -11,7 +11,7 @@ internal import SnapKit
 import PostingFeatureInterface
 
 protocol PostingViewPresentableListener: AnyObject {
-    func itemSelected(indexPath: IndexPath)
+    func uploadButtonTapped()
 }
 
 final class PostingViewController: UIViewController,
