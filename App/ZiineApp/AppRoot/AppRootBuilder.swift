@@ -150,6 +150,7 @@ final class AppRootContainerViewController: UIViewController {
     private lazy var pageViewController: AppRootPageViewController = {
         let pageViewController = AppRootPageViewController()
         pageViewController.didMove(toParent: self)
+//        pageViewController.isPagingEnabled = false
         return pageViewController
     }()
     
@@ -171,17 +172,25 @@ final class AppRootContainerViewController: UIViewController {
     }
 }
 
+protocol AppRootPageViewPresentable {
+    func onChange(item: ZiinStatusTabBarItem)
+}
 
-final class AppRootPageViewController: UIPageViewController {
-    
+final class AppRootPageViewController:
+    UIPageViewController,
+    AppRootPageViewPresentable
+{
     private var pages: [UIViewController] = []
     private var currentIndex: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        print("didCall")
-        self.dataSource = self
+    }
+    
+    // MARK: - Initialize
+    
+    init() {
+        super.init(transitionStyle: .scroll, navigationOrientation: .horizontal)
         
         // 두 개의 뷰 컨트롤러 추가
         let firstVC = UIViewController()
@@ -194,6 +203,14 @@ final class AppRootPageViewController: UIPageViewController {
         if let first = pages.first {
             setViewControllers([first], direction: .forward, animated: false, completion: nil)
         }
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func onChange(item: ZiinStatusTabBarItem) {
+        //
     }
     
     func first() {
@@ -210,23 +227,3 @@ final class AppRootPageViewController: UIPageViewController {
         }
     }
 }
-
-// MARK: - UIPageViewControllerDataSource
-extension AppRootPageViewController: UIPageViewControllerDataSource {
-    
-    // 이전 페이지 반환
-    func pageViewController(_ pageViewController: UIPageViewController,
-                            viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        guard let index = pages.firstIndex(of: viewController), index > 0 else { return nil }
-        return pages[index - 1]
-    }
-    
-    // 다음 페이지 반환
-    func pageViewController(_ pageViewController: UIPageViewController,
-                            viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        guard let index = pages.firstIndex(of: viewController), index < pages.count - 1 else { return nil }
-        return pages[index + 1]
-    }
-}
-
-
