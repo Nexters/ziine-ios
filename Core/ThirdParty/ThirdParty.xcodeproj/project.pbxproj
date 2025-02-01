@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1A9649D72D4A931500268B29 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 1A9649D62D4A931500268B29 /* SnapKit */; };
+		C6D47C012D4CFBE000FCFBD7 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = C6D47C002D4CFBE000FCFBD7 /* Moya */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C6D47C012D4CFBE000FCFBD7 /* Moya in Frameworks */,
 				1A9649D72D4A931500268B29 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -95,6 +97,7 @@
 			name = ThirdParty;
 			packageProductDependencies = (
 				1A9649D62D4A931500268B29 /* SnapKit */,
+				C6D47C002D4CFBE000FCFBD7 /* Moya */,
 			);
 			productName = ThirdParty;
 			productReference = 1A9649972D4A915900268B29 /* ThirdParty.framework */;
@@ -125,6 +128,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				1A9649D52D4A931500268B29 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				C6D47BFF2D4CFBE000FCFBD7 /* XCRemoteSwiftPackageReference "Moya" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 1A9649982D4A915900268B29 /* Products */;
@@ -386,6 +390,14 @@
 				minimumVersion = 5.7.1;
 			};
 		};
+		C6D47BFF2D4CFBE000FCFBD7 /* XCRemoteSwiftPackageReference "Moya" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Moya/Moya.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 15.0.3;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -393,6 +405,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 1A9649D52D4A931500268B29 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		C6D47C002D4CFBE000FCFBD7 /* Moya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C6D47BFF2D4CFBE000FCFBD7 /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = Moya;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
