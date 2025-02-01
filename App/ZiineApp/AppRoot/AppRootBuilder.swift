@@ -79,6 +79,7 @@ final class AppRootRouter: AppRootRouting {
     }
 }
 
+
 protocol AppRootTabBarControllable {
     func setViewControllers(_ viewControllers: [UIViewController])
     func build() -> UITabBarController
@@ -105,61 +106,99 @@ final class AppRootTabBarController: UITabBarController, AppRootTabBarControllab
     }
 }
 
+
+
+// MARK: - PageViewController
+import SnapKit
 import SwiftUI
-import DesignSystem
 
-struct ZiineStatusBar: View {
-    @State private var selectedTab: Tab = .artworks
-    @Namespace private var animationNamespace // 매끄러운 애니메이션을 위한 네임스페이스
-
-    enum Tab: CaseIterable {
-        case artworks, magazine
+final class AppRootContainerViewController: UIViewController {
+    
+    // MARK: - Initialize
+    
+    init() {
+        super.init(nibName: nil, bundle: nil)
         
-        var labelValue: String {
-            switch self {
-            case .artworks:
-                return "Artworks"
-            case .magazine:
-                return "Magazine"
-            }
-        }
-        
-        
+        configureUI()
     }
     
-    var body: some View {
-        HStack(spacing: 0) {
-            ForEach(Tab.allCases, id: \.self) { tab in
-                Button {
-                    withAnimation(.spring(response: 0.4, dampingFraction: 0.7)) {
-                        selectedTab = tab
-                    }
-                } label: {
-                    Text(tab.labelValue)
-                        .font(Font(ZiineFont.s2))
-                        .padding(.horizontal, 16)
-                        .padding(.vertical, 8)
-                        .background(
-                            ZStack {
-                                if selectedTab == tab {
-                                    Capsule()
-                                        .fill(ZiineColor.color(.p500))
-                                        .matchedGeometryEffect(id: "slider", in: animationNamespace)
-                                }
-                            }
-                        )
-                        .foregroundColor(
-                            selectedTab == tab
-                            ? ZiineColor.color(.g900)
-                            : ZiineColor.color(.g600)
-                        )
-                }
-            }
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - UIComponents
+    
+    private let statusBar: UIView = {
+        let statusBar = ZiineStatusBar()
+        let hostingController = UIHostingController(rootView: statusBar)
+        return hostingController.view!
+    }()
+    
+    private lazy var pagerView: UIView = {
+        let pageViewController = AppRootPageViewController()
+        pageViewController.didMove(toParent: self)
+        return pageViewController.view!
+    }()
+    
+    private func configureUI() {
+        view.addSubview(statusBar)
+        statusBar.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide)
+            $0.horizontalEdges.equalToSuperview()
+            $0.height.equalTo(65)
         }
-        .frame(height: 40)
+        
+        view.addSubview(pagerView)
+        pagerView.snp.makeConstraints {
+            $0.top.equalTo(statusBar.snp.bottom)
+            $0.horizontalEdges.equalToSuperview()
+            $0.bottom.equalToSuperview()
+        }
     }
 }
 
-#Preview {
-    ZiineStatusBar()
+
+final class AppRootPageViewController: UIPageViewController {
+    
+    private var pages: [UIViewController] = []
+    private var currentIndex: Int = 0
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        print("didCall")
+        self.dataSource = self
+        
+        // 두 개의 뷰 컨트롤러 추가
+        let firstVC = UIViewController()
+        firstVC.view.backgroundColor = .systemBlue
+        let secondVC = UIViewController()
+        secondVC.view.backgroundColor = .green
+        pages = [firstVC, secondVC]
+        
+        // 초기 페이지 설정
+        if let first = pages.first {
+            setViewControllers([first], direction: .forward, animated: false, completion: nil)
+        }
+    }
 }
+
+// MARK: - UIPageViewControllerDataSource
+extension AppRootPageViewController: UIPageViewControllerDataSource {
+    
+    // 이전 페이지 반환
+    func pageViewController(_ pageViewController: UIPageViewController,
+                            viewControllerBefore viewController: UIViewController) -> UIViewController? {
+        guard let index = pages.firstIndex(of: viewController), index > 0 else { return nil }
+        return pages[index - 1]
+    }
+    
+    // 다음 페이지 반환
+    func pageViewController(_ pageViewController: UIPageViewController,
+                            viewControllerAfter viewController: UIViewController) -> UIViewController? {
+        guard let index = pages.firstIndex(of: viewController), index < pages.count - 1 else { return nil }
+        return pages[index + 1]
+    }
+}
+
+
