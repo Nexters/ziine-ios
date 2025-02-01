@@ -128,16 +128,29 @@ final class AppRootContainerViewController: UIViewController {
     
     // MARK: - UIComponents
     
-    private let statusBar: UIView = {
-        let statusBar = ZiineStatusBar()
+    private lazy var statusBar: UIView = {
+        let statusBar = ZiineStatusBar { [weak self] action in
+            switch action {
+            case let .onChange(newValue):
+                print(newValue)
+                switch newValue {
+                case .artworks:
+                    self?.pageViewController.first()
+                case .magazine:
+                    self?.pageViewController.second()
+                        
+                }
+            }
+        }
+        
         let hostingController = UIHostingController(rootView: statusBar)
         return hostingController.view!
     }()
     
-    private lazy var pagerView: UIView = {
+    private lazy var pageViewController: AppRootPageViewController = {
         let pageViewController = AppRootPageViewController()
         pageViewController.didMove(toParent: self)
-        return pageViewController.view!
+        return pageViewController
     }()
     
     private func configureUI() {
@@ -148,6 +161,7 @@ final class AppRootContainerViewController: UIViewController {
             $0.height.equalTo(65)
         }
         
+        let pagerView = pageViewController.view!
         view.addSubview(pagerView)
         pagerView.snp.makeConstraints {
             $0.top.equalTo(statusBar.snp.bottom)
@@ -178,6 +192,20 @@ final class AppRootPageViewController: UIPageViewController {
         
         // 초기 페이지 설정
         if let first = pages.first {
+            setViewControllers([first], direction: .forward, animated: false, completion: nil)
+        }
+    }
+    
+    func first() {
+        // 초기 페이지 설정
+        if let first = pages.first {
+            setViewControllers([first], direction: .forward, animated: false, completion: nil)
+        }
+    }
+    
+    func second() {
+        // 초기 페이지 설정
+        if let first = pages.last {
             setViewControllers([first], direction: .forward, animated: false, completion: nil)
         }
     }

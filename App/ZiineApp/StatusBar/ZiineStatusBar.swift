@@ -8,32 +8,45 @@
 import SwiftUI
 import DesignSystem
 
+enum ZiineStatusBarListener {
+    case onChange(newValue: ZiinStatusTabBarItem)
+}
+
+enum ZiinStatusTabBarItem: CaseIterable {
+    case artworks, magazine
+    
+    var labelValue: String {
+        switch self {
+        case .artworks:
+            return "Artworks"
+        case .magazine:
+            return "Magazine"
+        }
+    }
+}
+
 struct ZiineStatusBar: View {
-    @State private var selectedTab: Tab = .artworks
+    @State private var selectedTab: ZiinStatusTabBarItem = .artworks
     @Namespace private var animationNamespace
 
-    enum Tab: CaseIterable {
-        case artworks, magazine
-        
-        var labelValue: String {
-            switch self {
-            case .artworks:
-                return "Artworks"
-            case .magazine:
-                return "Magazine"
-            }
-        }
-        
-        
+    private var listener: ((ZiineStatusBarListener) -> ())?
+    
+    init(listener: ((ZiineStatusBarListener) -> ())?) {
+        self.listener = listener
     }
     
     var body: some View {
         HStack(spacing: 0) {
-            ForEach(Tab.allCases, id: \.self) { tab in
+            ForEach(ZiinStatusTabBarItem.allCases, id: \.self) { tab in
                 Button {
-                    withAnimation(.spring(response: 0.4, dampingFraction: 0.7)) {
-                        selectedTab = tab
+                    if selectedTab != tab {
+                        listener?(.onChange(newValue: tab))
+                        
+                        withAnimation(.spring(response: 0.4, dampingFraction: 0.7)) {
+                            selectedTab = tab
+                        }
                     }
+                    
                 } label: {
                     Text(tab.labelValue)
                         .font(Font(ZiineFont.s2))
@@ -61,5 +74,5 @@ struct ZiineStatusBar: View {
 }
 
 #Preview {
-    ZiineStatusBar()
+    ZiineStatusBar(listener: nil)
 }
