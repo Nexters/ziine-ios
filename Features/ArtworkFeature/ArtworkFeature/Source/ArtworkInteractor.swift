@@ -7,6 +7,7 @@
 
 import UIKit
 import ArtworkFeatureInterface
+import DesignSystem
 
 protocol ArtworkViewPresentable: AnyObject {
     var listener: ArtworkViewPresentableListener? { get set }
@@ -31,6 +32,21 @@ final class ArtworkInteractor:
     func fetch() { }
     
     func itemSelected(indexPath: IndexPath) {
-        router?.pushToUpload()
+        // TODO: - 상세페이지 웹뷰
     }
+    
+    func circleButtonTapped(listener: CircleButtonListener) {
+        switch listener {
+        case .buttonTapped:
+            router?.pushToUpload()
+        @unknown default:
+            break
+        }
+    }
+    
+    
+    func uploadButtonTapped() {
+        
+    }
+    
 }
