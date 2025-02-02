@@ -34,7 +34,7 @@ final class ArtworkViewController: UIViewController,
 //    private let collectionView = UICollectionView()
     
     private var addCircleButton: UIView = {
-        let circleButton = CircleButton(image: ZiineImage.image(.plus)) { _ in
+        let circleButton = CircleButton(imageName: ZiineImage.ImageName.plus.rawValue) { _ in
             
         }
         let hostingController = UIHostingController(rootView: circleButton)

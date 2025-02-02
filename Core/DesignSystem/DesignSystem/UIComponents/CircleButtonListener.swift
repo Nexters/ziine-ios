@@ -15,11 +15,13 @@ public struct CircleButton: View {
     public typealias Listener = ((CircleButtonListener) -> ())
     
     private var listener: Listener?
+    private var imageName: String
     
     public init(
-        image: Image,
+        imageName: String,
         listener: Listener?
     ) {
+        self.imageName = imageName
         self.listener = listener
     }
     
@@ -31,7 +33,7 @@ public struct CircleButton: View {
                 .frame(width: 48, height: 48)
                 .foregroundStyle(ZiineColor.color(.p500))
                 .overlay {
-                    Image(systemName: "plus")
+                    Image(imageName)
                         .frame(width: 24, height: 24)
                         .foregroundColor(.white)
                 }
@@ -41,5 +43,5 @@ public struct CircleButton: View {
 }
 
 #Preview {
-    CircleButton(image: ZiineImage.image(.plus), listener: nil)
+    CircleButton(imageName: ZiineImage.ImageName.plus.rawValue, listener: nil)
 }
