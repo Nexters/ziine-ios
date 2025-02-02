@@ -20,15 +20,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let builder = AppRootBuilder()
         let routing = builder.build()
+        let rootViewController = UINavigationController(rootViewController: routing.viewController)
         
-//        let statusBar = routing.configurePages()
-        
-//        let tabBarViewController: AppRootTabBarControllable = AppRootTabBarController()
-//        tabBarViewController.setViewControllers(tabs)
-//        let rootViewController = tabBarViewController.build()
-//        let navigationController = UINavigationController(rootViewController: rootViewController)
-        
-        window?.rootViewController = routing.viewController
+        window?.rootViewController = rootViewController
         
         window?.makeKeyAndVisible()
     }

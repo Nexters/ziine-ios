@@ -13,6 +13,7 @@ protocol AppRootRouting {
     var viewController: UIViewController { get }
     
     func configurePages() -> [ZiinStatusTabBarItem: UIViewController]
+    func pushToArtworkDetail()
 }
 
 final class AppRootRouter: AppRootRouting {
@@ -46,12 +47,17 @@ final class AppRootRouter: AppRootRouting {
         let postingRouting = postingBuildable.build(with: interactor)
         self.postingRouting = postingRouting
         
-        let a = artworkRouting.viewController
-        a.view.backgroundColor = .red
-        
         return [
-            .artworks: a,
+            .artworks: artworkRouting.viewController,
             .magazine: postingRouting.viewController
         ]
+    }
+    
+    func pushToArtworkDetail() {
+        let vc = UIViewController()
+        vc.view.backgroundColor = .green
+//        navigationController.pushViewController(viewController, animated: true)
+//        viewController.present(vc, animated: true)
+        viewController.navigationController?.pushViewController(vc, animated: true)
     }
 }

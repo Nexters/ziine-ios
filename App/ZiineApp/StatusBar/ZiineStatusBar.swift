@@ -46,7 +46,6 @@ struct ZiineStatusBar: View {
                             selectedTab = tab
                         }
                     }
-                    
                 } label: {
                     Text(tab.labelValue)
                         .font(Font(ZiineFont.s2))
@@ -68,8 +67,8 @@ struct ZiineStatusBar: View {
                         )
                 }
             }
+            .padding(.bottom, 20)
         }
-        .frame(height: 40)
     }
 }
 
