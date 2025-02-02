@@ -7,6 +7,10 @@
 
 extension ArtworkRequestQuery {
     public struct GetArtwork {
-        public var page: Int = 1
+        public var page: Int
+        
+        public init(page: Int) {
+            self.page = page
+        }
     }
 }
