@@ -12,7 +12,7 @@ enum ZiineStatusBarListener {
     case onChange(newValue: ZiinStatusTabBarItem)
 }
 
-enum ZiinStatusTabBarItem: CaseIterable {
+enum ZiinStatusTabBarItem: Hashable, CaseIterable {
     case artworks, magazine
     
     var labelValue: String {
