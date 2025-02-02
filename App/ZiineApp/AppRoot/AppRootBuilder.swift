@@ -22,7 +22,7 @@ final class AppRootBuilder: AppRootBuildable {
     func build() -> AppRootRouting {
         let interactor = AppRootInteractor()
         
-        let viewController = AppRootContainerViewController()
+        let viewController = AppRootViewController()
         
         let artworkBuilder = ArtworkViewBuilder()
         let postingBuilder = PostingViewBuilder()

@@ -10,18 +10,19 @@ import SwiftUI
 
 // MARK: - PageViewController
 
-protocol AppRootContainerViewPresentable {
+protocol AppRootViewPresentable {
     func set(page: UIViewController)
 }
 
-protocol AppRootContainerViewPresentableListener {
+protocol AppRootViewPresentableListener {
     func onChange(statusBarItem: ZiinStatusTabBarItem)
 }
 
-final class AppRootContainerViewController: UIViewController,
-                                            AppRootContainerViewPresentable
+final class AppRootViewController: UIViewController,
+                                   AppRootViewPresentable
+                                            
 {
-    var listener: AppRootContainerViewPresentableListener?
+    var listener: AppRootViewPresentableListener?
     
     // MARK: - Initialize
     

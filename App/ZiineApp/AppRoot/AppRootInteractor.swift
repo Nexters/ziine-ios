@@ -15,10 +15,10 @@ protocol AppRootInteractable: ArtworkListener, PostingListener {
 
 final class AppRootInteractor:
     AppRootInteractable,
-    AppRootContainerViewPresentableListener
+    AppRootViewPresentableListener
 {
     var router: AppRootRouting?
-    var presenter: AppRootContainerViewPresentable?
+    var presenter: AppRootViewPresentable?
     
     /// 페이지 정보
     private var pageDictionary: [ZiinStatusTabBarItem: UIViewController] = [:]
