@@ -33,9 +33,9 @@ public struct CircleButton: View {
                 .frame(width: 48, height: 48)
                 .foregroundStyle(ZiineColor.color(.p500))
                 .overlay {
-                    Image(imageName, bundle: .current)
+                    Image(systemName: "plus")
                         .frame(width: 24, height: 24)
-                        .foregroundColor(.green)
+                        .foregroundColor(.white)
                 }
         }
         
