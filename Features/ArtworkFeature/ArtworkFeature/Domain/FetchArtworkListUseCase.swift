@@ -8,11 +8,6 @@
 import Utils
 import ArtworkFeatureInterface
 
-public protocol FetchArtworkListUseCase {
-    func fetch() async -> Result<ArtworkModel, RepositoryError>
-    func pagination() async -> Result<ArtworkModel, RepositoryError>
-}
-
 final actor DefaultFetchArtworkListUseCase: FetchArtworkListUseCase {
     
     private let artworkRepository: ArtworkRepository
