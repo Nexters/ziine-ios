@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftUI
 import ArtworkFeatureInterface
 
 protocol ArtworkViewPresentableListener: AnyObject {
@@ -32,16 +33,16 @@ final class ArtworkViewController: UIViewController,
     
 //    private let collectionView = UICollectionView()
     
-    private func configureUI() {
-        configureTabBar()
-    }
+    private var addCircleButton: UIView = {
+        let circleButton = CircleButton(image: ZiineImage.image(.plus)) { _ in
+            
+        }
+        let hostingController = UIHostingController(rootView: circleButton)
+        return hostingController.view!
+    }()
     
-    private func configureTabBar() {
-        tabBarItem = UITabBarItem(
-            title: nil,
-            image: UIImage(systemName: "person"),
-            selectedImage: UIImage(systemName: "person.fill")
-        )
+    private func configureUI() {
+//        configureTabBar()
     }
     
     // TODO: - 컬렉션 UI 도입해서 분리할 예정
@@ -50,3 +51,6 @@ final class ArtworkViewController: UIViewController,
 //        listener?.itemSelected(indexPath: indexPath)
 //    }
 }
+
+import SwiftUI
+import DesignSystem
