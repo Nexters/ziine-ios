@@ -32,7 +32,7 @@ final actor DefaultFetchArtworkListUseCase: FetchArtworkListUseCase {
     
     func pagination() async -> Result<ArtworkModel, RepositoryError> {
         page += 1
-        return await fetch()
+        return await execute(page: page)
     }
     
     private func execute(page: Int) async -> Result<ArtworkModel, RepositoryError> {
