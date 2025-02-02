@@ -10,11 +10,7 @@ import Combine
 import Networking
 import ArtworkFeatureInterface
 
-public protocol ArtworkRepository {
-    func fetch(query: ArtworkRequestQuery.GetArtwork) async -> Result<ArtworkModel, RepositoryError>
-}
-
-final class DefaultArtworkRepository {
+final class DefaultArtworkRepository: ArtworkRepository {
     
     private let apiClient: APIClient
     
