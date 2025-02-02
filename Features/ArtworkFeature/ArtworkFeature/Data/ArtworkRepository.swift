@@ -16,7 +16,3 @@ final class ArtworkRepository {
     func fetch() { }
     
 }
-
-enum RequestQuery {
-    
-}
