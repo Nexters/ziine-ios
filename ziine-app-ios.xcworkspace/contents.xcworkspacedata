@@ -2,11 +2,18 @@
 <Workspace
    version = "1.0">
    <Group
-      location = "group:Core"
-      name = "Core">
+      location = "group:UI"
+      name = "UI">
+      <FileRef
+         location = "group:ListKit/ListKit.xcodeproj">
+      </FileRef>
       <FileRef
          location = "group:DesignSystem/DesignSystem.xcodeproj">
       </FileRef>
+   </Group>
+   <Group
+      location = "group:Core"
+      name = "Core">
       <FileRef
          location = "group:ThirdParty/ThirdParty.xcodeproj">
       </FileRef>
