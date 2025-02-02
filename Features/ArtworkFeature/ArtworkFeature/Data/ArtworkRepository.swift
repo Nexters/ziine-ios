@@ -10,7 +10,11 @@ import Combine
 import Networking
 import ArtworkFeatureInterface
 
-final class ArtworkRepository {
+public protocol ArtworkRepository {
+    func fetch(query: ArtworkRequestQuery.GetArtwork) async -> Result<ArtworkModel, RepositoryError>
+}
+
+final class DefaultArtworkRepository {
     
     private let apiClient: APIClient
     
@@ -18,19 +22,19 @@ final class ArtworkRepository {
         self.apiClient = apiClient
     }
     
-    func fetch(query: ArtworkRequestQuery.GetArtwork) -> AnyPublisher<ArtworkModel, RepositoryError> {
-        return Future { promise in
+    func fetch(query: ArtworkRequestQuery.GetArtwork) async -> Result<ArtworkModel, RepositoryError> {
+        await withCheckedContinuation { continuation in
             self.apiClient.request(
                 ResponseDTO.GetArtworkList.self,
                 target: .fetchArtworks(page: query.page)
             ) { result in
                 switch result {
                 case .success(let success):
-                    promise(.success(success.toDomain()))
+                    continuation.resume(returning: .success(success.toDomain()))
                 case .failure(let error):
-                    promise(.failure(.message(error.localizedDescription)))
+                    continuation.resume(returning: .failure(.message(error.localizedDescription)))
                 }
             }
-        }.eraseToAnyPublisher()
+        }
     }
 }
