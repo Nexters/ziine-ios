@@ -15,6 +15,9 @@
       location = "group:Core"
       name = "Core">
       <FileRef
+         location = "group:Networking/Networking.xcodeproj">
+      </FileRef>
+      <FileRef
          location = "group:ThirdParty/ThirdParty.xcodeproj">
       </FileRef>
    </Group>
