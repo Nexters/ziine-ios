@@ -8,11 +8,12 @@
 import Utils
 import ArtworkFeatureInterface
 
-final actor DefaultFetchArtworkListUseCase: FetchArtworkListUseCase {
+public final actor DefaultFetchArtworkListUseCase: FetchArtworkListUseCase {
+    public typealias ResultType = Result<[ArtworkModel], RepositoryError>
     
     private let artworkRepository: ArtworkRepository
     
-    init(artworkRepository: ArtworkRepository) {
+    public init(artworkRepository: ArtworkRepository) {
         self.artworkRepository = artworkRepository
         
         self.page = 1
@@ -20,17 +21,17 @@ final actor DefaultFetchArtworkListUseCase: FetchArtworkListUseCase {
     
     private var page: Int
     
-    func fetch() async -> Result<ArtworkModel, RepositoryError> {
+    public func fetch() async -> ResultType {
         page = 1
         return await execute(page: page)
     }
     
-    func pagination() async -> Result<ArtworkModel, RepositoryError> {
+    public func pagination() async -> ResultType {
         page += 1
         return await execute(page: page)
     }
     
-    private func execute(page: Int) async -> Result<ArtworkModel, RepositoryError> {
+    private func execute(page: Int) async -> ResultType {
         let result = await artworkRepository.fetch(query: .init(page: page))
         switch result {
         case .success(let success):

@@ -11,6 +11,8 @@ import DesignSystem
 
 protocol ArtworkViewPresentable: AnyObject {
     var listener: ArtworkViewPresentableListener? { get set }
+    
+    func reloadCollectionUI(artworkModels: [ArtworkModel])
 }
 
 protocol ArtworkInteractorable: AnyObject {
@@ -18,7 +20,9 @@ protocol ArtworkInteractorable: AnyObject {
     var listener: ArtworkListener? { get set }
 }
 
-protocol ArtworkInteractorDependency: AnyObject { }
+protocol ArtworkInteractorDependency: AnyObject {
+    var fetchArtworkListUseCase: FetchArtworkListUseCase { get }
+}
 
 final class ArtworkInteractor:
     ArtworkInteractorable,
@@ -26,10 +30,26 @@ final class ArtworkInteractor:
 {
     var router: ArtworkRouting?
     var listener: ArtworkListener?
+    var presenter: ArtworkViewPresentable?
     
-    init() {}
+    var dependency: ArtworkInteractorDependency
     
-    func fetch() { }
+    init(dependency: ArtworkInteractorDependency) {
+        self.dependency = dependency
+    }
+    
+    func fetch() {
+        Task { @MainActor in
+            let result = await dependency.fetchArtworkListUseCase.fetch()
+            switch result {
+            case .success(let success):
+                presenter?.reloadCollectionUI(artworkModels: success)
+            case .failure(let failure):
+                // !!!: - 토스트 팝업
+                break
+            }
+        }
+    }
     
     func itemSelected(indexPath: IndexPath) {
         // TODO: - 상세페이지 웹뷰

@@ -8,5 +8,5 @@
 import Utils
 
 public protocol ArtworkRepository {
-    func fetch(query: ArtworkRequestQuery.GetArtwork) async -> Result<ArtworkModel, RepositoryError>
+    func fetch(query: ArtworkRequestQuery.GetArtwork) async -> Result<[ArtworkModel], RepositoryError>
 }

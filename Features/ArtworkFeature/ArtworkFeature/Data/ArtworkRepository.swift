@@ -18,7 +18,7 @@ final class DefaultArtworkRepository: ArtworkRepository {
         self.apiClient = apiClient
     }
     
-    func fetch(query: ArtworkRequestQuery.GetArtwork) async -> Result<ArtworkModel, RepositoryError> {
+    func fetch(query: ArtworkRequestQuery.GetArtwork) async -> Result<[ArtworkModel], RepositoryError> {
         await withCheckedContinuation { continuation in
             self.apiClient.request(
                 ResponseDTO.GetArtworkList.self,

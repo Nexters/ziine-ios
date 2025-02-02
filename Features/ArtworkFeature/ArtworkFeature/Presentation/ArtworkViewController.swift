@@ -17,9 +17,8 @@ protocol ArtworkViewPresentableListener: AnyObject {
     func circleButtonTapped(action: CircleButtonListener)
 }
 
-final class ArtworkViewController: UIViewController,
-                                   ArtworkViewPresentable
-{
+final class ArtworkViewController: UIViewController {
+    
     var listener: ArtworkViewPresentableListener?
     
     init() {
@@ -59,4 +58,12 @@ final class ArtworkViewController: UIViewController,
             $0.bottom.trailing.equalToSuperview().inset(16)
         }
     }
+}
+
+extension ArtworkViewController: ArtworkViewPresentable {
+    func reloadCollectionUI(artworkModels: [ArtworkFeatureInterface.ArtworkModel]) {
+        print(#function)
+    }
+    
+    
 }

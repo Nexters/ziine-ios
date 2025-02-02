@@ -13,7 +13,7 @@ extension ResponseDTO {
         var status: String
         var message: String
         
-        func toDomain() -> ArtworkModel {
+        func toDomain() -> [ArtworkModel] {
             .init()
         }
     }

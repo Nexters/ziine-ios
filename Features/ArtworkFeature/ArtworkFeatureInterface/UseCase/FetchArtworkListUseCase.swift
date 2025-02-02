@@ -8,6 +8,6 @@
 import Utils
 
 public protocol FetchArtworkListUseCase {
-    func fetch() async -> Result<ArtworkModel, RepositoryError>
-    func pagination() async -> Result<ArtworkModel, RepositoryError>
+    func fetch() async -> Result<[ArtworkModel], RepositoryError>
+    func pagination() async -> Result<[ArtworkModel], RepositoryError>
 }
