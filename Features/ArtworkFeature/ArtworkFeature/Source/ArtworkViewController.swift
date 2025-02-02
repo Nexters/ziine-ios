@@ -8,6 +8,8 @@
 import UIKit
 import SwiftUI
 import ArtworkFeatureInterface
+import DesignSystem
+internal import SnapKit
 
 protocol ArtworkViewPresentableListener: AnyObject {
     func itemSelected(indexPath: IndexPath)
@@ -38,11 +40,17 @@ final class ArtworkViewController: UIViewController,
             
         }
         let hostingController = UIHostingController(rootView: circleButton)
+        hostingController.view.backgroundColor = .clear
         return hostingController.view!
     }()
     
     private func configureUI() {
 //        configureTabBar()
+        
+        view.addSubview(addCircleButton)
+        addCircleButton.snp.makeConstraints {
+            $0.bottom.trailing.equalToSuperview().inset(16)
+        }
     }
     
     // TODO: - 컬렉션 UI 도입해서 분리할 예정
@@ -51,6 +59,3 @@ final class ArtworkViewController: UIViewController,
 //        listener?.itemSelected(indexPath: indexPath)
 //    }
 }
-
-import SwiftUI
-import DesignSystem
