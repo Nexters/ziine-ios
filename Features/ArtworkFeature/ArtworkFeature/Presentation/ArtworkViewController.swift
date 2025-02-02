@@ -50,7 +50,6 @@ final class ArtworkViewController: UIViewController,
     
     private func configureUI() {
         view.addSubview(collectionUI)
-        collectionUI.backgroundColor = .red
         collectionUI.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
@@ -60,10 +59,4 @@ final class ArtworkViewController: UIViewController,
             $0.bottom.trailing.equalToSuperview().inset(16)
         }
     }
-    
-    // TODO: - 컬렉션 UI 도입해서 분리할 예정
-    
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        listener?.itemSelected(indexPath: indexPath)
-//    }
 }
