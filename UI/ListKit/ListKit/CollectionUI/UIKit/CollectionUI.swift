@@ -53,7 +53,6 @@ extension CollectionUI: UICollectionViewDataSource {
     }
     
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-         
         let section = sections[indexPath.section]
         let item = section.items[indexPath.row]
         let cell = item.buildable.collectionView(collectionView, cellForItemAt: indexPath)
@@ -77,7 +76,6 @@ extension CollectionUI: UICollectionViewDelegate {
 
 extension CollectionUI: UICollectionViewDelegateFlowLayout {
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
         let section = sections[indexPath.section]
         let item = section.items[indexPath.row]
         let size = item.buildable.collectionView(collectionView, layout: collectionViewLayout, sizeForItemAt: indexPath)
@@ -87,7 +85,6 @@ extension CollectionUI: UICollectionViewDelegateFlowLayout {
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         let current = sections[section]
-        
         let item = current.items.first
         let insets = item?.buildable.collectionView(collectionView, layout: collectionViewLayout, insetForSectionAt: section) ?? .zero
         
@@ -96,7 +93,6 @@ extension CollectionUI: UICollectionViewDelegateFlowLayout {
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         let current = sections[section]
-        
         let item = current.items.first
         let value = item?.buildable.collectionView(collectionView, layout: collectionViewLayout, minimumLineSpacingForSectionAt: section) ?? .zero
         
