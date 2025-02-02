@@ -23,6 +23,12 @@ final class AppRootViewController: UIViewController,
 {
     var listener: AppRootViewPresentableListener?
     
+    override func viewIsAppearing(_ animated: Bool) {
+        super.viewIsAppearing(animated)
+        
+        navigationController?.navigationBar.isUserInteractionEnabled = false
+    }
+    
     // MARK: - Initialize
     
     init() {

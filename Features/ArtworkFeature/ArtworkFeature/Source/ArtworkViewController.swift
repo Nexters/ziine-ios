@@ -10,6 +10,7 @@ import SwiftUI
 import ArtworkFeatureInterface
 import DesignSystem
 internal import SnapKit
+import ListKit
 
 protocol ArtworkViewPresentableListener: AnyObject {
     func itemSelected(indexPath: IndexPath)
@@ -17,8 +18,7 @@ protocol ArtworkViewPresentableListener: AnyObject {
 }
 
 final class ArtworkViewController: UIViewController,
-                                   ArtworkViewPresentable,
-                                   UICollectionViewDelegate
+                                   ArtworkViewPresentable
 {
     var listener: ArtworkViewPresentableListener?
     
@@ -34,7 +34,10 @@ final class ArtworkViewController: UIViewController,
     
     // MARK: - UIComponents
     
-//    private let collectionView = UICollectionView()
+    private var collectionUI: CollectionUI = {
+        let cv = CollectionUI()
+        return cv
+    }()
     
     private lazy var addCircleButton: UIView = {
         let circleButton = CircleButton(imageName: ZiineImage.ImageName.plus.rawValue) { [weak self] action in
@@ -46,6 +49,12 @@ final class ArtworkViewController: UIViewController,
     }()
     
     private func configureUI() {
+        view.addSubview(collectionUI)
+        collectionUI.backgroundColor = .red
+        collectionUI.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+        
         view.addSubview(addCircleButton)
         addCircleButton.snp.makeConstraints {
             $0.bottom.trailing.equalToSuperview().inset(16)
