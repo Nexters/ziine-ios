@@ -20,7 +20,6 @@ protocol AppRootViewPresentableListener {
 
 final class AppRootViewController: UIViewController,
                                    AppRootViewPresentable
-                                            
 {
     var listener: AppRootViewPresentableListener?
     

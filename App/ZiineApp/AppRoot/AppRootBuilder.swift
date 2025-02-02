@@ -36,6 +36,7 @@ final class AppRootBuilder: AppRootBuildable {
         
         viewController.listener = interactor
         interactor.presenter = viewController
+        interactor.router = router
         
         let pages = router.configurePages()
         interactor.configure(pages)

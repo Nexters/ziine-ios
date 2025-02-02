@@ -22,8 +22,8 @@ final class ArtworkRouter: ArtworkRouting {
         let vc = UIViewController()
         vc.view.backgroundColor = .systemBlue
 //        navigationController.pushViewController(viewController, animated: true)
-//        viewController.present(vc, animated: true)
-        viewController.navigationController?.pushViewController(vc, animated: true)
+        viewController.present(vc, animated: true)
+//        viewController.navigationController?.pushViewController(vc, animated: true)
     }
     
 }

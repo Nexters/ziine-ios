@@ -13,7 +13,7 @@ internal import SnapKit
 
 protocol ArtworkViewPresentableListener: AnyObject {
     func itemSelected(indexPath: IndexPath)
-    func circleButtonTapped(listener: CircleButtonListener)
+    func circleButtonTapped(action: CircleButtonListener)
 }
 
 final class ArtworkViewController: UIViewController,
@@ -38,7 +38,7 @@ final class ArtworkViewController: UIViewController,
     
     private lazy var addCircleButton: UIView = {
         let circleButton = CircleButton(imageName: ZiineImage.ImageName.plus.rawValue) { [weak self] action in
-            self?.listener?.circleButtonTapped(listener: action)
+            self?.listener?.circleButtonTapped(action: action)
         }
         let hostingController = UIHostingController(rootView: circleButton)
         hostingController.view.backgroundColor = .clear

@@ -35,10 +35,10 @@ final class ArtworkInteractor:
         // TODO: - 상세페이지 웹뷰
     }
     
-    func circleButtonTapped(listener: CircleButtonListener) {
-        switch listener {
+    func circleButtonTapped(action: CircleButtonListener) {
+        switch action {
         case .buttonTapped:
-            router?.pushToUpload()
+            listener?.addButtonTapped()
         @unknown default:
             break
         }

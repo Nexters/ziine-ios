@@ -7,7 +7,9 @@
 
 import UIKit
 
-public protocol ArtworkListener: AnyObject { }
+public protocol ArtworkListener: AnyObject {
+    func addButtonTapped()
+}
 
 public protocol ArtworkViewBuildable {
     func build(with listener: ArtworkListener?) -> ArtworkRouting
