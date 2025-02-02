@@ -5,6 +5,7 @@
 //  Created by Geon Woo lee on 2/3/25.
 //
 
+import Utils
 import Combine
 import Networking
 import ArtworkFeatureInterface
@@ -17,7 +18,7 @@ final class ArtworkRepository {
         self.apiClient = apiClient
     }
     
-    func fetch(query: ArtworkRequestQuery.GetArtwork) -> AnyPublisher<ArtworkModel, Error> {
+    func fetch(query: ArtworkRequestQuery.GetArtwork) -> AnyPublisher<ArtworkModel, RepositoryError> {
         return Future { promise in
             self.apiClient.request(
                 ResponseDTO.GetArtworkList.self,
@@ -27,8 +28,7 @@ final class ArtworkRepository {
                 case .success(let success):
                     promise(.success(success.toDomain()))
                 case .failure(let error):
-//                    promise(.failure(.message("프로필 정보 조회를 실패했어요.")))
-                    break
+                    promise(.failure(.message(error.localizedDescription)))
                 }
             }
         }.eraseToAnyPublisher()
