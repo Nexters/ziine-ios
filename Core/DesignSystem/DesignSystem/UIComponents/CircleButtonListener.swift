@@ -25,7 +25,7 @@ public struct CircleButton: View {
     
     public var body: some View {
         Button {
-            
+            listener?(.buttonTapped)
         } label: {
             Circle()
                 .frame(width: 48, height: 48)
