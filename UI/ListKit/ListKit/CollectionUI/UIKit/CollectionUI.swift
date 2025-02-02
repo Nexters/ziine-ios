@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class CollectionUI: UICollectionView {
+public final class CollectionUI: UICollectionView {
     
     weak var scrollViewDelegate: CollectionUIScollViewDelegate?
     
@@ -19,7 +19,7 @@ final class CollectionUI: UICollectionView {
         self.reloadData()
     }
 
-    init(
+    public init(
         collectionViewLayout layout: UICollectionViewLayout = UICollectionViewFlowLayout(),
         scrollViewDelegate: CollectionUIScollViewDelegate? = nil
     ) {
@@ -39,11 +39,11 @@ final class CollectionUI: UICollectionView {
 }
 
 extension CollectionUI: UICollectionViewDataSource {
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
+    public func numberOfSections(in collectionView: UICollectionView) -> Int {
         return sections.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch sections[section] {
         case .horizontalScroll:
             return 1
@@ -52,7 +52,7 @@ extension CollectionUI: UICollectionViewDataSource {
         }
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
          
         let section = sections[indexPath.section]
         let item = section.items[indexPath.row]
@@ -63,20 +63,20 @@ extension CollectionUI: UICollectionViewDataSource {
 }
 
 extension CollectionUI: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let section = sections[indexPath.section]
         let item = section.items[indexPath.row]
         
         item.buildable.collectionView(collectionView, didSelectItemAt: indexPath)
     }
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         scrollViewDelegate?.scrollViewDidScroll(scrollView)
     }
 }
 
 extension CollectionUI: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         let section = sections[indexPath.section]
         let item = section.items[indexPath.row]
@@ -85,7 +85,7 @@ extension CollectionUI: UICollectionViewDelegateFlowLayout {
         return size
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         let current = sections[section]
         
         let item = current.items.first
@@ -94,7 +94,7 @@ extension CollectionUI: UICollectionViewDelegateFlowLayout {
         return insets
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         let current = sections[section]
         
         let item = current.items.first

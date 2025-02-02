@@ -7,6 +7,6 @@
 
 import UIKit
 
-protocol CollectionUIScollViewDelegate: AnyObject {
+public protocol CollectionUIScollViewDelegate: AnyObject {
     func scrollViewDidScroll(_ scrollView: UIScrollView)
 }
