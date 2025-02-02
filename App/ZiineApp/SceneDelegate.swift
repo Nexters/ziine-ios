@@ -21,7 +21,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let builder = AppRootBuilder()
         let routing = builder.build()
         let rootViewController = UINavigationController(rootViewController: routing.viewController)
-//        rootViewController.navigationBar.isHidden = true
         
         window?.rootViewController = rootViewController
         
