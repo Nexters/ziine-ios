@@ -54,6 +54,11 @@
 			path = Common;
 			sourceTree = "<group>";
 		};
+		1A4DB7A52D4FD2D700964DE0 /* Utils */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Utils;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +76,7 @@
 		1A4DB77A2D4FD0DE00964DE0 = {
 			isa = PBXGroup;
 			children = (
+				1A4DB7A52D4FD2D700964DE0 /* Utils */,
 				1A4DB79C2D4FD1FF00964DE0 /* Common */,
 				1A4DB7862D4FD0DE00964DE0 /* Networking */,
 				1A4DB7932D4FD18400964DE0 /* Frameworks */,
@@ -124,6 +130,7 @@
 			fileSystemSynchronizedGroups = (
 				1A4DB7862D4FD0DE00964DE0 /* Networking */,
 				1A4DB79C2D4FD1FF00964DE0 /* Common */,
+				1A4DB7A52D4FD2D700964DE0 /* Utils */,
 			);
 			name = Networking;
 			packageProductDependencies = (
