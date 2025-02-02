@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import SwiftUI
+import SnapKit
 import ArtworkFeature
 import ArtworkFeatureInterface
 import PostingFeature
@@ -20,85 +22,27 @@ final class AppRootBuilder: AppRootBuildable {
     func build() -> AppRootRouting {
         let interactor = AppRootInteractor()
         
+        let viewController = AppRootViewController()
+        
         let artworkBuilder = ArtworkViewBuilder()
         let postingBuilder = PostingViewBuilder()
         
         let router = AppRootRouter(
+            viewController: viewController,
             interactor: interactor,
             artworkBuildable: artworkBuilder,
             postingBuildable: postingBuilder
         )
         
+        viewController.listener = interactor
+        interactor.presenter = viewController
+        
+        let pages = router.configurePages()
+        interactor.configure(pages)
+        if let page = pages[.artworks] {
+            viewController.set(page: page)
+        }
+        
         return router
-    }
-}
-
-
-protocol AppRootInteractable: ArtworkListener, PostingListener { }
-
-final class AppRootInteractor: AppRootInteractable {}
-
-protocol AppRootRouting {
-    func configureTabs() -> [UIViewController]
-}
-
-final class AppRootRouter: AppRootRouting {
-    
-    var interactor: AppRootInteractable?
-    
-    private let artworkBuildable: ArtworkViewBuildable
-    private var artworkRouting: ArtworkRouting?
-    
-    private let postingBuildable: PostingViewBuildable
-    private var postingRouting: PostingRouting?
-    
-    init(
-        interactor :AppRootInteractable,
-        artworkBuildable: ArtworkViewBuildable,
-        postingBuildable: PostingViewBuildable
-    ) {
-        self.interactor = interactor
-        
-        self.artworkBuildable = artworkBuildable
-        self.postingBuildable = postingBuildable
-    }
-    
-    func configureTabs() -> [UIViewController] {
-        let artworkRouting = artworkBuildable.build(with: interactor)
-        self.artworkRouting = artworkRouting
-        
-        let postingRouting = postingBuildable.build(with: interactor)
-        self.postingRouting = postingRouting
-        
-        let viewControllers = [
-            artworkRouting.viewController,
-            postingRouting.viewController
-        ]
-        
-        return viewControllers
-    }
-}
-
-protocol AppRootTabBarControllable {
-    func setViewControllers(_ viewControllers: [UIViewController])
-    func build() -> UITabBarController
-}
-
-final class AppRootTabBarController: UITabBarController, AppRootTabBarControllable {
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        tabBar.isTranslucent = false
-        tabBar.tintColor = .black
-        tabBar.backgroundColor = .white
-    }
-    
-    func setViewControllers(_ viewControllers: [UIViewController]) {
-        super.setViewControllers(viewControllers, animated: false)
-    }
-    
-    func build() -> UITabBarController {
-        return self
     }
 }
