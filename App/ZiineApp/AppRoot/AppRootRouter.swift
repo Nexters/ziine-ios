@@ -48,16 +48,16 @@ final class AppRootRouter: AppRootRouting {
         self.postingRouting = postingRouting
         
         return [
-            .artworks: UINavigationController(rootViewController: artworkRouting.viewController),
+            .artworks: artworkRouting.viewController,
             .magazine: postingRouting.viewController
         ]
     }
     
     func pushToArtworkDetail() {
         let vc = UIViewController()
-        vc.view.backgroundColor = .systemBlue
+        vc.view.backgroundColor = .green
 //        navigationController.pushViewController(viewController, animated: true)
-        viewController.present(vc, animated: true)
-//        viewController.navigationController?.pushViewController(vc, animated: true)
+//        viewController.present(vc, animated: true)
+        viewController.navigationController?.pushViewController(vc, animated: true)
     }
 }

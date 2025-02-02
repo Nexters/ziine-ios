@@ -20,8 +20,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let builder = AppRootBuilder()
         let routing = builder.build()
-
-        window?.rootViewController = routing.viewController
+        let rootViewController = UINavigationController(rootViewController: routing.viewController)
+//        rootViewController.navigationBar.isHidden = true
+        
+        window?.rootViewController = rootViewController
         
         window?.makeKeyAndVisible()
     }

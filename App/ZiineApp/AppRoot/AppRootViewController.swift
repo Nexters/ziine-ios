@@ -56,9 +56,11 @@ final class AppRootViewController: UIViewController,
     }()
     
     private func configureUI() {
+        let navigationBarHeight = 44
+        
         view.addSubview(statusBar)
         statusBar.snp.makeConstraints {
-            $0.top.equalTo(view.safeAreaLayoutGuide)
+            $0.top.equalTo(view.safeAreaLayoutGuide).offset(-navigationBarHeight)
             $0.horizontalEdges.equalToSuperview()
             $0.height.equalTo(65)
         }
