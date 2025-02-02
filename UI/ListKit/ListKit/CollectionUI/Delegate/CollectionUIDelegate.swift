@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol CollectionUIDelegate {
+public protocol CollectionUIDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
     
     func scrollViewDidScroll(_ scrollView: UIScrollView)

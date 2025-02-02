@@ -7,6 +7,6 @@
 
 import UIKit
 
-protocol CollectionUIDataSource {
+public protocol CollectionUIDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
 }
