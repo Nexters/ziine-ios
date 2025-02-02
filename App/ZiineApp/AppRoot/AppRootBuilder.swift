@@ -35,6 +35,9 @@ final class AppRootBuilder: AppRootBuildable {
             postingBuildable: postingBuilder
         )
         
+        viewController.listener = interactor
+        interactor.presenter = viewController
+        
         let pages = router.configurePages()
         interactor.configure(pages)
         if let page = pages[.artworks] {
@@ -50,7 +53,10 @@ protocol AppRootInteractable: ArtworkListener, PostingListener {
     func onChange(statusBarItem: ZiinStatusTabBarItem)
 }
 
-final class AppRootInteractor: AppRootInteractable {
+final class AppRootInteractor:
+    AppRootInteractable,
+    AppRootContainerViewPresentableListener
+{
     var router: AppRootRouting?
     var presenter: AppRootContainerViewPresentable?
     
