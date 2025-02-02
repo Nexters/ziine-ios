@@ -6,17 +6,17 @@
 //
 
 import Foundation
-internal import Moya
+public import Moya
 
-final class APIClient {
+public final class APIClient {
     private let provider: MoyaProvider<DefaultTargetType>
 
-    init() {
+    public init() {
         provider = MoyaProvider<DefaultTargetType>()
     }
     
     /// response가 있는 api request에 사용
-    func request<T: Respondable>(
+    public func request<T: Respondable>(
         _ T: T.Type,
         target: DefaultTargetType,
         completion: @escaping (Result<T, MoyaError>) -> Void

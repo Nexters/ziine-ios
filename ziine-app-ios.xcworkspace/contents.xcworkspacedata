@@ -20,6 +20,9 @@
       <FileRef
          location = "group:ThirdParty/ThirdParty.xcodeproj">
       </FileRef>
+      <FileRef
+         location = "group:Utils/Utils.xcodeproj">
+      </FileRef>
    </Group>
    <Group
       location = "group:Features"
