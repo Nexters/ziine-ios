@@ -33,6 +33,9 @@
       <FileRef
          location = "group:ArtworkFeature/ArtworkFeature.xcodeproj">
       </FileRef>
+      <FileRef
+         location = "group:MagazineFeature/MagazineFeature.xcodeproj">
+      </FileRef>
    </Group>
    <Group
       location = "group:App"
