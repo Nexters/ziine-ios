@@ -7,10 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C64CCC102D50C24D003B8CFC /* MagazineFeatureInterface.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C64CCC072D50C214003B8CFC /* MagazineFeatureInterface.framework */; platformFilter = ios; };
-		C64CCC112D50C24D003B8CFC /* MagazineFeatureInterface.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C64CCC072D50C214003B8CFC /* MagazineFeatureInterface.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C64CCC102D50C24D003B8CFC /* MagazineFeatureInterface.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C64CCC072D50C214003B8CFC /* MagazineFeatureInterface.framework */; };
+		C64CCC112D50C24D003B8CFC /* MagazineFeatureInterface.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C64CCC072D50C214003B8CFC /* MagazineFeatureInterface.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C64CCC3C2D52002F003B8CFC /* Utils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C64CCC3B2D52002F003B8CFC /* Utils.framework */; };
 		C64CCC3D2D52002F003B8CFC /* Utils.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C64CCC3B2D52002F003B8CFC /* Utils.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C64CCC702D5208E2003B8CFC /* DesignSystem.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C64CCC6F2D5208E2003B8CFC /* DesignSystem.framework */; };
+		C64CCC712D5208E2003B8CFC /* DesignSystem.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C64CCC6F2D5208E2003B8CFC /* DesignSystem.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C64CCC732D5208E8003B8CFC /* Networking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C64CCC722D5208E8003B8CFC /* Networking.framework */; };
+		C64CCC742D5208E8003B8CFC /* Networking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C64CCC722D5208E8003B8CFC /* Networking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C64CCC772D5208EF003B8CFC /* ThirdParty.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C64CCC752D5208EF003B8CFC /* ThirdParty.framework */; };
+		C64CCC782D5208EF003B8CFC /* ThirdParty.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C64CCC752D5208EF003B8CFC /* ThirdParty.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C64CCC792D5208EF003B8CFC /* Utils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C64CCC762D5208EF003B8CFC /* Utils.framework */; };
+		C64CCC7A2D5208EF003B8CFC /* Utils.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C64CCC762D5208EF003B8CFC /* Utils.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,6 +39,10 @@
 			dstSubfolderSpec = 10;
 			files = (
 				C64CCC112D50C24D003B8CFC /* MagazineFeatureInterface.framework in Embed Frameworks */,
+				C64CCC7A2D5208EF003B8CFC /* Utils.framework in Embed Frameworks */,
+				C64CCC712D5208E2003B8CFC /* DesignSystem.framework in Embed Frameworks */,
+				C64CCC742D5208E8003B8CFC /* Networking.framework in Embed Frameworks */,
+				C64CCC782D5208EF003B8CFC /* ThirdParty.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -51,6 +63,10 @@
 /* Begin PBXFileReference section */
 		C64CCC072D50C214003B8CFC /* MagazineFeatureInterface.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MagazineFeatureInterface.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C64CCC3B2D52002F003B8CFC /* Utils.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Utils.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C64CCC6F2D5208E2003B8CFC /* DesignSystem.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DesignSystem.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C64CCC722D5208E8003B8CFC /* Networking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Networking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C64CCC752D5208EF003B8CFC /* ThirdParty.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ThirdParty.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C64CCC762D5208EF003B8CFC /* Utils.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Utils.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C651DED12D50C15D007579F8 /* MagazineFeature.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MagazineFeature.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -104,6 +120,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				C64CCC102D50C24D003B8CFC /* MagazineFeatureInterface.framework in Frameworks */,
+				C64CCC792D5208EF003B8CFC /* Utils.framework in Frameworks */,
+				C64CCC702D5208E2003B8CFC /* DesignSystem.framework in Frameworks */,
+				C64CCC732D5208E8003B8CFC /* Networking.framework in Frameworks */,
+				C64CCC772D5208EF003B8CFC /* ThirdParty.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -113,6 +133,10 @@
 		C64CCC0F2D50C24D003B8CFC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C64CCC752D5208EF003B8CFC /* ThirdParty.framework */,
+				C64CCC762D5208EF003B8CFC /* Utils.framework */,
+				C64CCC722D5208E8003B8CFC /* Networking.framework */,
+				C64CCC6F2D5208E2003B8CFC /* DesignSystem.framework */,
 				C64CCC3B2D52002F003B8CFC /* Utils.framework */,
 			);
 			name = Frameworks;
@@ -280,7 +304,6 @@
 /* Begin PBXTargetDependency section */
 		C64CCC132D50C24D003B8CFC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			platformFilter = ios;
 			target = C64CCC062D50C214003B8CFC /* MagazineFeatureInterface */;
 			targetProxy = C64CCC122D50C24D003B8CFC /* PBXContainerItemProxy */;
 		};
