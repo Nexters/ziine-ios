@@ -6,5 +6,7 @@
 //
 
 extension MagazineRequestQuery {
-    public struct GetMagazine { }
+    public struct GetMagazine {
+        public init() {}
+    }
 }
