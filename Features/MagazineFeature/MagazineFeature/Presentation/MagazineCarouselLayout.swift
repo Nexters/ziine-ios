@@ -9,7 +9,7 @@ import UIKit
 
 final class MagazineCarouselLayout: UICollectionViewFlowLayout {
     
-    private var sideItemScale: CGFloat = 0.8
+    private var sideItemScale: CGFloat = 0.9
     private var spacing: CGFloat = 16
 
     private var isSetup: Bool = false
@@ -24,35 +24,18 @@ final class MagazineCarouselLayout: UICollectionViewFlowLayout {
     }
     
     private func setupLayout() {
-        guard let collectionView = self.collectionView else { return }
+        guard let collectionView = collectionView else { return }
         
         let collectionViewSize = collectionView.bounds.size
-        let xInset = (collectionViewSize.width - self.itemSize.width) / 2
-        let yInset = (collectionViewSize.height - self.itemSize.height) / 2
+        let itemWidth = collectionViewSize.width * 0.8
+        let itemHeight = collectionViewSize.height
         
-        self.sectionInset = UIEdgeInsets(top: yInset, left: xInset, bottom: yInset, right: xInset)
+        self.itemSize = CGSize(width: itemWidth, height: itemHeight)
+        
+        let xInset = (collectionViewSize.width - itemWidth) / 2
+        self.sectionInset = UIEdgeInsets(top: 0, left: xInset, bottom: 0, right: xInset)
+        
         self.minimumLineSpacing = spacing
-
         self.scrollDirection = .horizontal
-    }
-
-    override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
-        guard let attributes = super.layoutAttributesForElements(in: rect)?.map({ $0.copy() as! UICollectionViewLayoutAttributes }) else { return nil }
-        
-        return attributes.map { transformLayoutAttributes($0) }
-    }
-
-    private func transformLayoutAttributes(_ attributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
-        guard let collectionView = collectionView else { return attributes }
-        
-        let collectionCenter = collectionView.frame.size.width / 2
-        let contentOffset = collectionView.contentOffset.x
-        let center = attributes.center.x - contentOffset
-        
-        let distance = abs(collectionCenter - center)
-        let scale = max(sideItemScale, 1 - distance / collectionView.frame.width)
-        
-        attributes.transform = CGAffineTransform(scaleX: scale, y: scale)
-        return attributes
     }
 }

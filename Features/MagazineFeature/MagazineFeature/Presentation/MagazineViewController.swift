@@ -28,11 +28,18 @@ final class MagazineViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: variables
+    // MARK: UI Components
     private lazy var magazineCarousel: UICollectionView = {
         let carouselLayout = MagazineCarouselLayout()
         let cv = UICollectionView(frame: .zero, collectionViewLayout: carouselLayout)
+        
+        cv.isPagingEnabled = false
         cv.backgroundColor = ZiineColor.uiColor(.p100)
+        cv.register(MagazineCell.self, forCellWithReuseIdentifier: MagazineCell.identifier)
+        
+        cv.delegate = self
+        cv.dataSource = self
+        
         return cv
     }()
     
@@ -63,5 +70,31 @@ final class MagazineViewController: UIViewController {
 extension MagazineViewController: MagazineViewPresentable {
     func reloadMagazineCarousel(magazineModels: [MagazineFeatureInterface.MagazineModel]) {
         print(#function)
+    }
+}
+
+extension MagazineViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        numberOfItemsInSection section: Int
+    ) -> Int {
+        return 20
+    }
+
+    func collectionView(
+        _ collectionView: UICollectionView,
+        cellForItemAt indexPath: IndexPath
+    ) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: MagazineCell.identifier,
+            for: indexPath
+        ) as? MagazineCell else {
+            return UICollectionViewCell()
+        }
+        return cell
     }
 }
