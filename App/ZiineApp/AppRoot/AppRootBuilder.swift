@@ -12,6 +12,8 @@ import ArtworkFeature
 import ArtworkFeatureInterface
 import PostingFeature
 import PostingFeatureInterface
+import MagazineFeature
+import MagazineFeatureInterface
 
 protocol AppRootBuildable {
     func build() -> AppRootRouting
@@ -26,12 +28,14 @@ final class AppRootBuilder: AppRootBuildable {
         
         let artworkBuilder = ArtworkViewBuilder()
         let postingBuilder = PostingViewBuilder()
+        let magazineBuilder = MagazineViewBuilder()
         
         let router = AppRootRouter(
             viewController: viewController,
             interactor: interactor,
             artworkBuildable: artworkBuilder,
-            postingBuildable: postingBuilder
+            postingBuildable: postingBuilder,
+            magazineBuildable: magazineBuilder
         )
         
         viewController.listener = interactor

@@ -8,8 +8,9 @@
 import UIKit
 import ArtworkFeatureInterface
 import PostingFeatureInterface
+import MagazineFeatureInterface
 
-protocol AppRootInteractable: ArtworkListener, PostingListener {
+protocol AppRootInteractable: ArtworkListener, PostingListener, MagazineListener {
     func onChange(statusBarItem: ZiinStatusTabBarItem)
 }
 

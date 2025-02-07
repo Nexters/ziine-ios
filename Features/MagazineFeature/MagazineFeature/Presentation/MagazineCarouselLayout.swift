@@ -10,13 +10,13 @@ import UIKit
 final class MagazineCarouselLayout: UICollectionViewFlowLayout {
     
     private var sideItemScale: CGFloat = 0.8
-    private var sideItemAlpha: CGFloat = 0.5
-    private var spacing: CGFloat = 10
+    private var spacing: CGFloat = 16
 
     private var isSetup: Bool = false
     
     override func prepare() {
         super.prepare()
+        
         if isSetup == false {
             setupLayout()
             isSetup = true

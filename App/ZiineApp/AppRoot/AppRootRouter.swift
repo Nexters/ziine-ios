@@ -8,6 +8,7 @@
 import UIKit
 import ArtworkFeatureInterface
 import PostingFeatureInterface
+import MagazineFeatureInterface
 
 protocol AppRootRouting {
     var viewController: UIViewController { get }
@@ -27,17 +28,22 @@ final class AppRootRouter: AppRootRouting {
     private let postingBuildable: PostingViewBuildable
     private var postingRouting: PostingRouting?
     
+    private let magazineBuildable: MagazineViewBuildable
+    private var magazineRouting: MagazineRouting?
+    
     init(
         viewController: UIViewController,
         interactor: AppRootInteractable,
         artworkBuildable: ArtworkViewBuildable,
-        postingBuildable: PostingViewBuildable
+        postingBuildable: PostingViewBuildable,
+        magazineBuildable: MagazineViewBuildable
     ) {
         self.viewController = viewController
         self.interactor = interactor
         
         self.artworkBuildable = artworkBuildable
         self.postingBuildable = postingBuildable
+        self.magazineBuildable = magazineBuildable
     }
     
     func configurePages() -> [ZiinStatusTabBarItem: UIViewController] {
@@ -47,9 +53,12 @@ final class AppRootRouter: AppRootRouting {
         let postingRouting = postingBuildable.build(with: interactor)
         self.postingRouting = postingRouting
         
+        let magazineRouting = magazineBuildable.build(with: interactor)
+        self.magazineRouting = magazineRouting
+        
         return [
             .artworks: artworkRouting.viewController,
-            .magazine: postingRouting.viewController
+            .magazine: magazineRouting.viewController,
         ]
     }
     

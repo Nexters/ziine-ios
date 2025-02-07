@@ -29,9 +29,10 @@ final class MagazineViewController: UIViewController {
     }
     
     // MARK: variables
-    private var magazineCarousel: UICollectionView = {
-        let cv = UICollectionView()
-        cv.collectionViewLayout = MagazineCarouselLayout()
+    private lazy var magazineCarousel: UICollectionView = {
+        let carouselLayout = MagazineCarouselLayout()
+        let cv = UICollectionView(frame: .zero, collectionViewLayout: carouselLayout)
+        cv.backgroundColor = ZiineColor.uiColor(.p100)
         return cv
     }()
     
@@ -46,15 +47,15 @@ final class MagazineViewController: UIViewController {
     func configureUI() {
         view.addSubview(magazineCarousel)
         magazineCarousel.snp.makeConstraints {
-            $0.top.equalTo(view.safeAreaLayoutGuide)
+            $0.top.equalToSuperview().inset(24)
             $0.leading.trailing.equalToSuperview()
-            $0.bottom.equalTo(carouselPageCounter.snp.top).offset(-12)
         }
         
         view.addSubview(carouselPageCounter)
         carouselPageCounter.snp.makeConstraints {
+            $0.top.equalTo(magazineCarousel.snp.bottom).inset(-12)
             $0.centerX.equalToSuperview()
-            $0.bottom.equalTo(view.safeAreaLayoutGuide).inset(24)
+            $0.bottom.equalTo(view.safeAreaLayoutGuide).inset(48)
         }
     }
 }
