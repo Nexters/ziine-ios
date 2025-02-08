@@ -45,6 +45,19 @@ public enum FontStyle: String, CaseIterable {
         }
     }
     
+    var lineHeightPrecentage: CGFloat {
+        switch self {
+        case .h3, .h4, .h5, .s1, .s2, .s3:
+            return 1.3
+        case .p1, .p2, .p3, .p4, .p5, .p6:
+            return 1.6
+        }
+    }
+    
+    var lineHeight: CGFloat {
+        return size * lineHeightPrecentage
+    }
+    
     var font: UIFont {
         return ZiineFont.custom(weight: weight, size: size)
     }
