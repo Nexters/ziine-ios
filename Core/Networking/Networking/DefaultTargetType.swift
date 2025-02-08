@@ -23,7 +23,7 @@ extension DefaultTargetType: TargetType {
     public var path: String {
         switch self {
         case let .fetchArtworks(page):
-            return "/v1/artwork/\(page)"
+            return "/v1/artworks"
         }
     }
     

@@ -1,5 +1,5 @@
 {
-  "originHash" : "e5e9699bd1d073680b1fd1cfd8173ce64d3e2acd775396b69bbbe2776b758357",
+  "originHash" : "7cab094e91721b41d26c352cfb5d6e566f1de9e72f7a98627bdc7a8ed9891da0",
   "pins" : [
     {
       "identity" : "alamofire",
@@ -11,9 +11,18 @@
       }
     },
     {
+      "identity" : "kingfisher",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/onevcat/Kingfisher",
+      "state" : {
+        "revision" : "3db26ab625d194c38e68c1a40e43d1bc12743fe0",
+        "version" : "8.2.0"
+      }
+    },
+    {
       "identity" : "moya",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/Moya/Moya.git",
+      "location" : "https://github.com/Moya/Moya",
       "state" : {
         "revision" : "c263811c1f3dbf002be9bd83107f7cdc38992b26",
         "version" : "15.0.3"

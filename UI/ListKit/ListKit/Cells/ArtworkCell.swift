@@ -7,16 +7,30 @@
 
 import UIKit
 internal import SnapKit
+internal import Kingfisher
 
 public final class ArtworkCell: UICollectionViewCell {
     
     public static let id = String(describing: ArtworkCell.self)
     
     func configure(_ dataModel: ListDataModel) {
-        dataModel
+        thumbnailImageView.kf.setImage(
+            with: URL(string: dataModel.thumbnailImageUrlString ?? "")
+        )
+        
+        profileImageView.kf.setImage(
+            with: URL(string: dataModel.profileImageUrlString ?? "")
+        )
     }
     
     // MARK: - Initialize
+    
+    public override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        thumbnailImageView.image = nil
+        profileImageView.image = nil
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -29,6 +43,14 @@ public final class ArtworkCell: UICollectionViewCell {
     }
     
     // MARK: - UIComponents
+    
+    private let thumbnailImageView: UIImageView = {
+        let imageView = UIImageView(frame: .init(x: 0, y: 0, width: 28, height: 28))
+        imageView.contentMode = .scaleAspectFill
+        imageView.layer.cornerRadius = imageView.frame.height
+        imageView.clipsToBounds = true
+        return imageView
+    }()
     
     private let profileImageView: UIImageView = {
         let imageView = UIImageView(frame: .init(x: 0, y: 0, width: 28, height: 28))
@@ -49,6 +71,11 @@ public final class ArtworkCell: UICollectionViewCell {
     }()
     
     private func configureUI() {
+        contentView.addSubview(thumbnailImageView)
+        thumbnailImageView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+        
         contentView.addSubview(profileImageView)
         profileImageView.snp.makeConstraints {
             $0.top.leading.equalTo(20)

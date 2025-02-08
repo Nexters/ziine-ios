@@ -28,6 +28,7 @@ final class ArtworkInteractor:
     ArtworkInteractorable,
     ArtworkViewPresentableListener
 {
+    
     var router: ArtworkRouting?
     var listener: ArtworkListener?
     var presenter: ArtworkViewPresentable?
@@ -38,17 +39,8 @@ final class ArtworkInteractor:
         self.dependency = dependency
     }
     
-    func fetch() {
-        Task { @MainActor in
-            let result = await dependency.fetchArtworkListUseCase.fetch()
-            switch result {
-            case .success(let success):
-                presenter?.reloadCollectionUI(artworkModels: success)
-            case .failure(let failure):
-                // !!!: - 토스트 팝업
-                break
-            }
-        }
+    func initialize() {
+        self.fetch()
     }
     
     func itemSelected(indexPath: IndexPath) {
@@ -69,4 +61,22 @@ final class ArtworkInteractor:
         
     }
     
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        // 페이지네이션 현재 없음
+    }
+    
+    private func fetch() {
+        Task { @MainActor in
+            let result = await dependency.fetchArtworkListUseCase.fetch()
+            switch result {
+            case .success(let success):
+                presenter?.reloadCollectionUI(artworkModels: success)
+            case .failure(let failure):
+                // !!!: - 토스트 팝업
+                break
+            }
+        }
+    }
+    
+    private func pagination() { }
 }

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1A4DB7952D4FD18400964DE0 /* ThirdParty.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A4DB7942D4FD18400964DE0 /* ThirdParty.framework */; };
 		1A4DB7962D4FD18400964DE0 /* ThirdParty.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1A4DB7942D4FD18400964DE0 /* ThirdParty.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1AA6A7B42D57293600A6CC9D /* Dev.Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 1AA6A7B32D57293600A6CC9D /* Dev.Config.xcconfig */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -28,6 +29,7 @@
 /* Begin PBXFileReference section */
 		1A4DB7842D4FD0DE00964DE0 /* Networking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Networking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A4DB7942D4FD18400964DE0 /* ThirdParty.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ThirdParty.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1AA6A7B32D57293600A6CC9D /* Dev.Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Dev.Config.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -71,6 +73,7 @@
 		1A4DB77A2D4FD0DE00964DE0 = {
 			isa = PBXGroup;
 			children = (
+				1AA6A7B32D57293600A6CC9D /* Dev.Config.xcconfig */,
 				1A4DB79C2D4FD1FF00964DE0 /* Common */,
 				1A4DB7862D4FD0DE00964DE0 /* Networking */,
 				1A4DB7932D4FD18400964DE0 /* Frameworks */,
@@ -171,6 +174,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1AA6A7B42D57293600A6CC9D /* Dev.Config.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

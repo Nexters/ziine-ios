@@ -15,6 +15,9 @@ import ListKit
 protocol ArtworkViewPresentableListener: AnyObject {
     func itemSelected(indexPath: IndexPath)
     func circleButtonTapped(action: CircleButtonListener)
+    func initialize()
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView)
 }
 
 final class ArtworkViewController: UIViewController {
@@ -25,6 +28,7 @@ final class ArtworkViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
         
         configureUI()
+        listener?.initialize()
     }
     
     required init?(coder: NSCoder) {
@@ -33,8 +37,8 @@ final class ArtworkViewController: UIViewController {
     
     // MARK: - UIComponents
     
-    private var collectionUI: CollectionUI = {
-        let cv = CollectionUI()
+    private lazy var collectionUI: CollectionUI = {
+        let cv = CollectionUI(listener: self)
         return cv
     }()
     
@@ -62,8 +66,18 @@ final class ArtworkViewController: UIViewController {
 
 extension ArtworkViewController: ArtworkViewPresentable {
     func reloadCollectionUI(artworkModels: [ArtworkFeatureInterface.ArtworkModel]) {
-        print(#function)
+        var sections: [CollectionUISection] = []
+        var section: CollectionUISection = .default([])
+        
+        collectionUI.configure(
+            sections: sections
+        )
     }
     
+}
+extension ArtworkViewController: CollectionUIListener {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        listener?.scrollViewDidScroll(scrollView)
+    }
     
 }
