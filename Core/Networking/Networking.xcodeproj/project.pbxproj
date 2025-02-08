@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1A4DB7952D4FD18400964DE0 /* ThirdParty.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A4DB7942D4FD18400964DE0 /* ThirdParty.framework */; };
 		1A4DB7962D4FD18400964DE0 /* ThirdParty.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1A4DB7942D4FD18400964DE0 /* ThirdParty.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C6C1ADB22D577840004F9CA0 /* Secret.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = C6C1ADB12D577840004F9CA0 /* Secret.xcconfig */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -28,11 +29,15 @@
 /* Begin PBXFileReference section */
 		1A4DB7842D4FD0DE00964DE0 /* Networking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Networking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A4DB7942D4FD18400964DE0 /* ThirdParty.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ThirdParty.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C6C1ADB12D577840004F9CA0 /* Secret.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Secret.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
 		1A4DB7892D4FD0DE00964DE0 /* Exceptions for "Networking" folder in "Networking" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
 			publicHeaders = (
 				Networking.h,
 			);
@@ -71,6 +76,7 @@
 		1A4DB77A2D4FD0DE00964DE0 = {
 			isa = PBXGroup;
 			children = (
+				C6C1ADB12D577840004F9CA0 /* Secret.xcconfig */,
 				1A4DB79C2D4FD1FF00964DE0 /* Common */,
 				1A4DB7862D4FD0DE00964DE0 /* Networking */,
 				1A4DB7932D4FD18400964DE0 /* Frameworks */,
@@ -171,6 +177,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C6C1ADB22D577840004F9CA0 /* Secret.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -200,6 +207,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_MODULE_VERIFIER = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Networking/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -238,6 +246,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_MODULE_VERIFIER = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Networking/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
