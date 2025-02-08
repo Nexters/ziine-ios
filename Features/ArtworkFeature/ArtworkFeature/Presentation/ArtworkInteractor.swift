@@ -39,7 +39,7 @@ final class ArtworkInteractor:
         self.dependency = dependency
     }
     
-    func initialize() {
+    func didBecomeActive() {
         self.fetch()
     }
     
@@ -73,10 +73,11 @@ final class ArtworkInteractor:
                 presenter?.reloadCollectionUI(artworkModels: success)
             case .failure(let failure):
                 // !!!: - 토스트 팝업
+                
+                presenter?.reloadCollectionUI(artworkModels: [])
                 break
             }
         }
     }
     
-    private func pagination() { }
 }

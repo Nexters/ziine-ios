@@ -21,6 +21,9 @@ public final class ArtworkCell: UICollectionViewCell {
         profileImageView.kf.setImage(
             with: URL(string: dataModel.profileImageUrlString ?? "")
         )
+        
+        userNameLabel.text = dataModel.username
+        artworkTitleLabel.text = dataModel.title
     }
     
     // MARK: - Initialize
@@ -90,7 +93,7 @@ public final class ArtworkCell: UICollectionViewCell {
         
         contentView.addSubview(artworkTitleLabel)
         artworkTitleLabel.snp.makeConstraints {
-            $0.leading.bottom.trailing.equalTo(20)
+            $0.leading.bottom.trailing.equalToSuperview().inset(20)
         }
     }
 }

@@ -27,6 +27,8 @@ public final class ArtworkViewBuilder: ArtworkViewBuildable {
         interactor.router = router
         interactor.presenter = viewController
         
+        interactor.didBecomeActive()
+        
         return router
     }
 }

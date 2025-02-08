@@ -14,6 +14,9 @@ public struct ListDataModel {
     /// 타이틀
     public var title: String?
     
+    /// 유저이름
+    public var username: String?
+    
     /// 프로필 이미지
     public var profileImageUrlString: String?
     

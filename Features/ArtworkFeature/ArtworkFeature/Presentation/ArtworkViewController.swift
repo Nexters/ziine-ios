@@ -15,7 +15,7 @@ import ListKit
 protocol ArtworkViewPresentableListener: AnyObject {
     func itemSelected(indexPath: IndexPath)
     func circleButtonTapped(action: CircleButtonListener)
-    func initialize()
+    func didBecomeActive()
     
     func scrollViewDidScroll(_ scrollView: UIScrollView)
 }
@@ -28,7 +28,6 @@ final class ArtworkViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
         
         configureUI()
-        listener?.initialize()
     }
     
     required init?(coder: NSCoder) {
@@ -67,19 +66,44 @@ final class ArtworkViewController: UIViewController {
 extension ArtworkViewController: ArtworkViewPresentable {
     func reloadCollectionUI(artworkModels: [ArtworkFeatureInterface.ArtworkModel]) {
         var uiModels: [ListDataModel] = []
+        print("asdf")
         
-        artworkModels.map { artworkModel in
+        var mock1 = ListDataModel()
+        mock1.username = "tttttt2t"
+        mock1.title = "test1"
+        
+        var mock2 = ListDataModel()
+        mock2.username = "tttttt2t"
+        mock2.title = "test2"
+        uiModels = [mock1, mock2]
+        
+        artworkModels.forEach { artworkModel in
             var uiModel = ListDataModel()
             uiModel.profileImageUrlString = artworkModel.profileImageUrlString
             uiModel.thumbnailImageUrlString = artworkModel.thumbnailImageUrlString
             uiModel.title = artworkModel.title
+            uiModel.username = artworkModel.username
         }
         
+        var sectionItems: [CollectionUISectionItem] = []
+        
+        let builder = ArtworkCellUIBuilder()
+        uiModels.forEach { dataModel in
+            builder.configure(dataModel: dataModel)
+            
+            sectionItems.append(.artworkThumbnail(builder))
+        }
+        
+        
+//        sectionItems.append(<#T##newElement: CollectionUISectionItem##CollectionUISectionItem#>)
+        
         var sections: [CollectionUISection] = []
-        var section: CollectionUISection = .default([])
-        
-//        CollectionUISectionItem.artworkThumbnail(<#T##any CollectionUIBuildable#>)
-        
+//        var section: CollectionUISection = .default(sectionItems)
+        sections.append(.default(sectionItems))
+//        var sectionItems: [CollectionUISectionItem] = [
+//            .artworkThumbnail(builder)
+//        ]
+
         collectionUI.configure(
             sections: sections
         )
@@ -112,7 +136,7 @@ final class ArtworkCellUIBuilder: CollectionUIBuildable {
         guard let dataModel else { return .init() }
         
         cell.configure(dataModel)
-        
+        cell.backgroundColor = .red
         return cell
     }
     
@@ -127,7 +151,7 @@ final class ArtworkCellUIBuilder: CollectionUIBuildable {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return .init(top: 0, left: 0, bottom: 0, right: 0)
+        return .init(top: 16, left: 0, bottom: 16, right: 0)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
