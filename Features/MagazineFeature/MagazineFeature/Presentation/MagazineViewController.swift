@@ -34,7 +34,9 @@ final class MagazineViewController: UIViewController {
         let cv = UICollectionView(frame: .zero, collectionViewLayout: carouselLayout)
         
         cv.isPagingEnabled = false
+        cv.decelerationRate = .fast
         cv.backgroundColor = ZiineColor.uiColor(.p100)
+        cv.showsHorizontalScrollIndicator = false
         cv.register(MagazineCell.self, forCellWithReuseIdentifier: MagazineCell.identifier)
         
         cv.delegate = self
