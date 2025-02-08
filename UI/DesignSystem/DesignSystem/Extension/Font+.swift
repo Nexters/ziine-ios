@@ -19,7 +19,7 @@ struct FontWithLineHeight: ViewModifier {
     }
 }
 
-extension View {
+public extension View {
     func fontWithLineHeight(_ fontStyle: FontStyle) -> some View {
         self.modifier(FontWithLineHeight(fontStyle: fontStyle))
     }

@@ -7,7 +7,7 @@
 
 import UIKit
 
-extension UILabel {
+public extension UILabel {
     func setTextWithLineHeight(text: String?, fontStyle: FontStyle) {
         if let text = text {
             let style = NSMutableParagraphStyle()

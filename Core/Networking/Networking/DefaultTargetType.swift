@@ -5,7 +5,7 @@
 //  Created by Geon Woo lee on 2/3/25.
 //
 
-public import Moya
+import Moya
 
 public enum DefaultTargetType {
     /// 아트워크 조회
@@ -17,7 +17,10 @@ public enum DefaultTargetType {
 
 extension DefaultTargetType: TargetType {
     public var baseURL: URL {
-        guard let url = URL(string: "xcconfig") else {
+        guard let baseUrlString = Bundle.current.object(forInfoDictionaryKey: "BASE_URL") as? String else {
+            fatalError("BASE_URL not found in Info.plist")
+        }
+        guard let url = URL(string: baseUrlString) else {
             fatalError("URL 타입 변환 실패")
         }
         return url
@@ -50,5 +53,13 @@ extension DefaultTargetType: TargetType {
         return [
             "Content-Type": "application/json",
         ]
+    }
+}
+
+// FIXME: Bundle
+extension Bundle {
+    static var current: Bundle {
+        class __ { }
+        return Bundle(for: __.self)
     }
 }
