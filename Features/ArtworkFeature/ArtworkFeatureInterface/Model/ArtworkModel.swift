@@ -8,6 +8,13 @@
 import Foundation
 
 public struct ArtworkModel {
+    public var title: String
+    public var profileImageUrlString: String
+    public var thumbnailImageUrlString: String
     
-    public init() {}
+    public init(title: String, profileImageUrlString: String, thumbnailImageUrlString: String) {
+        self.title = title
+        self.profileImageUrlString = profileImageUrlString
+        self.thumbnailImageUrlString = thumbnailImageUrlString
+    }
 }

@@ -9,9 +9,14 @@ import Foundation
 
 public struct ListDataModel {
     
+    public init() { }
+    
+    /// 타이틀
+    public var title: String?
+    
     /// 프로필 이미지
-    var profileImageUrlString: String?
+    public var profileImageUrlString: String?
     
     /// 썸네일 이미지
-    var thumbnailImageUrlString: String?
+    public var thumbnailImageUrlString: String?
 }

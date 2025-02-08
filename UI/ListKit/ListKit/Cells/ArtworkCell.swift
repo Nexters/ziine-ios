@@ -13,7 +13,7 @@ public final class ArtworkCell: UICollectionViewCell {
     
     public static let id = String(describing: ArtworkCell.self)
     
-    func configure(_ dataModel: ListDataModel) {
+    public func configure(_ dataModel: ListDataModel) {
         thumbnailImageView.kf.setImage(
             with: URL(string: dataModel.thumbnailImageUrlString ?? "")
         )
