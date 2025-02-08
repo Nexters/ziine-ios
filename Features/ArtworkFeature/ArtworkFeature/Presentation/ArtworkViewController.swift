@@ -157,13 +157,13 @@ final class ArtworkCellUIBuilder: CollectionUIBuildable {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 16.0
     }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        //
-    }
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        //
-    }
+//    
+//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        //
+//    }
+//    
+//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        //
+//    }
     
 }
