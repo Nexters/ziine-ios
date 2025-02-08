@@ -48,20 +48,15 @@ fileprivate struct FontPreviewView: View {
                 ForEach(FontStyle.allCases, id: \.self) { style in
                     VStack(alignment: .leading) {
                         Text(sampleText + style.rawValue)
-                            .font(Font(uiFont: style.font))
+                            .fontWithLineHeight(style)
                             .foregroundColor(.gray)
+                            .border(.red)
                     }
                     .padding(.bottom, 8)
                 }
             }
             .padding()
         }
-    }
-}
-
-extension Font {
-    init(uiFont: UIFont) {
-        self = Font.custom(uiFont.fontName, size: uiFont.pointSize)
     }
 }
 
