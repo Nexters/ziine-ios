@@ -136,7 +136,7 @@ final class ArtworkCellUIBuilder: CollectionUIBuildable {
         guard let dataModel else { return .init() }
         
         cell.configure(dataModel)
-        cell.backgroundColor = .red
+        
         return cell
     }
     

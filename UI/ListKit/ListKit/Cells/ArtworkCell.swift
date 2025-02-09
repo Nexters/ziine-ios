@@ -48,10 +48,11 @@ public final class ArtworkCell: UICollectionViewCell {
     // MARK: - UIComponents
     
     private let thumbnailImageView: UIImageView = {
-        let imageView = UIImageView(frame: .init(x: 0, y: 0, width: 28, height: 28))
+        let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
-        imageView.layer.cornerRadius = imageView.frame.height
+        imageView.layer.cornerRadius = 16
         imageView.clipsToBounds = true
+        imageView.backgroundColor = .red
         return imageView
     }()
     
