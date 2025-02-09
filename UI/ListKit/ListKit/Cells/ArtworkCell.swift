@@ -59,8 +59,9 @@ public final class ArtworkCell: UICollectionViewCell {
     private let profileImageView: UIImageView = {
         let imageView = UIImageView(frame: .init(x: 0, y: 0, width: 28, height: 28))
         imageView.contentMode = .scaleAspectFill
-        imageView.layer.cornerRadius = imageView.frame.height
+        imageView.layer.cornerRadius = imageView.frame.height / 2
         imageView.clipsToBounds = true
+        imageView.backgroundColor = .blue
         return imageView
     }()
     

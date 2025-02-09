@@ -94,15 +94,8 @@ extension ArtworkViewController: ArtworkViewPresentable {
             sectionItems.append(.artworkThumbnail(builder))
         }
         
-        
-//        sectionItems.append(<#T##newElement: CollectionUISectionItem##CollectionUISectionItem#>)
-        
         var sections: [CollectionUISection] = []
-//        var section: CollectionUISection = .default(sectionItems)
         sections.append(.default(sectionItems))
-//        var sectionItems: [CollectionUISectionItem] = [
-//            .artworkThumbnail(builder)
-//        ]
 
         collectionUI.configure(
             sections: sections
@@ -151,7 +144,8 @@ final class ArtworkCellUIBuilder: CollectionUIBuildable {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return .init(top: 16, left: 0, bottom: 16, right: 0)
+        
+        return .init(top: 16, left: 0, bottom: 52, right: 0)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
