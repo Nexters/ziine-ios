@@ -66,16 +66,21 @@ final class ArtworkViewController: UIViewController {
 extension ArtworkViewController: ArtworkViewPresentable {
     func reloadCollectionUI(artworkModels: [ArtworkFeatureInterface.ArtworkModel]) {
         var uiModels: [ListDataModel] = []
-        print("asdf")
         
         var mock1 = ListDataModel()
-        mock1.username = "tttttt2t"
-        mock1.title = "test1"
+        mock1.username = "username 1"
+        mock1.title = "artwork title 1"
         
         var mock2 = ListDataModel()
-        mock2.username = "tttttt2t"
-        mock2.title = "test2"
+        mock2.username = "username 2"
+        mock2.title = "artwork title 2"
+        
         uiModels = [mock1, mock2]
+        
+        let builder = ArtworkCellUIBuilder()
+        var sectionItems: [CollectionUISectionItem] = []
+        
+        // TODO: - 로직간소화
         
         artworkModels.forEach { artworkModel in
             var uiModel = ListDataModel()
@@ -85,9 +90,6 @@ extension ArtworkViewController: ArtworkViewPresentable {
             uiModel.username = artworkModel.username
         }
         
-        var sectionItems: [CollectionUISectionItem] = []
-        
-        let builder = ArtworkCellUIBuilder()
         uiModels.forEach { dataModel in
             builder.configure(dataModel: dataModel)
             
@@ -140,7 +142,6 @@ final class ArtworkCellUIBuilder: CollectionUIBuildable {
         let length = screenWidth - (inset * 2)
         
         return .init(width: length, height: length)
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
@@ -149,15 +150,8 @@ final class ArtworkCellUIBuilder: CollectionUIBuildable {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        
         return 16.0
     }
-//    
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        //
-//    }
-//    
-//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//        //
-//    }
     
 }
