@@ -10,7 +10,10 @@ import UIKit
 public protocol ArtworkDetailListener: AnyObject {}
 
 public protocol ArtworkDetailViewBuildable {
-    func build(with listener: ArtworkDetailListener?) -> ArtworkDetailRouting
+    func build(
+        urlString: String,
+        with listener: ArtworkDetailListener?
+    ) -> ArtworkDetailRouting
 }
 
 public protocol ArtworkDetailRouting: AnyObject {

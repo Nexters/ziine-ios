@@ -10,14 +10,12 @@ import ArtworkFeatureInterface
 
 public final class ArtworkDetailBuilder: ArtworkDetailViewBuildable {
     
-    /// 웹뷰 요청할 url
-    private var urlString: String
+    public init() { }
     
-    public init(urlString: String) {
-        self.urlString = urlString
-    }
-    
-    public func build(with listener: ArtworkDetailListener?) -> ArtworkDetailRouting {
+    public func build(
+        urlString: String,
+        with listener: ArtworkDetailListener?
+    ) -> ArtworkDetailRouting {
         let viewController = ArtworkDetailViewController()
         
         let interactor = ArtworkDetailInteractor(urlString: urlString)

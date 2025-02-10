@@ -27,17 +27,22 @@ final class AppRootRouter: AppRootRouting {
     private let postingBuildable: PostingViewBuildable
     private var postingRouting: PostingRouting?
     
+    private let artworkDetailViewBuildable: ArtworkDetailViewBuildable
+    private var ArtworkDetailRouting: ArtworkDetailRouting?
+    
     init(
         viewController: UIViewController,
         interactor: AppRootInteractable,
         artworkBuildable: ArtworkViewBuildable,
-        postingBuildable: PostingViewBuildable
+        postingBuildable: PostingViewBuildable,
+        artworkDetailViewBuildable: ArtworkDetailViewBuildable
     ) {
         self.viewController = viewController
         self.interactor = interactor
         
         self.artworkBuildable = artworkBuildable
         self.postingBuildable = postingBuildable
+        self.artworkDetailViewBuildable = artworkDetailViewBuildable
     }
     
     func configurePages() -> [ZiinStatusTabBarItem: UIViewController] {
@@ -55,9 +60,13 @@ final class AppRootRouter: AppRootRouting {
     
     func pushToArtworkDetail() {
         let router = postingBuildable.build(with: nil)
-        let uiViewController = router.viewController
+//        let uiViewController = router.viewController
         
-        
+        let rrouting = artworkDetailViewBuildable.build(
+            urlString: "https://www.naver.com",
+            with: nil
+        )
+        let uiViewController = rrouting.viewController
         
         viewController.present(uiViewController, animated: true)
         
