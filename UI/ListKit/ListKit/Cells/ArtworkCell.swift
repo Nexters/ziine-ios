@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import DesignSystem
 internal import SnapKit
 internal import Kingfisher
 
@@ -67,11 +68,16 @@ public final class ArtworkCell: UICollectionViewCell {
     
     private let userNameLabel: UILabel = {
         let lb = UILabel()
+        lb.font = ZiineFont.p2
+        lb.textColor = ZiineColor.uiColor(.g0)
         return lb
     }()
     
     private let artworkTitleLabel: UILabel = {
         let lb = UILabel()
+        lb.font = ZiineFont.h4
+        lb.textColor = ZiineColor.uiColor(.g0)
+        lb.numberOfLines = 1
         return lb
     }()
     
