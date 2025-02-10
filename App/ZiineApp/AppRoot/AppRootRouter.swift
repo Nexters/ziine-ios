@@ -57,23 +57,26 @@ final class AppRootRouter: AppRootRouting {
             .magazine: postingRouting.viewController
         ]
     }
+//    
+//    func pushToArtworkDetail() {
+//        let router = postingBuildable.build(with: nil)
+//        let uiViewController = router.viewController
+//        
+//        
+////        let vc = UIViewController()
+////        vc.view.backgroundColor = .green
+//////        navigationController.pushViewController(viewController, animated: true)
+//////        viewController.present(vc, animated: true)
+//        viewController.navigationController?.pushViewController(vc, animated: true)
+//    }
     
     func pushToArtworkDetail() {
-        let router = postingBuildable.build(with: nil)
-//        let uiViewController = router.viewController
-        
-        let rrouting = artworkDetailViewBuildable.build(
+        let routing = artworkDetailViewBuildable.build(
             urlString: "https://www.naver.com",
             with: nil
         )
-        let uiViewController = rrouting.viewController
+        let uiViewController = routing.viewController
         
-        viewController.present(uiViewController, animated: true)
-        
-//        let vc = UIViewController()
-//        vc.view.backgroundColor = .green
-////        navigationController.pushViewController(viewController, animated: true)
-////        viewController.present(vc, animated: true)
-//        viewController.navigationController?.pushViewController(vc, animated: true)
+        viewController.navigationController?.pushViewController(uiViewController, animated: true)
     }
 }
