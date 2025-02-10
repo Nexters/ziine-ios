@@ -10,17 +10,10 @@ import CommonUI
 internal import SnapKit
 import ArtworkFeatureInterface
 
+protocol ArtworkDetailViewPresentableListener: AnyObject {
+}
 
-
-
-
-
-
-
-
-protocol ArtworkDetailViewPresentableListener: AnyObject { }
-
-public final class ArtworkDetailViewController: UIViewController, ArtworkDetailViewPresentable {
+public final class ArtworkDetailViewController: UIViewController {
     
     var listener: ArtworkDetailViewPresentableListener?
     
@@ -47,9 +40,11 @@ public final class ArtworkDetailViewController: UIViewController, ArtworkDetailV
             $0.edges.equalToSuperview()
         }
     }
-    
-    private func load() {
+}
+
+extension ArtworkDetailViewController: ArtworkDetailViewPresentable {
+    func loadWebView(urlString: String) {
+        print(#function)
         webView.loadWebView(urlString: "https://www.naver.com")
     }
 }
-
