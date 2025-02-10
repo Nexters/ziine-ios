@@ -7,6 +7,7 @@
 
 import UIKit
 import ArtworkFeatureInterface
+import PostingFeatureInterface
 
 final class ArtworkRouter: ArtworkRouting {
     
@@ -15,15 +16,4 @@ final class ArtworkRouter: ArtworkRouting {
     init(viewController: UIViewController) {
         self.viewController = viewController
     }
-    
-    // MARK: - Upload
-    
-    func pushToUpload() {
-        let vc = UIViewController()
-        vc.view.backgroundColor = .systemBlue
-//        navigationController.pushViewController(viewController, animated: true)
-        viewController.present(vc, animated: true)
-//        viewController.navigationController?.pushViewController(vc, animated: true)
-    }
-    
 }

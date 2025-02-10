@@ -7,6 +7,7 @@
 
 import UIKit
 import ArtworkFeatureInterface
+import PostingFeatureInterface
 
 public final class ArtworkViewBuilder: ArtworkViewBuildable {
     
@@ -20,7 +21,9 @@ public final class ArtworkViewBuilder: ArtworkViewBuildable {
             dependency: component
         )
         
-        let router = ArtworkRouter(viewController: viewController)
+        let router = ArtworkRouter(
+            viewController: viewController
+        )
         
         viewController.listener = interactor
         interactor.listener = listener

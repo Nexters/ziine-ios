@@ -54,10 +54,15 @@ final class AppRootRouter: AppRootRouting {
     }
     
     func pushToArtworkDetail() {
-        let vc = UIViewController()
-        vc.view.backgroundColor = .green
-//        navigationController.pushViewController(viewController, animated: true)
-//        viewController.present(vc, animated: true)
-        viewController.navigationController?.pushViewController(vc, animated: true)
+        let router = postingBuildable.build(with: nil)
+        let uiViewController = router.viewController
+        
+        viewController.present(uiViewController, animated: true)
+        
+//        let vc = UIViewController()
+//        vc.view.backgroundColor = .green
+////        navigationController.pushViewController(viewController, animated: true)
+////        viewController.present(vc, animated: true)
+//        viewController.navigationController?.pushViewController(vc, animated: true)
     }
 }
