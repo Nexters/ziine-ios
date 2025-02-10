@@ -7,70 +7,91 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1A9649D72D4A931500268B29 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 1A9649D62D4A931500268B29 /* SnapKit */; };
-		1AA6A7B22D57272000A6CC9D /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 1AA6A7B12D57272000A6CC9D /* Kingfisher */; };
-		C6D47C012D4CFBE000FCFBD7 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = C6D47C002D4CFBE000FCFBD7 /* Moya */; };
+		1AA6AAAE2D5A598400A6CC9D /* ThirdParty.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AA6AAAD2D5A598400A6CC9D /* ThirdParty.framework */; };
+		1AA6AAAF2D5A598400A6CC9D /* ThirdParty.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1AA6AAAD2D5A598400A6CC9D /* ThirdParty.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		1AA6AAB02D5A598400A6CC9D /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				1AA6AAAF2D5A598400A6CC9D /* ThirdParty.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
-		1A9649972D4A915900268B29 /* ThirdParty.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ThirdParty.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1AA6A9EE2D5A591700A6CC9D /* CommonUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CommonUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1AA6AAAD2D5A598400A6CC9D /* ThirdParty.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ThirdParty.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		1A96499C2D4A915900268B29 /* Exceptions for "ThirdParty" folder in "ThirdParty" target */ = {
+		1AA6A9F32D5A591700A6CC9D /* Exceptions for "CommonUI" folder in "CommonUI" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			publicHeaders = (
-				ThirdParty.h,
+				CommonUI.h,
 			);
-			target = 1A9649962D4A915900268B29 /* ThirdParty */;
+			target = 1AA6A9ED2D5A591700A6CC9D /* CommonUI */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		1A9649992D4A915900268B29 /* ThirdParty */ = {
+		1AA6A9F02D5A591700A6CC9D /* CommonUI */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				1A96499C2D4A915900268B29 /* Exceptions for "ThirdParty" folder in "ThirdParty" target */,
+				1AA6A9F32D5A591700A6CC9D /* Exceptions for "CommonUI" folder in "CommonUI" target */,
 			);
-			path = ThirdParty;
+			path = CommonUI;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		1A9649942D4A915900268B29 /* Frameworks */ = {
+		1AA6A9EB2D5A591700A6CC9D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1AA6A7B22D57272000A6CC9D /* Kingfisher in Frameworks */,
-				C6D47C012D4CFBE000FCFBD7 /* Moya in Frameworks */,
-				1A9649D72D4A931500268B29 /* SnapKit in Frameworks */,
+				1AA6AAAE2D5A598400A6CC9D /* ThirdParty.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1A96498D2D4A915900268B29 = {
+		1AA6A9E42D5A591700A6CC9D = {
 			isa = PBXGroup;
 			children = (
-				1A9649992D4A915900268B29 /* ThirdParty */,
-				1A9649982D4A915900268B29 /* Products */,
+				1AA6A9F02D5A591700A6CC9D /* CommonUI */,
+				1AA6AAAC2D5A598400A6CC9D /* Frameworks */,
+				1AA6A9EF2D5A591700A6CC9D /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		1A9649982D4A915900268B29 /* Products */ = {
+		1AA6A9EF2D5A591700A6CC9D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1A9649972D4A915900268B29 /* ThirdParty.framework */,
+				1AA6A9EE2D5A591700A6CC9D /* CommonUI.framework */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		1AA6AAAC2D5A598400A6CC9D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1AA6AAAD2D5A598400A6CC9D /* ThirdParty.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		1A9649922D4A915900268B29 /* Headers */ = {
+		1AA6A9E92D5A591700A6CC9D /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -80,72 +101,65 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		1A9649962D4A915900268B29 /* ThirdParty */ = {
+		1AA6A9ED2D5A591700A6CC9D /* CommonUI */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1A96499D2D4A915900268B29 /* Build configuration list for PBXNativeTarget "ThirdParty" */;
+			buildConfigurationList = 1AA6A9F42D5A591700A6CC9D /* Build configuration list for PBXNativeTarget "CommonUI" */;
 			buildPhases = (
-				1A9649922D4A915900268B29 /* Headers */,
-				1A9649932D4A915900268B29 /* Sources */,
-				1A9649942D4A915900268B29 /* Frameworks */,
-				1A9649952D4A915900268B29 /* Resources */,
+				1AA6A9E92D5A591700A6CC9D /* Headers */,
+				1AA6A9EA2D5A591700A6CC9D /* Sources */,
+				1AA6A9EB2D5A591700A6CC9D /* Frameworks */,
+				1AA6A9EC2D5A591700A6CC9D /* Resources */,
+				1AA6AAB02D5A598400A6CC9D /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				1A9649992D4A915900268B29 /* ThirdParty */,
+				1AA6A9F02D5A591700A6CC9D /* CommonUI */,
 			);
-			name = ThirdParty;
+			name = CommonUI;
 			packageProductDependencies = (
-				1A9649D62D4A931500268B29 /* SnapKit */,
-				C6D47C002D4CFBE000FCFBD7 /* Moya */,
-				1AA6A7B12D57272000A6CC9D /* Kingfisher */,
 			);
-			productName = ThirdParty;
-			productReference = 1A9649972D4A915900268B29 /* ThirdParty.framework */;
+			productName = CommonUI;
+			productReference = 1AA6A9EE2D5A591700A6CC9D /* CommonUI.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		1A96498E2D4A915900268B29 /* Project object */ = {
+		1AA6A9E52D5A591700A6CC9D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastUpgradeCheck = 1600;
 				TargetAttributes = {
-					1A9649962D4A915900268B29 = {
+					1AA6A9ED2D5A591700A6CC9D = {
 						CreatedOnToolsVersion = 16.0;
 					};
 				};
 			};
-			buildConfigurationList = 1A9649912D4A915900268B29 /* Build configuration list for PBXProject "ThirdParty" */;
+			buildConfigurationList = 1AA6A9E82D5A591700A6CC9D /* Build configuration list for PBXProject "CommonUI" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
 			);
-			mainGroup = 1A96498D2D4A915900268B29;
+			mainGroup = 1AA6A9E42D5A591700A6CC9D;
 			minimizedProjectReferenceProxies = 1;
-			packageReferences = (
-				1A9649D52D4A931500268B29 /* XCRemoteSwiftPackageReference "SnapKit" */,
-				C6D47BFF2D4CFBE000FCFBD7 /* XCRemoteSwiftPackageReference "Moya" */,
-				1AA6A7B02D57272000A6CC9D /* XCRemoteSwiftPackageReference "Kingfisher" */,
-			);
 			preferredProjectObjectVersion = 77;
-			productRefGroup = 1A9649982D4A915900268B29 /* Products */;
+			productRefGroup = 1AA6A9EF2D5A591700A6CC9D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				1A9649962D4A915900268B29 /* ThirdParty */,
+				1AA6A9ED2D5A591700A6CC9D /* CommonUI */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		1A9649952D4A915900268B29 /* Resources */ = {
+		1AA6A9EC2D5A591700A6CC9D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -155,7 +169,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		1A9649932D4A915900268B29 /* Sources */ = {
+		1AA6A9EA2D5A591700A6CC9D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -165,7 +179,7 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		1A96499E2D4A915900268B29 /* Debug */ = {
+		1AA6A9F52D5A591700A6CC9D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
@@ -187,7 +201,7 @@
 				MARKETING_VERSION = 1.0;
 				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
 				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
-				PRODUCT_BUNDLE_IDENTIFIER = kr.com.ThirdParty;
+				PRODUCT_BUNDLE_IDENTIFIER = kr.com.CommonUI;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -201,7 +215,7 @@
 			};
 			name = Debug;
 		};
-		1A96499F2D4A915900268B29 /* Release */ = {
+		1AA6A9F62D5A591700A6CC9D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
@@ -223,7 +237,7 @@
 				MARKETING_VERSION = 1.0;
 				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
 				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
-				PRODUCT_BUNDLE_IDENTIFIER = kr.com.ThirdParty;
+				PRODUCT_BUNDLE_IDENTIFIER = kr.com.CommonUI;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -237,7 +251,7 @@
 			};
 			name = Release;
 		};
-		1A9649A02D4A915900268B29 /* Debug */ = {
+		1AA6A9F72D5A591700A6CC9D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -303,7 +317,7 @@
 			};
 			name = Debug;
 		};
-		1A9649A12D4A915900268B29 /* Release */ = {
+		1AA6A9F82D5A591700A6CC9D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -365,70 +379,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1A9649912D4A915900268B29 /* Build configuration list for PBXProject "ThirdParty" */ = {
+		1AA6A9E82D5A591700A6CC9D /* Build configuration list for PBXProject "CommonUI" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				1A9649A02D4A915900268B29 /* Debug */,
-				1A9649A12D4A915900268B29 /* Release */,
+				1AA6A9F72D5A591700A6CC9D /* Debug */,
+				1AA6A9F82D5A591700A6CC9D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		1A96499D2D4A915900268B29 /* Build configuration list for PBXNativeTarget "ThirdParty" */ = {
+		1AA6A9F42D5A591700A6CC9D /* Build configuration list for PBXNativeTarget "CommonUI" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				1A96499E2D4A915900268B29 /* Debug */,
-				1A96499F2D4A915900268B29 /* Release */,
+				1AA6A9F52D5A591700A6CC9D /* Debug */,
+				1AA6A9F62D5A591700A6CC9D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		1A9649D52D4A931500268B29 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SnapKit/SnapKit";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.7.1;
-			};
-		};
-		1AA6A7B02D57272000A6CC9D /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/onevcat/Kingfisher";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 8.2.0;
-			};
-		};
-		C6D47BFF2D4CFBE000FCFBD7 /* XCRemoteSwiftPackageReference "Moya" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Moya/Moya.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 15.0.3;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		1A9649D62D4A931500268B29 /* SnapKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 1A9649D52D4A931500268B29 /* XCRemoteSwiftPackageReference "SnapKit" */;
-			productName = SnapKit;
-		};
-		1AA6A7B12D57272000A6CC9D /* Kingfisher */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 1AA6A7B02D57272000A6CC9D /* XCRemoteSwiftPackageReference "Kingfisher" */;
-			productName = Kingfisher;
-		};
-		C6D47C002D4CFBE000FCFBD7 /* Moya */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = C6D47BFF2D4CFBE000FCFBD7 /* XCRemoteSwiftPackageReference "Moya" */;
-			productName = Moya;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
-	rootObject = 1A96498E2D4A915900268B29 /* Project object */;
+	rootObject = 1AA6A9E52D5A591700A6CC9D /* Project object */;
 }

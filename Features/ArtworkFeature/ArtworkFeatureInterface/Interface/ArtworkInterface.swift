@@ -6,9 +6,11 @@
 //
 
 import UIKit
+import ListKit
 
 public protocol ArtworkListener: AnyObject {
     func addButtonTapped()
+    func artworkDetail(dataModel: ListDataModel)
 }
 
 public protocol ArtworkViewBuildable {
@@ -17,6 +19,4 @@ public protocol ArtworkViewBuildable {
 
 public protocol ArtworkRouting: AnyObject {
     var viewController: UIViewController { get }
-    
-    func pushToUpload()
 }

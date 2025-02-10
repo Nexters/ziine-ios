@@ -5,6 +5,9 @@
       location = "group:UI"
       name = "UI">
       <FileRef
+         location = "group:CommonUI/CommonUI.xcodeproj">
+      </FileRef>
+      <FileRef
          location = "group:ListKit/ListKit.xcodeproj">
       </FileRef>
       <FileRef

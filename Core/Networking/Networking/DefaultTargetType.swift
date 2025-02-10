@@ -15,10 +15,12 @@ public enum DefaultTargetType {
 extension DefaultTargetType: TargetType {
     public var baseURL: URL {
         guard let baseUrlString = Bundle.current.object(forInfoDictionaryKey: "BASE_URL") as? String else {
-            fatalError("BASE_URL not found in Info.plist")
+//            fatalError("BASE_URL not found in Info.plist")
+            return URL(string: "https://www.naver.com")!
         }
         guard let url = URL(string: baseUrlString) else {
-            fatalError("URL 타입 변환 실패")
+//            fatalError("URL 타입 변환 실패")
+            return URL(string: "https://www.naver.com")!
         }
         return url
     }
@@ -26,7 +28,7 @@ extension DefaultTargetType: TargetType {
     public var path: String {
         switch self {
         case let .fetchArtworks(page):
-            return "/v1/artwork/\(page)"
+            return "/v1/artworks"
         }
     }
     

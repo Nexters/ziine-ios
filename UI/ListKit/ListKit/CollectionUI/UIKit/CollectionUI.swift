@@ -9,11 +9,11 @@ import UIKit
 
 public final class CollectionUI: UICollectionView {
     
-    weak var scrollViewDelegate: CollectionUIScollViewDelegate?
+    weak var listener: CollectionUIListener?
     
     private var sections: [CollectionUISection] = []
     
-    func configure(sections: [CollectionUISection]) {
+    public func configure(sections: [CollectionUISection]) {
         self.sections = sections
         
         self.reloadData()
@@ -21,16 +21,18 @@ public final class CollectionUI: UICollectionView {
 
     public init(
         collectionViewLayout layout: UICollectionViewLayout = UICollectionViewFlowLayout(),
-        scrollViewDelegate: CollectionUIScollViewDelegate? = nil
+        listener: CollectionUIListener? = nil
     ) {
         super.init(frame: .zero, collectionViewLayout: layout)
         
-        self.scrollViewDelegate = scrollViewDelegate
+        self.listener = listener
         
         self.delegate = self
         self.dataSource = self
         
         self.backgroundColor = .clear
+        
+        self.register(ArtworkCell.self, forCellWithReuseIdentifier: ArtworkCell.id)
     }
     
     required init?(coder: NSCoder) {
@@ -70,7 +72,7 @@ extension CollectionUI: UICollectionViewDelegate {
     }
     
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        scrollViewDelegate?.scrollViewDidScroll(scrollView)
+        listener?.scrollViewDidScroll(scrollView)
     }
 }
 
