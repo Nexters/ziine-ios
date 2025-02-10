@@ -9,6 +9,17 @@ import UIKit
 import ArtworkFeatureInterface
 import PostingFeatureInterface
 
+final class ArtworkInteractorComponent: ArtworkInteractorDependency {
+    var fetchArtworkListUseCase: any FetchArtworkListUseCase
+    
+    init() {
+        // TODO: - 의존성 주입
+        self.fetchArtworkListUseCase = DefaultFetchArtworkListUseCase(
+            artworkRepository: DefaultArtworkRepository()
+        )
+    }
+}
+
 public final class ArtworkViewBuilder: ArtworkViewBuildable {
     
     public init() {}
@@ -33,16 +44,5 @@ public final class ArtworkViewBuilder: ArtworkViewBuildable {
         interactor.didBecomeActive()
         
         return router
-    }
-}
-
-final class ArtworkInteractorComponent: ArtworkInteractorDependency {
-    var fetchArtworkListUseCase: any FetchArtworkListUseCase
-    
-    init() {
-        // TODO: - 의존성 주입
-        self.fetchArtworkListUseCase = DefaultFetchArtworkListUseCase(
-            artworkRepository: DefaultArtworkRepository()
-        )
     }
 }

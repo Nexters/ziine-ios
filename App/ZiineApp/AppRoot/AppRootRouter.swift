@@ -57,6 +57,8 @@ final class AppRootRouter: AppRootRouting {
         let router = postingBuildable.build(with: nil)
         let uiViewController = router.viewController
         
+        
+        
         viewController.present(uiViewController, animated: true)
         
 //        let vc = UIViewController()
