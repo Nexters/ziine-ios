@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import WebKit
+import CommonUI
 
 final class UploadViewController: UIViewController {
     

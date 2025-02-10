@@ -7,6 +7,7 @@
 
 import UIKit
 import WebKit
+internal import SnapKit
 
 public protocol ZiineWebViewPresentable: AnyObject {
     func getView() -> UIView
