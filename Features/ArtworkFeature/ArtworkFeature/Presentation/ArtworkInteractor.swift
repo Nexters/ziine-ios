@@ -8,6 +8,7 @@
 import UIKit
 import ArtworkFeatureInterface
 import DesignSystem
+import ListKit
 
 protocol ArtworkViewPresentable: AnyObject {
     var listener: ArtworkViewPresentableListener? { get set }
@@ -43,8 +44,8 @@ final class ArtworkInteractor:
         self.fetch()
     }
     
-    func itemSelected(indexPath: IndexPath) {
-        // TODO: - 상세페이지 웹뷰
+    func modelSelected(dataModel: ListDataModel) {
+        self.listener?.artworkDetail(dataModel: dataModel)
     }
     
     func circleButtonTapped(action: CircleButtonListener) {

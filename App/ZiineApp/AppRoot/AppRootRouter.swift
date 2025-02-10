@@ -13,7 +13,8 @@ protocol AppRootRouting {
     var viewController: UIViewController { get }
     
     func configurePages() -> [ZiinStatusTabBarItem: UIViewController]
-    func pushToArtworkDetail()
+    func pushToPosting()
+    func pushToArtworkDetail(urlString: String)
 }
 
 final class AppRootRouter: AppRootRouting {
@@ -57,22 +58,19 @@ final class AppRootRouter: AppRootRouting {
             .magazine: postingRouting.viewController
         ]
     }
-//    
-//    func pushToArtworkDetail() {
-//        let router = postingBuildable.build(with: nil)
-//        let uiViewController = router.viewController
-//        
-//        
-////        let vc = UIViewController()
-////        vc.view.backgroundColor = .green
-//////        navigationController.pushViewController(viewController, animated: true)
-//////        viewController.present(vc, animated: true)
-//        viewController.navigationController?.pushViewController(vc, animated: true)
-//    }
     
-    func pushToArtworkDetail() {
+    func pushToPosting() {
+        let routing = postingBuildable.build(with: nil)
+        let uiViewController = routing.viewController
+        
+        viewController.navigationController?.pushViewController(uiViewController, animated: true)
+    }
+    
+    func pushToArtworkDetail(urlString: String) {
+        
+        // TODO: - 우리 웹 로직으로 변경
         let routing = artworkDetailViewBuildable.build(
-            urlString: "https://www.naver.com",
+            urlString: urlString,
             with: nil
         )
         let uiViewController = routing.viewController

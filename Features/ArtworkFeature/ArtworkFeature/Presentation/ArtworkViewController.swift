@@ -13,7 +13,7 @@ internal import SnapKit
 import ListKit
 
 protocol ArtworkViewPresentableListener: AnyObject {
-    func itemSelected(indexPath: IndexPath)
+    func modelSelected(dataModel: ListDataModel)
     func circleButtonTapped(action: CircleButtonListener)
     func didBecomeActive()
     
@@ -91,7 +91,7 @@ extension ArtworkViewController: ArtworkViewPresentable {
         }
         
         uiModels.forEach { dataModel in
-            builder.configure(dataModel: dataModel)
+            builder.configure(dataModel: dataModel, listener: self)
             
             sectionItems.append(.artworkThumbnail(builder))
         }
@@ -109,15 +109,30 @@ extension ArtworkViewController: CollectionUIListener {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         listener?.scrollViewDidScroll(scrollView)
     }
-    
+}
+
+extension ArtworkViewController: ArtworkCellUIBuilder.Listener {
+    func modelSelected(dataModel: ListDataModel) {
+        listener?.modelSelected(dataModel: dataModel)
+    }
+}
+
+
+
+protocol ArtworkCellUIBuilderListener: AnyObject {
+    func modelSelected(dataModel: ListDataModel)
 }
 
 final class ArtworkCellUIBuilder: CollectionUIBuildable {
+    typealias Listener = ArtworkCellUIBuilderListener
+    
+    weak var listener: Listener?
     
     var dataModel: ListDataModel?
     
-    func configure(dataModel: ListDataModel) {
+    func configure(dataModel: ListDataModel, listener: Listener?) {
         self.dataModel = dataModel
+        self.listener = listener
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -152,6 +167,11 @@ final class ArtworkCellUIBuilder: CollectionUIBuildable {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         
         return 16.0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let dataModel else { return }
+        listener?.modelSelected(dataModel: dataModel)
     }
     
 }
