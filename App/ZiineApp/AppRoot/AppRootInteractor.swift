@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import ListKit
 import ArtworkFeatureInterface
 import PostingFeatureInterface
 import MagazineFeatureInterface
@@ -42,6 +43,11 @@ final class AppRootInteractor:
     }
  
     func addButtonTapped() {
-        router?.pushToArtworkDetail()
+        // 여기서 로직 추가
+        router?.pushToArtworkDetail(urlString: "https://www.naver.com")
+    }
+    
+    func artworkDetail(dataModel: ListDataModel) {
+        router?.pushToPosting()
     }
 }

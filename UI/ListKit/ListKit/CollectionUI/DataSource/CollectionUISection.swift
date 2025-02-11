@@ -5,11 +5,11 @@
 //  Created by Geon Woo lee on 2/2/25.
 //
 
-enum CollectionUISection {
+public enum CollectionUISection {
     case `default`([CollectionUISectionItem])
     case horizontalScroll(CollectionUISectionItem)
     
-    init(original: CollectionUISection) {
+    public init(original: CollectionUISection) {
         switch original {
         case let .default(items):
             self = .default(items)
@@ -18,7 +18,7 @@ enum CollectionUISection {
         }
     }
     
-    var items: [CollectionUISectionItem] {
+    public var items: [CollectionUISectionItem] {
         switch self {
         case let .default(items):
             return items

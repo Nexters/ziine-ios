@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftUI
 import ThirdParty
 internal import SnapKit
 import PostingFeatureInterface
@@ -44,3 +45,5 @@ final class PostingViewController: UIViewController,
         )
     }
 }
+
+//struct Posting

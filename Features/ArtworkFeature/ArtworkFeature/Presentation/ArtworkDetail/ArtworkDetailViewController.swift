@@ -1,18 +1,25 @@
 //
-//  UploadViewController.swift
-//  PostingFeature
+//  ArtworkDetailViewController.swift
+//  ArtworkFeature
 //
-//  Created by Geon Woo lee on 1/30/25.
+//  Created by Geon Woo lee on 2/11/25.
 //
 
 import UIKit
 import CommonUI
+internal import SnapKit
+import ArtworkFeatureInterface
 
-final class UploadViewController: UIViewController {
+protocol ArtworkDetailViewPresentableListener: AnyObject {
+}
+
+public final class ArtworkDetailViewController: UIViewController {
+    
+    var listener: ArtworkDetailViewPresentableListener?
     
     // MARK: - Initialize
     
-    init() {
+    public init() {
         super.init(nibName: nil, bundle: nil)
         
         configureUI()
@@ -33,9 +40,11 @@ final class UploadViewController: UIViewController {
             $0.edges.equalToSuperview()
         }
     }
-    
-    private func load() {
+}
+
+extension ArtworkDetailViewController: ArtworkDetailViewPresentable {
+    func loadWebView(urlString: String) {
+        print(#function)
         webView.loadWebView(urlString: "https://www.naver.com")
     }
 }
-

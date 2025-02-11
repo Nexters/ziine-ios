@@ -26,14 +26,16 @@ final class AppRootBuilder: AppRootBuildable {
         
         let viewController = AppRootViewController()
         
-        let artworkBuilder = ArtworkViewBuilder()
         let postingBuilder = PostingViewBuilder()
+        let artworkBuilder = ArtworkViewBuilder()
+        let artworkDetailBuilder = ArtworkDetailBuilder()
         let magazineBuilder = MagazineViewBuilder()
         
         let router = AppRootRouter(
             viewController: viewController,
             interactor: interactor,
             artworkBuildable: artworkBuilder,
+            artworkDetailViewBuildable: artworkDetailBuilder
             postingBuildable: postingBuilder,
             magazineBuildable: magazineBuilder
         )

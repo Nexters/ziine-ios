@@ -14,7 +14,8 @@ protocol AppRootRouting {
     var viewController: UIViewController { get }
     
     func configurePages() -> [ZiinStatusTabBarItem: UIViewController]
-    func pushToArtworkDetail()
+    func pushToPosting()
+    func pushToArtworkDetail(urlString: String)
 }
 
 final class AppRootRouter: AppRootRouting {
@@ -28,6 +29,9 @@ final class AppRootRouter: AppRootRouting {
     private let postingBuildable: PostingViewBuildable
     private var postingRouting: PostingRouting?
     
+    private let artworkDetailViewBuildable: ArtworkDetailViewBuildable
+    private var ArtworkDetailRouting: ArtworkDetailRouting?
+    
     private let magazineBuildable: MagazineViewBuildable
     private var magazineRouting: MagazineRouting?
     
@@ -35,6 +39,7 @@ final class AppRootRouter: AppRootRouting {
         viewController: UIViewController,
         interactor: AppRootInteractable,
         artworkBuildable: ArtworkViewBuildable,
+        artworkDetailViewBuildable: ArtworkDetailViewBuildable
         postingBuildable: PostingViewBuildable,
         magazineBuildable: MagazineViewBuildable
     ) {
@@ -43,6 +48,7 @@ final class AppRootRouter: AppRootRouting {
         
         self.artworkBuildable = artworkBuildable
         self.postingBuildable = postingBuildable
+        self.artworkDetailViewBuildable = artworkDetailViewBuildable
         self.magazineBuildable = magazineBuildable
     }
     
@@ -62,11 +68,22 @@ final class AppRootRouter: AppRootRouting {
         ]
     }
     
-    func pushToArtworkDetail() {
-        let vc = UIViewController()
-        vc.view.backgroundColor = .green
-//        navigationController.pushViewController(viewController, animated: true)
-//        viewController.present(vc, animated: true)
-        viewController.navigationController?.pushViewController(vc, animated: true)
+    func pushToPosting() {
+        let routing = postingBuildable.build(with: nil)
+        let uiViewController = routing.viewController
+        
+        viewController.navigationController?.pushViewController(uiViewController, animated: true)
+    }
+    
+    func pushToArtworkDetail(urlString: String) {
+        
+        // TODO: - 우리 웹 로직으로 변경
+        let routing = artworkDetailViewBuildable.build(
+            urlString: urlString,
+            with: nil
+        )
+        let uiViewController = routing.viewController
+        
+        viewController.navigationController?.pushViewController(uiViewController, animated: true)
     }
 }

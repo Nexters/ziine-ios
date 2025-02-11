@@ -13,7 +13,7 @@ public protocol CollectionUIDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView)
 }
 
-extension CollectionUIDelegate {
+public extension CollectionUIDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {}
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {}

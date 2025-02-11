@@ -15,24 +15,18 @@ public final actor DefaultFetchArtworkListUseCase: FetchArtworkListUseCase {
     
     public init(artworkRepository: ArtworkRepository) {
         self.artworkRepository = artworkRepository
-        
-        self.page = 1
     }
     
-    private var page: Int
-    
     public func fetch() async -> ResultType {
-        page = 1
-        return await execute(page: page)
+        return await execute()
     }
     
     public func pagination() async -> ResultType {
-        page += 1
-        return await execute(page: page)
+        return await execute()
     }
     
-    private func execute(page: Int) async -> ResultType {
-        let result = await artworkRepository.fetch(query: .init(page: page))
+    private func execute() async -> ResultType {
+        let result = await artworkRepository.fetch(query: .init(page: 1))
         switch result {
         case .success(let success):
             return .success(success)

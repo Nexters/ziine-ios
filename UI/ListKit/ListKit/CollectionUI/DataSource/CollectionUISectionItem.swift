@@ -5,10 +5,10 @@
 //  Created by Geon Woo lee on 2/2/25.
 //
 
-enum CollectionUISectionItem {
+public enum CollectionUISectionItem {
     case artworkThumbnail(CollectionUIBuildable)
     
-    var buildable: CollectionUIBuildable {
+    public var buildable: CollectionUIBuildable {
         switch self {
         case let .artworkThumbnail(buildable):
             return buildable
