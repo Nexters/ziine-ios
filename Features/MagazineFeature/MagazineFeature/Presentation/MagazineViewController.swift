@@ -18,6 +18,13 @@ protocol MagazineViewPresentableListener: AnyObject {
 final class MagazineViewController: UIViewController {
     var listener: MagazineViewPresentableListener?
     
+    private var totalItemCount: Int = 10 // for test
+    private var currentPage: Int = 1 {
+        didSet {
+            updatePageCounter()
+        }
+    }
+    
     init() {
         super.init(nibName: nil, bundle: nil)
         
@@ -47,9 +54,7 @@ final class MagazineViewController: UIViewController {
     
     private var carouselPageCounter: UILabel = {
         let label = UILabel()
-        label.font = ZiineFont.p5
         label.textColor = ZiineColor.uiColor(.p500)
-        label.text = "2/16"
         return label
     }()
     
@@ -64,8 +69,17 @@ final class MagazineViewController: UIViewController {
         carouselPageCounter.snp.makeConstraints {
             $0.top.equalTo(magazineCarousel.snp.bottom).inset(-12)
             $0.centerX.equalToSuperview()
-            $0.bottom.equalTo(view.safeAreaLayoutGuide).inset(48)
+            $0.bottom.equalTo(view.safeAreaLayoutGuide).inset(82)
         }
+        
+        updatePageCounter() // 초기 페이지 설정
+    }
+    
+    private func updatePageCounter() {
+        carouselPageCounter.setTextWithLineHeight(
+            text: "\(currentPage)/\(totalItemCount)",
+            fontStyle: .p5
+        )
     }
 }
 
@@ -75,6 +89,7 @@ extension MagazineViewController: MagazineViewPresentable {
     }
 }
 
+// MARK: - CollectionView DataSource & Delegate
 extension MagazineViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -84,7 +99,7 @@ extension MagazineViewController: UICollectionViewDelegate, UICollectionViewData
         _ collectionView: UICollectionView,
         numberOfItemsInSection section: Int
     ) -> Int {
-        return 20
+        return totalItemCount
     }
 
     func collectionView(
@@ -98,5 +113,19 @@ extension MagazineViewController: UICollectionViewDelegate, UICollectionViewData
             return UICollectionViewCell()
         }
         return cell
+    }
+}
+
+// MARK: - Scroll View Delegate (for Page Tracking)
+extension MagazineViewController: UIScrollViewDelegate {
+    func scrollViewWillEndDragging(
+        _ scrollView: UIScrollView,
+        withVelocity velocity: CGPoint,
+        targetContentOffset: UnsafeMutablePointer<CGPoint>
+    ) {
+        let layout = magazineCarousel.collectionViewLayout as! UICollectionViewFlowLayout
+        let cellWidthIncludingSpacing = layout.itemSize.width + layout.minimumLineSpacing
+        let estimatedIndex = targetContentOffset.pointee.x / cellWidthIncludingSpacing
+        currentPage = Int(round(estimatedIndex)) + 1
     }
 }

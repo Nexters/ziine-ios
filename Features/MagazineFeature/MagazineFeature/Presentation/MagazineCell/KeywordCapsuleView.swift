@@ -20,7 +20,7 @@ struct KeywordCapsuleView: View {
         HStack(spacing: 4) {
             ForEach(keywords, id: \.self) { keyword in
                 Text("#\(keyword)")
-                    .font(Font(ZiineFont.p4))
+                    .fontWithLineHeight(.p4)
                     .foregroundStyle(ZiineColor.color(.g900))
                     .padding(.vertical, 4)
                     .padding(.horizontal, 10)

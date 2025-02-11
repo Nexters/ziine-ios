@@ -30,22 +30,20 @@ final class MagazineCell: UICollectionViewCell {
     
     private var titleLabel: UILabel = {
         let label = UILabel()
-        label.font = ZiineFont.h3
         label.textColor = .black
         label.numberOfLines = 2
         
-        label.text = "매거진 제목"
+        label.setTextWithLineHeight(text: "매거진 제목 매거진 ", fontStyle: .h3)
         
         return label
     }()
     
     private var descriptionLabel: UILabel = {
         let label = UILabel()
-        label.font = ZiineFont.p2
         label.textColor = .black
         label.numberOfLines = 2
         
-        label.text = "요약된 내용 요약된 내용 요약된 내용 요약된 내용 요약된 내용 요약된 내용"
+        label.setTextWithLineHeight(text: "요약된 내용 요약된 내용", fontStyle: .p2)
         
         return label
     }()
