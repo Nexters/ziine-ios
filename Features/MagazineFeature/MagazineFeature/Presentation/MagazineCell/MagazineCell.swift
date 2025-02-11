@@ -90,7 +90,7 @@ final class MagazineCell: UICollectionViewCell {
     
     private func configureUI() {
         contentView.layer.cornerRadius = 20
-        contentView.backgroundColor = ZiineColor.uiColor(.p200)
+        contentView.backgroundColor = ZiineColor.uiColor(.p600)
         
         contentView.addSubview(magazineTypeLogoImageView)
         magazineTypeLogoImageView.snp.makeConstraints {

@@ -8,6 +8,7 @@
 import UIKit
 import MagazineFeatureInterface
 import DesignSystem
+import CommonUI
 
 internal import SnapKit
 
@@ -40,9 +41,9 @@ final class MagazineViewController: UIViewController {
         let carouselLayout = MagazineCarouselLayout()
         let cv = UICollectionView(frame: .zero, collectionViewLayout: carouselLayout)
         
+        cv.backgroundColor = .clear
         cv.isPagingEnabled = false
         cv.decelerationRate = .fast
-        cv.backgroundColor = ZiineColor.uiColor(.p100)
         cv.showsHorizontalScrollIndicator = false
         cv.register(MagazineCell.self, forCellWithReuseIdentifier: MagazineCell.identifier)
         
@@ -52,13 +53,20 @@ final class MagazineViewController: UIViewController {
         return cv
     }()
     
-    private var carouselPageCounter: UILabel = {
-        let label = UILabel()
+    private var carouselPageCounter: CapsuleLabel = {
+        let label = CapsuleLabel()
+        label.font = ZiineFont.p5
         label.textColor = ZiineColor.uiColor(.p500)
+        
+        label.backgroundColor = ZiineColor.uiColor(.p100)
+        label.layer.borderColor = ZiineColor.uiColor(.p150).cgColor
+        label.layer.borderWidth = 1.5
         return label
     }()
     
     func configureUI() {
+        view.backgroundColor = ZiineColor.uiColor(.g900)
+        
         view.addSubview(magazineCarousel)
         magazineCarousel.snp.makeConstraints {
             $0.top.equalToSuperview().inset(24)

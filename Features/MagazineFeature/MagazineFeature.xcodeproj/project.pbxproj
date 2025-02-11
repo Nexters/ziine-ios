@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C62073CA2D5B883600F87C75 /* CommonUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C62073C92D5B883600F87C75 /* CommonUI.framework */; };
+		C62073CB2D5B883600F87C75 /* CommonUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C62073C92D5B883600F87C75 /* CommonUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C64CCC102D50C24D003B8CFC /* MagazineFeatureInterface.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C64CCC072D50C214003B8CFC /* MagazineFeatureInterface.framework */; };
 		C64CCC112D50C24D003B8CFC /* MagazineFeatureInterface.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C64CCC072D50C214003B8CFC /* MagazineFeatureInterface.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C64CCC3C2D52002F003B8CFC /* Utils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C64CCC3B2D52002F003B8CFC /* Utils.framework */; };
@@ -41,6 +43,7 @@
 				C64CCC112D50C24D003B8CFC /* MagazineFeatureInterface.framework in Embed Frameworks */,
 				C64CCC7A2D5208EF003B8CFC /* Utils.framework in Embed Frameworks */,
 				C64CCC712D5208E2003B8CFC /* DesignSystem.framework in Embed Frameworks */,
+				C62073CB2D5B883600F87C75 /* CommonUI.framework in Embed Frameworks */,
 				C64CCC742D5208E8003B8CFC /* Networking.framework in Embed Frameworks */,
 				C64CCC782D5208EF003B8CFC /* ThirdParty.framework in Embed Frameworks */,
 			);
@@ -61,6 +64,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		C62073C92D5B883600F87C75 /* CommonUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CommonUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C64CCC072D50C214003B8CFC /* MagazineFeatureInterface.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MagazineFeatureInterface.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C64CCC3B2D52002F003B8CFC /* Utils.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Utils.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C64CCC6F2D5208E2003B8CFC /* DesignSystem.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DesignSystem.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -122,6 +126,7 @@
 				C64CCC102D50C24D003B8CFC /* MagazineFeatureInterface.framework in Frameworks */,
 				C64CCC792D5208EF003B8CFC /* Utils.framework in Frameworks */,
 				C64CCC702D5208E2003B8CFC /* DesignSystem.framework in Frameworks */,
+				C62073CA2D5B883600F87C75 /* CommonUI.framework in Frameworks */,
 				C64CCC732D5208E8003B8CFC /* Networking.framework in Frameworks */,
 				C64CCC772D5208EF003B8CFC /* ThirdParty.framework in Frameworks */,
 			);
@@ -133,6 +138,7 @@
 		C64CCC0F2D50C24D003B8CFC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C62073C92D5B883600F87C75 /* CommonUI.framework */,
 				C64CCC752D5208EF003B8CFC /* ThirdParty.framework */,
 				C64CCC762D5208EF003B8CFC /* Utils.framework */,
 				C64CCC722D5208E8003B8CFC /* Networking.framework */,
