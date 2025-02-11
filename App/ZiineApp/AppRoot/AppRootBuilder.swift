@@ -35,7 +35,7 @@ final class AppRootBuilder: AppRootBuildable {
             viewController: viewController,
             interactor: interactor,
             artworkBuildable: artworkBuilder,
-            artworkDetailViewBuildable: artworkDetailBuilder
+            artworkDetailViewBuildable: artworkDetailBuilder,
             postingBuildable: postingBuilder,
             magazineBuildable: magazineBuilder
         )

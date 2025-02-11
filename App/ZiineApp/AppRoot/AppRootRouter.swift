@@ -39,7 +39,7 @@ final class AppRootRouter: AppRootRouting {
         viewController: UIViewController,
         interactor: AppRootInteractable,
         artworkBuildable: ArtworkViewBuildable,
-        artworkDetailViewBuildable: ArtworkDetailViewBuildable
+        artworkDetailViewBuildable: ArtworkDetailViewBuildable,
         postingBuildable: PostingViewBuildable,
         magazineBuildable: MagazineViewBuildable
     ) {
