@@ -8,20 +8,31 @@
 import Foundation
 
 public struct ArtworkModel {
+    public var id: Int
     public var title: String
-    public var username: String
-    public var profileImageUrlString: String
-    public var thumbnailImageUrlString: String
+    public var artworkImageUrl: String
+    public var createdAt: String
+    public var modifiedAt: String
+    public var artist: Artist
     
-    public init(
-        title: String,
-        username: String,
-        profileImageUrlString: String,
-        thumbnailImageUrlString: String
-    ) {
+    public struct Artist {
+        public var id: Int
+        public var name: String
+        public var profileImageUrl: String
+        
+        public init(id: Int, name: String, profileImageUrl: String) {
+            self.id = id
+            self.name = name
+            self.profileImageUrl = profileImageUrl
+        }
+    }
+    
+    public init(id: Int, title: String, artworkImageUrl: String, createdAt: String, modifiedAt: String, artist: Artist) {
+        self.id = id
         self.title = title
-        self.username = username
-        self.profileImageUrlString = profileImageUrlString
-        self.thumbnailImageUrlString = thumbnailImageUrlString
+        self.artworkImageUrl = artworkImageUrl
+        self.createdAt = createdAt
+        self.modifiedAt = modifiedAt
+        self.artist = artist
     }
 }

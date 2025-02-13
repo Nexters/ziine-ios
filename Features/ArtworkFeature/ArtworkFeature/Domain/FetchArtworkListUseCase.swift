@@ -26,7 +26,7 @@ public final actor DefaultFetchArtworkListUseCase: FetchArtworkListUseCase {
     }
     
     private func execute() async -> ResultType {
-        let result = await artworkRepository.fetch(query: .init(page: 1))
+        let result = await artworkRepository.fetch()
         switch result {
         case .success(let success):
             return .success(success)

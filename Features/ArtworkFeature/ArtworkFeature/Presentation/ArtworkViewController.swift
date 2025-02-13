@@ -92,7 +92,7 @@ extension ArtworkViewController: ArtworkViewPresentable {
             collectionUI.isHidden = false
         }
         
-        var uiModels: [ListDataModel] = []
+        let uiModels: [ListDataModel] = []
         let builder = ArtworkCellUIBuilder()
         var sectionItems: [CollectionUISectionItem] = []
         
@@ -100,10 +100,10 @@ extension ArtworkViewController: ArtworkViewPresentable {
         
         artworkModels.forEach { artworkModel in
             var uiModel = ListDataModel()
-            uiModel.profileImageUrlString = artworkModel.profileImageUrlString
-            uiModel.thumbnailImageUrlString = artworkModel.thumbnailImageUrlString
+            uiModel.profileImageUrlString = artworkModel.artist.profileImageUrl
+            uiModel.thumbnailImageUrlString = artworkModel.artworkImageUrl
             uiModel.title = artworkModel.title
-            uiModel.username = artworkModel.username
+            uiModel.username = artworkModel.artist.name
         }
         
         uiModels.forEach { dataModel in
