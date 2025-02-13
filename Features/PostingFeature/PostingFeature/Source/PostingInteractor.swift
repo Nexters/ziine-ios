@@ -28,7 +28,7 @@ final class PostingInteractor:
     
     init() {}
     
-    func uploadButtonTapped() {
+    func postingGuideView(listener: PostingGuideViewListener) {
         router?.pushUploadView()
     }
 }
