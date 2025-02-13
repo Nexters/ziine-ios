@@ -7,6 +7,7 @@
 
 import UIKit
 import SwiftUI
+import DesignSystem
 
 // MARK: - PageViewController
 
@@ -62,6 +63,8 @@ final class AppRootViewController: UIViewController,
     }()
     
     private func configureUI() {
+        view.backgroundColor = ZiineColor.uiColor(.g900)
+        
         let navigationBarHeight = 44
         
         view.addSubview(statusBar)
