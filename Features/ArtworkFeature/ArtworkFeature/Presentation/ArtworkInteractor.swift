@@ -31,6 +31,7 @@ final class ArtworkInteractor:
     ArtworkInteractorable,
     ArtworkViewPresentableListener
 {
+    
     var router: ArtworkRouting?
     var listener: ArtworkListener?
     var presenter: ArtworkViewPresentable?
@@ -49,7 +50,7 @@ final class ArtworkInteractor:
         self.listener?.artworkDetail(dataModel: dataModel)
     }
     
-    func circleButtonListener(action: DesignSystem.CircleButtonListener) {
+    func circleButton(action: DesignSystem.CircleButtonListener) {
         switch action {
         case .buttonTapped:
             listener?.addButtonTapped()
@@ -58,7 +59,7 @@ final class ArtworkInteractor:
         }
     }
     
-    func networoErrorListener(action: CommonUI.NetworkErrorUIListener) {
+    func networkError(action: CommonUI.NetworkErrorUIListener) {
         switch action {
         case .retryButtonTapped:
             self.fetch()

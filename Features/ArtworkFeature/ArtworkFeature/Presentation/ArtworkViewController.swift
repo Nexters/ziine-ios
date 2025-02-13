@@ -15,9 +15,9 @@ import ArtworkFeatureInterface
 
 protocol ArtworkViewPresentableListener: AnyObject {
     func modelSelected(dataModel: ListDataModel)
-    func circleButtonListener(action: CircleButtonListener)
+    func circleButton(action: CircleButtonListener)
     func didBecomeActive()
-    func networoErrorListener(action: NetworkErrorUIListener)
+    func networkError(action: NetworkErrorUIListener)
 }
 
 final class ArtworkViewController: UIViewController {
@@ -43,7 +43,7 @@ final class ArtworkViewController: UIViewController {
     
     private lazy var addCircleButton: UIView = {
         let circleButton = CircleButton(imageName: ZiineImage.ImageName.plus.rawValue) { [weak self] action in
-            self?.listener?.circleButtonListener(action: action)
+            self?.listener?.circleButton(action: action)
         }
         let hostingController = UIHostingController(rootView: circleButton)
         hostingController.view.backgroundColor = .clear
@@ -52,7 +52,7 @@ final class ArtworkViewController: UIViewController {
     
     private lazy var networkErrorUI: UIView = {
         let ui = NetworkErrorUI { [weak self] action in
-            self?.listener?.networoErrorListener(action: action)
+            self?.listener?.networkError(action: action)
         }
         let hostingController = UIHostingController(rootView: ui)
         hostingController.view.backgroundColor = .clear
@@ -92,7 +92,7 @@ extension ArtworkViewController: ArtworkViewPresentable {
             collectionUI.isHidden = false
         }
         
-        let uiModels: [ListDataModel] = []
+        var uiModels: [ListDataModel] = []
         let builder = ArtworkCellUIBuilder()
         var sectionItems: [CollectionUISectionItem] = []
         
@@ -104,6 +104,8 @@ extension ArtworkViewController: ArtworkViewPresentable {
             uiModel.thumbnailImageUrlString = artworkModel.artworkImageUrl
             uiModel.title = artworkModel.title
             uiModel.username = artworkModel.artist.name
+            
+            uiModels.append(uiModel)
         }
         
         uiModels.forEach { dataModel in
