@@ -7,17 +7,17 @@
 
 import UIKit
 import SwiftUI
-import ArtworkFeatureInterface
+import ListKit
+import CommonUI
 import DesignSystem
 internal import SnapKit
-import ListKit
+import ArtworkFeatureInterface
 
 protocol ArtworkViewPresentableListener: AnyObject {
     func modelSelected(dataModel: ListDataModel)
-    func circleButtonTapped(action: CircleButtonListener)
+    func circleButtonListener(action: CircleButtonListener)
     func didBecomeActive()
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView)
+    func networoErrorListener(action: NetworkErrorUIListener)
 }
 
 final class ArtworkViewController: UIViewController {
@@ -37,17 +37,27 @@ final class ArtworkViewController: UIViewController {
     // MARK: - UIComponents
     
     private lazy var collectionUI: CollectionUI = {
-        let cv = CollectionUI(listener: self)
+        let cv = CollectionUI(listener: nil)
         return cv
     }()
     
     private lazy var addCircleButton: UIView = {
         let circleButton = CircleButton(imageName: ZiineImage.ImageName.plus.rawValue) { [weak self] action in
-            self?.listener?.circleButtonTapped(action: action)
+            self?.listener?.circleButtonListener(action: action)
         }
         let hostingController = UIHostingController(rootView: circleButton)
         hostingController.view.backgroundColor = .clear
-        return hostingController.view!
+        return hostingController.view
+    }()
+    
+    private lazy var networkErrorUI: UIView = {
+        let ui = NetworkErrorUI { [weak self] action in
+            self?.listener?.networoErrorListener(action: action)
+        }
+        let hostingController = UIHostingController(rootView: ui)
+        hostingController.view.backgroundColor = .clear
+        hostingController.view.isHidden = true
+        return hostingController.view
     }()
     
     private func configureUI() {
@@ -60,23 +70,29 @@ final class ArtworkViewController: UIViewController {
         addCircleButton.snp.makeConstraints {
             $0.bottom.trailing.equalToSuperview().inset(16)
         }
+        
+        view.addSubview(networkErrorUI)
+        networkErrorUI.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
     }
 }
 
 extension ArtworkViewController: ArtworkViewPresentable {
+    func showsNetworkErrorUI() {
+        networkErrorUI.isHidden = false
+        collectionUI.isHidden = true
+    }
+    
     func reloadCollectionUI(artworkModels: [ArtworkFeatureInterface.ArtworkModel]) {
+        if artworkModels.isEmpty {
+            showsNetworkErrorUI()
+        } else {
+            networkErrorUI.isHidden = true
+            collectionUI.isHidden = false
+        }
+        
         var uiModels: [ListDataModel] = []
-        
-//        var mock1 = ListDataModel()
-//        mock1.username = "username 1"
-//        mock1.title = "artwork title 1"
-//        
-//        var mock2 = ListDataModel()
-//        mock2.username = "username 2"
-//        mock2.title = "artwork title 2"
-//        
-//        uiModels = [mock1, mock2]
-        
         let builder = ArtworkCellUIBuilder()
         var sectionItems: [CollectionUISectionItem] = []
         
@@ -105,19 +121,12 @@ extension ArtworkViewController: ArtworkViewPresentable {
     }
     
 }
-extension ArtworkViewController: CollectionUIListener {
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        listener?.scrollViewDidScroll(scrollView)
-    }
-}
 
 extension ArtworkViewController: ArtworkCellUIBuilder.Listener {
     func modelSelected(dataModel: ListDataModel) {
         listener?.modelSelected(dataModel: dataModel)
     }
 }
-
-
 
 protocol ArtworkCellUIBuilderListener: AnyObject {
     func modelSelected(dataModel: ListDataModel)
