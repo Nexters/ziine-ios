@@ -28,10 +28,10 @@ extension ResponseDTO {
         }
         
         func toDomain() -> [ArtworkModel] {
-            
-            
-            artworks.map { artwork in
-                ArtworkModel(
+            var artworkModels: [ArtworkModel] = []
+//            dump(artworks)
+            artworks.forEach { artwork in
+                let model = ArtworkModel(
                     id: artwork.id,
                     title: artwork.title,
                     artworkImageUrl: artwork.artworkImageUrl,
@@ -43,7 +43,13 @@ extension ResponseDTO {
                         profileImageUrl: artwork.artist.profileImageUrl
                     )
                 )
+                
+                artworkModels.append(model)
             }
+            
+            dump(artworkModels)
+            
+            return artworkModels
         }
     }
 }

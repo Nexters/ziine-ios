@@ -70,7 +70,7 @@ final class ArtworkInteractor:
     
     private func fetch() {
         Task { @MainActor in
-            let result = await dependency.fetchArtworkListUseCase.fetch()
+            let result = await dependency.fetchArtworkListUseCase.execute()
             switch result {
             case .success(let success):
                 presenter?.reloadCollectionUI(artworkModels: success)

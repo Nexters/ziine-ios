@@ -93,7 +93,6 @@ extension ArtworkViewController: ArtworkViewPresentable {
         }
         
         var uiModels: [ListDataModel] = []
-        let builder = ArtworkCellUIBuilder()
         var sectionItems: [CollectionUISectionItem] = []
         
         // TODO: - 로직간소화
@@ -109,6 +108,7 @@ extension ArtworkViewController: ArtworkViewPresentable {
         }
         
         uiModels.forEach { dataModel in
+            let builder = ArtworkCellUIBuilder()
             builder.configure(dataModel: dataModel, listener: self)
             
             sectionItems.append(.artworkThumbnail(builder))
