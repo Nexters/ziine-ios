@@ -43,11 +43,10 @@ final class AppRootInteractor:
     }
  
     func addButtonTapped() {
-        // 여기서 로직 추가
-        router?.pushToArtworkDetail(urlString: "https://www.naver.com")
+        router?.pushToPostingGuide()
     }
     
     func artworkDetail(dataModel: ListDataModel) {
-        router?.pushToPosting()
+        router?.pushToArtworkDetail(urlString: "https://www.naver.com")
     }
 }

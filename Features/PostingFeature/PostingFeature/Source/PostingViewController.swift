@@ -13,7 +13,7 @@ internal import SnapKit
 import PostingFeatureInterface
 
 protocol PostingViewPresentableListener: AnyObject {
-    func uploadButtonTapped()
+    func postingGuideView(listener: PostingGuideViewListener)
 }
 
 final class PostingViewController: UIViewController,
@@ -34,9 +34,12 @@ final class PostingViewController: UIViewController,
     
     // MARK: - UIComponents
     
-    private let postingGuideView: UIView = {
+    private lazy var postingGuideView: UIView = {
+        let swiftUIView = PostingGuideView { [weak self] action in
+            self?.listener?.postingGuideView(listener: action)
+        }
         let hostingController = UIHostingController(
-            rootView: PostingGuideView()
+            rootView: swiftUIView
         )
         hostingController.view.backgroundColor = .clear
         return hostingController.view
@@ -52,8 +55,22 @@ final class PostingViewController: UIViewController,
     }
 }
 
+// MARK: - PostingGuideView
+
+public enum PostingGuideViewListener {
+    case postingButtonTapped
+}
+
 fileprivate struct PostingGuideView: View {
-    let guideMessage: [PostingGuideMessage] = PostingGuideMessage.make()
+    public typealias Listener = ((PostingGuideViewListener) -> ())
+    
+    private var listener: Listener?
+    
+    public init(listener: Listener?) {
+        self.listener = listener
+    }
+    
+    private let guideMessage: [PostingGuideMessage] = PostingGuideMessage.make()
     
     var body: some View {
         ScrollView {
@@ -71,6 +88,23 @@ fileprivate struct PostingGuideView: View {
         }
         .containerRelativeFrame(.horizontal)
         .background(ZiineColor.color(.g900))
+        .overlay(alignment: .bottom) {
+            Button {
+                listener?(.postingButtonTapped)
+            } label: {
+                RoundedRectangle(cornerRadius: 16)
+                    .frame(height: 52)
+                    .padding(.horizontal, 16)
+                    .foregroundStyle(ZiineColor.color(.p500))
+                    .overlay {
+                        Text("작품 등록하기")
+                            .font(Font(ZiineFont.custom(weight: .semiBold, size: 16)))
+                            .foregroundStyle(ZiineColor.color(.g900))
+                    }
+            }
+            .padding(.top, 12)
+            .background(ZiineColor.color(.g900))
+        }
     }
 }
 
@@ -113,5 +147,5 @@ fileprivate struct PostingGuideCell: View {
 }
 
 #Preview {
-    PostingGuideView()
+    PostingGuideView(listener: nil)
 }

@@ -16,6 +16,7 @@ final class UploadViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
         
         configureUI()
+        load()
     }
     
     required init?(coder: NSCoder) {
