@@ -16,12 +16,20 @@ public extension UILabel {
             
             let attributes: [NSAttributedString.Key: Any] = [
                 .paragraphStyle: style,
-                .baselineOffset: (fontStyle.lineHeight - fontStyle.lineHeight) / 4,
+                .baselineOffset: (fontStyle.lineHeight - fontStyle.font.lineHeight) / 2,
                 .font: fontStyle.font
             ]
             
             let attrString = NSAttributedString(string: text, attributes: attributes)
             self.attributedText = attrString
         }
+    }
+    
+    func showBorder(
+        color: CGColor = UIColor.red.cgColor,
+        borderWidth: CGFloat = 1
+    ) {
+        self.layer.borderColor = color
+        self.layer.borderWidth = 1
     }
 }

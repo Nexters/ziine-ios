@@ -10,6 +10,9 @@ import Moya
 public enum DefaultTargetType {
     /// 아트워크 조회
     case fetchArtworks(page: Int)
+    
+    /// 매거진 조회
+    case fetchMagazines
 }
 
 extension DefaultTargetType: TargetType {
@@ -29,19 +32,21 @@ extension DefaultTargetType: TargetType {
         switch self {
         case let .fetchArtworks(page):
             return "/v1/artworks"
+        case .fetchMagazines:
+            return "/v1/magazines"
         }
     }
     
     public var method: Moya.Method {
         switch self {
-        case .fetchArtworks:
+        case .fetchArtworks, .fetchMagazines:
             return .get
         }
     }
 
     public var task: Task {
         switch self {
-        case .fetchArtworks:
+        case .fetchArtworks, .fetchMagazines:
             return .requestPlain
         }
     }

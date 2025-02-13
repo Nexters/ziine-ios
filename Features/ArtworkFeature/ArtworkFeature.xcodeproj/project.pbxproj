@@ -23,6 +23,8 @@
 		1A9649DD2D4A936F00268B29 /* ThirdParty.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1A9649DB2D4A936F00268B29 /* ThirdParty.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1AA6AAB52D5A5A5500A6CC9D /* CommonUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AA6AAB42D5A5A5500A6CC9D /* CommonUI.framework */; };
 		1AA6AAB62D5A5A5500A6CC9D /* CommonUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1AA6AAB42D5A5A5500A6CC9D /* CommonUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C6A78E9F2D5B75F500910D6A /* ListKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6A78E9E2D5B75F500910D6A /* ListKit.framework */; };
+		C6A78EA02D5B75F500910D6A /* ListKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C6A78E9E2D5B75F500910D6A /* ListKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +45,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				1A4DB86F2D4FE21C00964DE0 /* Utils.framework in Embed Frameworks */,
+				C6A78EA02D5B75F500910D6A /* ListKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -77,6 +80,7 @@
 		1A9648EC2D47CF9C00268B29 /* DesignSystem.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DesignSystem.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A9649DB2D4A936F00268B29 /* ThirdParty.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ThirdParty.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1AA6AAB42D5A5A5500A6CC9D /* CommonUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CommonUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C6A78E9E2D5B75F500910D6A /* ListKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ListKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -121,6 +125,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1A4DB86E2D4FE21C00964DE0 /* Utils.framework in Frameworks */,
+				C6A78E9F2D5B75F500910D6A /* ListKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -163,6 +168,7 @@
 		1A9648DD2D47CF1500268B29 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C6A78E9E2D5B75F500910D6A /* ListKit.framework */,
 				1AA6AAB42D5A5A5500A6CC9D /* CommonUI.framework */,
 				1A4DB86D2D4FE21C00964DE0 /* Utils.framework */,
 				1A4DB8672D4FDE3100964DE0 /* Utils.framework */,
