@@ -8,5 +8,9 @@
 import Foundation
 
 public struct MagazineModel {
-    public init() {}
+    public var title: String
+    
+    public init(title: String) {
+        self.title = title
+    }
 }

@@ -16,20 +16,38 @@ protocol MagazineViewPresentableListener: AnyObject {
     func itemSelected(indexPath: IndexPath)
 }
 
+enum CarouselConstants {
+    static let dummyItemCount = 2
+    static let sideItemScale: CGFloat = 0.9
+    static let spacing: CGFloat = 8
+    static let visibleItemWidth: CGFloat = 0.8
+}
+
 final class MagazineViewController: UIViewController {
     var listener: MagazineViewPresentableListener?
     
-    private var totalItemCount: Int = 10 // for test
+    private var data: [MagazineModel] = [
+        MagazineModel(title: "매거진 제목1"),
+        MagazineModel(title: "매거진 제목2"),
+        MagazineModel(title: "매거진 제목3"),
+        MagazineModel(title: "매거진 제목4")
+    ]
+    
     private var currentPage: Int = 1 {
         didSet {
             updatePageCounter()
         }
     }
     
+    private var actualPage: Int {
+        return (currentPage - CarouselConstants.dummyItemCount).clamped(to: 1...data.count)
+    }
+    
     init() {
         super.init(nibName: nil, bundle: nil)
         
         configureUI()
+        configureInfinityScroll()
     }
     
     required init?(coder: NSCoder) {
@@ -80,20 +98,34 @@ final class MagazineViewController: UIViewController {
             $0.bottom.equalTo(view.safeAreaLayoutGuide).inset(82)
         }
         
-        updatePageCounter() // 초기 페이지 설정
+        updatePageCounter()
+        
     }
     
     private func updatePageCounter() {
         carouselPageCounter.setTextWithLineHeight(
-            text: "\(currentPage)/\(totalItemCount)",
+            text: "\(currentPage - 2)/\(data.count)",
             fontStyle: .p5
         )
     }
+    
+    // MARK: Infinity scroll
+    private func configureInfinityScroll() {
+        let cellWidth = magazineCarousel.frame.width * CarouselConstants.visibleItemWidth + CarouselConstants.spacing
+        let targetOffset = CGPoint(
+            x: cellWidth * CGFloat(CarouselConstants.dummyItemCount),
+            y: 0
+        )
+        magazineCarousel.setContentOffset(targetOffset, animated: false)
+    }
 }
 
+// MARK: - MagazineViewPresentable
 extension MagazineViewController: MagazineViewPresentable {
-    func reloadMagazineCarousel(magazineModels: [MagazineFeatureInterface.MagazineModel]) {
-        print(#function)
+    func reloadMagazineCarousel(magazineModels: [MagazineModel]) {
+        self.data = magazineModels
+        magazineCarousel.reloadData()
+        configureInfinityScroll()
     }
 }
 
@@ -107,7 +139,7 @@ extension MagazineViewController: UICollectionViewDelegate, UICollectionViewData
         _ collectionView: UICollectionView,
         numberOfItemsInSection section: Int
     ) -> Int {
-        return totalItemCount
+        return CarouselConstants.dummyItemCount * 2 + data.count
     }
 
     func collectionView(
@@ -120,7 +152,23 @@ extension MagazineViewController: UICollectionViewDelegate, UICollectionViewData
         ) as? MagazineCell else {
             return UICollectionViewCell()
         }
+        
+        let dataIndex = calculateDataIndex(for: indexPath.row)
+        cell.configure(with: data[dataIndex])
+        
         return cell
+    }
+    
+    private func calculateDataIndex(for row: Int) -> Int {
+        let totalItems = CarouselConstants.dummyItemCount * 2 + data.count
+        switch row {
+        case 0..<CarouselConstants.dummyItemCount:
+            return data.count - CarouselConstants.dummyItemCount + row
+        case totalItems - CarouselConstants.dummyItemCount..<totalItems:
+            return row - (totalItems - CarouselConstants.dummyItemCount)
+        default:
+            return row - CarouselConstants.dummyItemCount
+        }
     }
 }
 
@@ -133,7 +181,27 @@ extension MagazineViewController: UIScrollViewDelegate {
     ) {
         let layout = magazineCarousel.collectionViewLayout as! UICollectionViewFlowLayout
         let cellWidthIncludingSpacing = layout.itemSize.width + layout.minimumLineSpacing
-        let estimatedIndex = targetContentOffset.pointee.x / cellWidthIncludingSpacing
-        currentPage = Int(round(estimatedIndex)) + 1
+        let estimatedIndex = (targetContentOffset.pointee.x / cellWidthIncludingSpacing).rounded()
+        currentPage = Int(estimatedIndex) + 1
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let contentXOffset = scrollView.contentOffset.x
+        let numberOfItems = CarouselConstants.dummyItemCount * 2 + data.count
+        let cellWidth = magazineCarousel.frame.width * CarouselConstants.visibleItemWidth + CarouselConstants.spacing
+        
+        if Int(contentXOffset) > Int(cellWidth) * (numberOfItems - CarouselConstants.dummyItemCount) {
+            let targetOffset = CGPoint(
+                x: cellWidth * CGFloat(CarouselConstants.dummyItemCount),
+                y: 0
+            )
+            magazineCarousel.setContentOffset(targetOffset, animated: false)
+        } else if Int(contentXOffset) <= Int(cellWidth) {
+            let targetOffset = CGPoint(
+                x: cellWidth * CGFloat(numberOfItems - CarouselConstants.dummyItemCount - 1),
+                y: 0
+            )
+            magazineCarousel.setContentOffset(targetOffset, animated: false)
+        }
     }
 }

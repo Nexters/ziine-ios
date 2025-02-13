@@ -33,8 +33,6 @@ final class MagazineCell: UICollectionViewCell {
         label.textColor = .black
         label.numberOfLines = 2
         
-        label.setTextWithLineHeight(text: "매거진 제목 매거진 ", fontStyle: .h3)
-        
         return label
     }()
     
@@ -124,6 +122,6 @@ final class MagazineCell: UICollectionViewCell {
     }
     
     func configure(with model: MagazineModel) {
-        // TODO: Configure with MagazineModel
+        titleLabel.setTextWithLineHeight(text: model.title, fontStyle: .h3)
     }
 }
