@@ -67,15 +67,15 @@ extension ArtworkViewController: ArtworkViewPresentable {
     func reloadCollectionUI(artworkModels: [ArtworkFeatureInterface.ArtworkModel]) {
         var uiModels: [ListDataModel] = []
         
-        var mock1 = ListDataModel()
-        mock1.username = "username 1"
-        mock1.title = "artwork title 1"
-        
-        var mock2 = ListDataModel()
-        mock2.username = "username 2"
-        mock2.title = "artwork title 2"
-        
-        uiModels = [mock1, mock2]
+//        var mock1 = ListDataModel()
+//        mock1.username = "username 1"
+//        mock1.title = "artwork title 1"
+//        
+//        var mock2 = ListDataModel()
+//        mock2.username = "username 2"
+//        mock2.title = "artwork title 2"
+//        
+//        uiModels = [mock1, mock2]
         
         let builder = ArtworkCellUIBuilder()
         var sectionItems: [CollectionUISectionItem] = []
