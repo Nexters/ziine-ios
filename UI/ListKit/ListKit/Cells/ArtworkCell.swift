@@ -66,6 +66,11 @@ public final class ArtworkCell: UICollectionViewCell {
         return imageView
     }()
     
+    private let gradientImageView: UIImageView = {
+        let iv = UIImageView()
+        return iv
+    }()
+    
     private let userNameLabel: UILabel = {
         let lb = UILabel()
         lb.font = ZiineFont.p2
@@ -87,6 +92,12 @@ public final class ArtworkCell: UICollectionViewCell {
             $0.edges.equalToSuperview()
         }
         
+        thumbnailImageView.addSubview(gradientImageView)
+        gradientImageView.snp.makeConstraints {
+            $0.leading.bottom.trailing.equalToSuperview()
+            $0.height.equalTo(thumbnailImageView.snp.height).dividedBy(3)
+        }
+        
         contentView.addSubview(profileImageView)
         profileImageView.snp.makeConstraints {
             $0.top.leading.equalTo(20)
@@ -98,6 +109,8 @@ public final class ArtworkCell: UICollectionViewCell {
             $0.centerY.equalTo(profileImageView.snp.centerY)
             $0.leading.equalTo(profileImageView.snp.trailing).offset(6)
         }
+        
+        
         
         contentView.addSubview(artworkTitleLabel)
         artworkTitleLabel.snp.makeConstraints {

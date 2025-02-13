@@ -29,7 +29,7 @@ extension ResponseDTO {
         
         func toDomain() -> [ArtworkModel] {
             var artworkModels: [ArtworkModel] = []
-//            dump(artworks)
+            
             artworks.forEach { artwork in
                 let model = ArtworkModel(
                     id: artwork.id,
