@@ -6,9 +6,9 @@
 //
 
 import UIKit
-import MagazineFeatureInterface
-import DesignSystem
 import CommonUI
+import DesignSystem
+import MagazineFeatureInterface
 
 internal import SnapKit
 
@@ -110,6 +110,7 @@ final class MagazineViewController: UIViewController {
     }
     
     // MARK: Infinity scroll
+    
     private func configureInfinityScroll() {
         let cellWidth = magazineCarousel.frame.width * CarouselConstants.visibleItemWidth + CarouselConstants.spacing
         let targetOffset = CGPoint(
@@ -121,6 +122,7 @@ final class MagazineViewController: UIViewController {
 }
 
 // MARK: - MagazineViewPresentable
+
 extension MagazineViewController: MagazineViewPresentable {
     func reloadMagazineCarousel(magazineModels: [MagazineModel]) {
         self.data = magazineModels
@@ -130,6 +132,7 @@ extension MagazineViewController: MagazineViewPresentable {
 }
 
 // MARK: - CollectionView DataSource & Delegate
+
 extension MagazineViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1

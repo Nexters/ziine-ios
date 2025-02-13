@@ -56,7 +56,7 @@ final class MagazineCell: UICollectionViewCell {
         return hostingController.view
     }()
     
-    private var thumbnailImageView: UIImageView = {
+    private let thumbnailImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.layer.cornerRadius = 16

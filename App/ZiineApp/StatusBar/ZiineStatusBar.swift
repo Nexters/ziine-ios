@@ -69,6 +69,8 @@ struct ZiineStatusBar: View {
             }
             .padding(.bottom, 20)
         }
+        .containerRelativeFrame(.horizontal)
+        .background(ZiineColor.color(.g900))
     }
 }
 

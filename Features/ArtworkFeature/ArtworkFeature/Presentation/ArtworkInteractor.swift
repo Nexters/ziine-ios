@@ -6,14 +6,16 @@
 //
 
 import UIKit
-import ArtworkFeatureInterface
-import DesignSystem
 import ListKit
+import CommonUI
+import DesignSystem
+import ArtworkFeatureInterface
 
 protocol ArtworkViewPresentable: AnyObject {
     var listener: ArtworkViewPresentableListener? { get set }
     
     func reloadCollectionUI(artworkModels: [ArtworkModel])
+    func showsNetworkErrorUI()
 }
 
 protocol ArtworkInteractorable: AnyObject {
@@ -29,7 +31,6 @@ final class ArtworkInteractor:
     ArtworkInteractorable,
     ArtworkViewPresentableListener
 {
-    
     var router: ArtworkRouting?
     var listener: ArtworkListener?
     var presenter: ArtworkViewPresentable?
@@ -48,7 +49,7 @@ final class ArtworkInteractor:
         self.listener?.artworkDetail(dataModel: dataModel)
     }
     
-    func circleButtonTapped(action: CircleButtonListener) {
+    func circleButtonListener(action: DesignSystem.CircleButtonListener) {
         switch action {
         case .buttonTapped:
             listener?.addButtonTapped()
@@ -57,13 +58,13 @@ final class ArtworkInteractor:
         }
     }
     
-    
-    func uploadButtonTapped() {
-        
-    }
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        // 페이지네이션 현재 없음
+    func networoErrorListener(action: CommonUI.NetworkErrorUIListener) {
+        switch action {
+        case .retryButtonTapped:
+            self.fetch()
+        @unknown default:
+            break
+        }
     }
     
     private func fetch() {
@@ -72,11 +73,8 @@ final class ArtworkInteractor:
             switch result {
             case .success(let success):
                 presenter?.reloadCollectionUI(artworkModels: success)
-            case .failure(let failure):
-                // !!!: - 토스트 팝업
-                
-                presenter?.reloadCollectionUI(artworkModels: [])
-                break
+            case .failure:
+                presenter?.showsNetworkErrorUI()
             }
         }
     }
