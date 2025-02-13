@@ -14,7 +14,7 @@ protocol AppRootRouting {
     var viewController: UIViewController { get }
     
     func configurePages() -> [ZiinStatusTabBarItem: UIViewController]
-    func pushToPosting()
+    func pushToPostingGuide()
     func pushToArtworkDetail(urlString: String)
 }
 
@@ -68,7 +68,7 @@ final class AppRootRouter: AppRootRouting {
         ]
     }
     
-    func pushToPosting() {
+    func pushToPostingGuide() {
         let routing = postingBuildable.build(with: nil)
         let uiViewController = routing.viewController
         
