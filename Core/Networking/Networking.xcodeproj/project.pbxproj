@@ -196,6 +196,7 @@
 /* Begin XCBuildConfiguration section */
 		1A4DB78B2D4FD0DE00964DE0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C6C1ADB12D577840004F9CA0 /* Secret.xcconfig */;
 			buildSettings = {
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CLANG_ENABLE_MODULES = YES;
@@ -235,6 +236,7 @@
 		};
 		1A4DB78C2D4FD0DE00964DE0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C6C1ADB12D577840004F9CA0 /* Secret.xcconfig */;
 			buildSettings = {
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CLANG_ENABLE_MODULES = YES;
@@ -273,6 +275,7 @@
 		};
 		1A4DB78D2D4FD0DE00964DE0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C6C1ADB12D577840004F9CA0 /* Secret.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -339,6 +342,7 @@
 		};
 		1A4DB78E2D4FD0DE00964DE0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C6C1ADB12D577840004F9CA0 /* Secret.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
