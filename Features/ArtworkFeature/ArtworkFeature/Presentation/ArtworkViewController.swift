@@ -66,10 +66,11 @@ final class ArtworkViewController: UIViewController {
             $0.edges.equalToSuperview()
         }
         
-        view.addSubview(addCircleButton)
-        addCircleButton.snp.makeConstraints {
-            $0.bottom.trailing.equalToSuperview().inset(16)
-        }
+        // MARK: hidden
+//        view.addSubview(addCircleButton)
+//        addCircleButton.snp.makeConstraints {
+//            $0.bottom.trailing.equalToSuperview().inset(16)
+//        }
         
         view.addSubview(networkErrorUI)
         networkErrorUI.snp.makeConstraints {
