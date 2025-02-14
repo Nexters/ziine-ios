@@ -63,7 +63,7 @@ final class MagazineInteractor:
             case .success(let data):
                 presenter?.reloadMagazineCarousel(magazineModels: data)
             case .failure(let failure):
-                print("failed to fetch magazine list: \(failure)")
+                presenter?.showsNetworkErrorUI()
                 break
             }
         }
