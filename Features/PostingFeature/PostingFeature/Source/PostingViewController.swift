@@ -71,6 +71,7 @@ fileprivate struct PostingGuideView: View {
     }
     
     private let guideMessage: [PostingGuideMessage] = PostingGuideMessage.make()
+    private let bottomButtonHeight: CGFloat = 52
     
     var body: some View {
         ScrollView {
@@ -85,6 +86,7 @@ fileprivate struct PostingGuideView: View {
             ForEach(Array(guideMessage.enumerated()), id: \ .offset) { index, message in
                 PostingGuideCell(index: index + 1, message: message)
             }
+            .padding(.bottom, bottomButtonHeight)
         }
         .containerRelativeFrame(.horizontal)
         .background(ZiineColor.color(.g900))
@@ -93,7 +95,7 @@ fileprivate struct PostingGuideView: View {
                 listener?(.postingButtonTapped)
             } label: {
                 RoundedRectangle(cornerRadius: 16)
-                    .frame(height: 52)
+                    .frame(height: bottomButtonHeight)
                     .padding(.horizontal, 16)
                     .foregroundStyle(ZiineColor.color(.p500))
                     .overlay {
@@ -134,7 +136,7 @@ fileprivate struct PostingGuideCell: View {
                 .foregroundStyle(.white)
                 .padding(.bottom, 14)
             
-            Image(systemName: "chevron.right")
+            ZiineImage.image(guideMessage.imageName)
                 .resizable()
                 .frame(height: 240)
                 .padding(.horizontal, 11.5)
