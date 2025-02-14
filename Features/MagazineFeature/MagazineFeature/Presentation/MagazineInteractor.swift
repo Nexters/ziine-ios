@@ -44,7 +44,7 @@ final class MagazineInteractor:
     }
     
     func itemSelected(model: MagazineModel) {
-        router?.pushToDetailView()
+        self.listener?.magazineDetail(dataModel: model)
     }
     
     func networkError(action: CommonUI.NetworkErrorUIListener) {

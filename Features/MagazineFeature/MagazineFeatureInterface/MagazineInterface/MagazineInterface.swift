@@ -7,7 +7,9 @@
 
 import UIKit
 
-public protocol MagazineListener: AnyObject { }
+public protocol MagazineListener: AnyObject {
+    func magazineDetail(dataModel: MagazineModel)
+}
 
 public protocol MagazineViewBuildable {
     func build(with listener: MagazineListener?) -> MagazineRouting
@@ -15,6 +17,4 @@ public protocol MagazineViewBuildable {
 
 public protocol MagazineRouting: AnyObject {
     var viewController: UIViewController { get }
-    
-    func pushToDetailView()
 }

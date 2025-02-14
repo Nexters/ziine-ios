@@ -10,10 +10,7 @@ import UIKit
 public protocol MagazineDetailListener: AnyObject {}
 
 public protocol MagazineDetailViewBuildable {
-    func build(
-        urtString: String,
-        with listener: MagazineListener?
-    ) -> MagazineDetailRouting?
+    func build(urlString: String, with listener: MagazineDetailListener?) -> MagazineDetailRouting
 }
 
 public protocol MagazineDetailRouting: AnyObject {

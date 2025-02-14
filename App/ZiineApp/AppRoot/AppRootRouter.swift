@@ -16,6 +16,7 @@ protocol AppRootRouting {
     func configurePages() -> [ZiinStatusTabBarItem: UIViewController]
     func pushToPostingGuide()
     func pushToArtworkDetail(urlString: String)
+    func pushToMagazineDetail(urlString: String)
 }
 
 final class AppRootRouter: AppRootRouting {
@@ -35,13 +36,17 @@ final class AppRootRouter: AppRootRouting {
     private let magazineBuildable: MagazineViewBuildable
     private var magazineRouting: MagazineRouting?
     
+    private let magazineDetailViewBuildable: MagazineDetailViewBuildable
+    private var magazineDetailRouting: MagazineDetailRouting?
+    
     init(
         viewController: UIViewController,
         interactor: AppRootInteractable,
         artworkBuildable: ArtworkViewBuildable,
         artworkDetailViewBuildable: ArtworkDetailViewBuildable,
         postingBuildable: PostingViewBuildable,
-        magazineBuildable: MagazineViewBuildable
+        magazineBuildable: MagazineViewBuildable,
+        magazineDetailViewBuildable: MagazineDetailViewBuildable
     ) {
         self.viewController = viewController
         self.interactor = interactor
@@ -50,6 +55,7 @@ final class AppRootRouter: AppRootRouting {
         self.postingBuildable = postingBuildable
         self.artworkDetailViewBuildable = artworkDetailViewBuildable
         self.magazineBuildable = magazineBuildable
+        self.magazineDetailViewBuildable = magazineDetailViewBuildable
     }
     
     func configurePages() -> [ZiinStatusTabBarItem: UIViewController] {
@@ -79,6 +85,16 @@ final class AppRootRouter: AppRootRouting {
         
         // TODO: - 우리 웹 로직으로 변경
         let routing = artworkDetailViewBuildable.build(
+            urlString: urlString,
+            with: nil
+        )
+        let uiViewController = routing.viewController
+        
+        viewController.navigationController?.pushViewController(uiViewController, animated: true)
+    }
+    
+    func pushToMagazineDetail(urlString: String) {
+        let routing = magazineDetailViewBuildable.build(
             urlString: urlString,
             with: nil
         )

@@ -15,11 +15,4 @@ final class MagazineRouter: MagazineRouting {
     init(viewController: UIViewController) {
         self.viewController = viewController
     }
-    
-    // MARK: - Detail View (web)
-    func pushToDetailView() {
-        let vc = UIViewController()
-        vc.view.backgroundColor = .systemBlue
-        viewController.present(vc, animated: true)
-    }
 }
