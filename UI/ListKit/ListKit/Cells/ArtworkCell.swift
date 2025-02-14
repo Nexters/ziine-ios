@@ -53,7 +53,6 @@ public final class ArtworkCell: UICollectionViewCell {
         imageView.contentMode = .scaleAspectFill
         imageView.layer.cornerRadius = 16
         imageView.clipsToBounds = true
-        imageView.backgroundColor = .red
         return imageView
     }()
     
@@ -62,12 +61,12 @@ public final class ArtworkCell: UICollectionViewCell {
         imageView.contentMode = .scaleAspectFill
         imageView.layer.cornerRadius = imageView.frame.height / 2
         imageView.clipsToBounds = true
-        imageView.backgroundColor = .blue
         return imageView
     }()
     
     private let gradientImageView: UIImageView = {
         let iv = UIImageView()
+        iv.image = ZiineImage.uiImage(.dimm)
         return iv
     }()
     

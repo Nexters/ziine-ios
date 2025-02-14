@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		1A4DB7952D4FD18400964DE0 /* ThirdParty.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A4DB7942D4FD18400964DE0 /* ThirdParty.framework */; };
 		1A4DB7962D4FD18400964DE0 /* ThirdParty.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1A4DB7942D4FD18400964DE0 /* ThirdParty.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		C6C1ADB22D577840004F9CA0 /* Secret.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = C6C1ADB12D577840004F9CA0 /* Secret.xcconfig */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -145,7 +144,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastUpgradeCheck = 1600;
+				LastUpgradeCheck = 1620;
 				TargetAttributes = {
 					1A4DB7832D4FD0DE00964DE0 = {
 						CreatedOnToolsVersion = 16.0;
@@ -177,7 +176,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C6C1ADB22D577840004F9CA0 /* Secret.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -200,6 +198,7 @@
 			buildSettings = {
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -240,6 +239,7 @@
 			buildSettings = {
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
