@@ -48,7 +48,7 @@ public struct NetworkErrorUI: View {
                 .frame(height: 40)
             
             Button {
-                
+                listener?(.retryButtonTapped)
             } label: {
                 Text("다시 시도하기")
                     .foregroundStyle(ZiineColor.color(.g0))

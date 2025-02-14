@@ -8,6 +8,17 @@
 import UIKit
 import MagazineFeatureInterface
 
+final class MagazineInteractorComponent: MagazineInteractorDependency {
+    var fetchMagazineListUseCase: any FetchMagazineListUseCase
+        
+    init() {
+        // TODO: - 의존성 주입
+        self.fetchMagazineListUseCase = DefaultFetchMagazineListUseCase(
+            magazineRepository: DefaultMagazineRepository()
+        )
+    }
+}
+
 public final class MagazineViewBuilder: MagazineViewBuildable {
     
     public init() {}
@@ -24,17 +35,8 @@ public final class MagazineViewBuilder: MagazineViewBuildable {
         interactor.router = router
         interactor.presenter = viewController
         
-        return router
-    }
-}
-
-final class MagazineInteractorComponent: MagazineInteractorDependency {
-    var fetchMagazineListUseCase: any FetchMagazineListUseCase
+        interactor.didBecomeActive()
         
-    init() {
-        // TODO: - 의존성 주입
-        self.fetchMagazineListUseCase = DefaultFetchMagazineListUseCase(
-            magazineRepository: DefaultMagazineRepository()
-        )
+        return router
     }
 }

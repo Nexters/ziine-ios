@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftUI
 import CommonUI
 import DesignSystem
 import MagazineFeatureInterface
@@ -13,25 +14,15 @@ import MagazineFeatureInterface
 internal import SnapKit
 
 protocol MagazineViewPresentableListener: AnyObject {
-    func itemSelected(indexPath: IndexPath)
-}
-
-enum CarouselConstants {
-    static let dummyItemCount = 2
-    static let sideItemScale: CGFloat = 0.9
-    static let spacing: CGFloat = 8
-    static let visibleItemWidth: CGFloat = 0.8
+    func itemSelected(model: MagazineModel)
+    func didBecomeActive()
+    func networkError(action: NetworkErrorUIListener)
 }
 
 final class MagazineViewController: UIViewController {
     var listener: MagazineViewPresentableListener?
     
-    private var data: [MagazineModel] = [
-        MagazineModel(title: "매거진 제목1"),
-        MagazineModel(title: "매거진 제목2"),
-        MagazineModel(title: "매거진 제목3"),
-        MagazineModel(title: "매거진 제목4")
-    ]
+    private var dataModel: [MagazineModel] = []
     
     private var currentPage: Int = 1 {
         didSet {
@@ -39,19 +30,43 @@ final class MagazineViewController: UIViewController {
         }
     }
     
-    private var actualPage: Int {
-        return (currentPage - CarouselConstants.dummyItemCount).clamped(to: 1...data.count)
-    }
-    
     init() {
         super.init(nibName: nil, bundle: nil)
         
         configureUI()
-        configureInfinityScroll()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func configureUI() {
+        view.backgroundColor = ZiineColor.uiColor(.g900)
+        
+        view.addSubview(magazineCarousel)
+        magazineCarousel.snp.makeConstraints {
+            $0.top.equalToSuperview().inset(24)
+            $0.leading.trailing.equalToSuperview()
+        }
+        
+        view.addSubview(carouselPageCounter)
+        carouselPageCounter.snp.makeConstraints {
+            $0.top.equalTo(magazineCarousel.snp.bottom).inset(-12)
+            $0.centerX.equalToSuperview()
+            $0.bottom.equalTo(view.safeAreaLayoutGuide).inset(82)
+        }
+        
+        view.addSubview(networkErrorUI)
+        networkErrorUI.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+    }
+    
+    private func updatePageCounter() {
+        carouselPageCounter.setTextWithLineHeight(
+            text: "\(currentPage)/\(dataModel.count)",
+            fontStyle: .p5
+        )
     }
     
     // MARK: UI Components
@@ -82,52 +97,55 @@ final class MagazineViewController: UIViewController {
         return label
     }()
     
-    func configureUI() {
-        view.backgroundColor = ZiineColor.uiColor(.g900)
-        
-        view.addSubview(magazineCarousel)
-        magazineCarousel.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(24)
-            $0.leading.trailing.equalToSuperview()
+    private lazy var networkErrorUI: UIView = {
+        let ui = NetworkErrorUI { [weak self] action in
+            self?.listener?.networkError(action: action)
         }
-        
-        view.addSubview(carouselPageCounter)
-        carouselPageCounter.snp.makeConstraints {
-            $0.top.equalTo(magazineCarousel.snp.bottom).inset(-12)
-            $0.centerX.equalToSuperview()
-            $0.bottom.equalTo(view.safeAreaLayoutGuide).inset(82)
-        }
-        
-        updatePageCounter()
-        
-    }
-    
-    private func updatePageCounter() {
-        carouselPageCounter.setTextWithLineHeight(
-            text: "\(currentPage - 2)/\(data.count)",
-            fontStyle: .p5
-        )
-    }
-    
-    // MARK: Infinity scroll
-    
-    private func configureInfinityScroll() {
-        let cellWidth = magazineCarousel.frame.width * CarouselConstants.visibleItemWidth + CarouselConstants.spacing
-        let targetOffset = CGPoint(
-            x: cellWidth * CGFloat(CarouselConstants.dummyItemCount),
-            y: 0
-        )
-        magazineCarousel.setContentOffset(targetOffset, animated: false)
-    }
+        let hostingController = UIHostingController(rootView: ui)
+        hostingController.view.backgroundColor = .clear
+        hostingController.view.isHidden = true
+        return hostingController.view
+    }()
 }
 
 // MARK: - MagazineViewPresentable
 
 extension MagazineViewController: MagazineViewPresentable {
     func reloadMagazineCarousel(magazineModels: [MagazineModel]) {
-        self.data = magazineModels
-        magazineCarousel.reloadData()
-        configureInfinityScroll()
+        if magazineModels.isEmpty {
+            showsNetworkErrorUI()
+        } else {
+            showMagazineCarousel()
+            
+            dataModel = magazineModels
+            magazineCarousel.reloadData()
+            updatePageCounter()
+        }
+    }
+    
+    private func showMagazineCarousel() {
+        networkErrorUI.isHidden = true
+        magazineCarousel.isHidden = false
+    }
+    
+    func showsNetworkErrorUI() {
+        networkErrorUI.isHidden = false
+        magazineCarousel.isHidden = true
+    }
+}
+
+// MARK: - Scroll View Delegate (for Page Tracking)
+
+extension MagazineViewController: UIScrollViewDelegate {
+    func scrollViewWillEndDragging(
+        _ scrollView: UIScrollView,
+        withVelocity velocity: CGPoint,
+        targetContentOffset: UnsafeMutablePointer<CGPoint>
+    ) {
+        let layout = magazineCarousel.collectionViewLayout as! UICollectionViewFlowLayout
+        let cellWidthIncludingSpacing = layout.itemSize.width + layout.minimumLineSpacing
+        let estimatedIndex = (targetContentOffset.pointee.x / cellWidthIncludingSpacing).rounded()
+        currentPage = Int(estimatedIndex) + 1
     }
 }
 
@@ -142,7 +160,7 @@ extension MagazineViewController: UICollectionViewDelegate, UICollectionViewData
         _ collectionView: UICollectionView,
         numberOfItemsInSection section: Int
     ) -> Int {
-        return CarouselConstants.dummyItemCount * 2 + data.count
+        return dataModel.count
     }
 
     func collectionView(
@@ -156,55 +174,14 @@ extension MagazineViewController: UICollectionViewDelegate, UICollectionViewData
             return UICollectionViewCell()
         }
         
-        let dataIndex = calculateDataIndex(for: indexPath.row)
-        cell.configure(with: data[dataIndex])
-        
+        cell.configure(with: dataModel[indexPath.row])
         return cell
     }
     
-    private func calculateDataIndex(for row: Int) -> Int {
-        let totalItems = CarouselConstants.dummyItemCount * 2 + data.count
-        switch row {
-        case 0..<CarouselConstants.dummyItemCount:
-            return data.count - CarouselConstants.dummyItemCount + row
-        case totalItems - CarouselConstants.dummyItemCount..<totalItems:
-            return row - (totalItems - CarouselConstants.dummyItemCount)
-        default:
-            return row - CarouselConstants.dummyItemCount
-        }
-    }
-}
-
-// MARK: - Scroll View Delegate (for Page Tracking)
-extension MagazineViewController: UIScrollViewDelegate {
-    func scrollViewWillEndDragging(
-        _ scrollView: UIScrollView,
-        withVelocity velocity: CGPoint,
-        targetContentOffset: UnsafeMutablePointer<CGPoint>
+    func collectionView(
+        _ collectionView: UICollectionView,
+        didSelectItemAt indexPath: IndexPath
     ) {
-        let layout = magazineCarousel.collectionViewLayout as! UICollectionViewFlowLayout
-        let cellWidthIncludingSpacing = layout.itemSize.width + layout.minimumLineSpacing
-        let estimatedIndex = (targetContentOffset.pointee.x / cellWidthIncludingSpacing).rounded()
-        currentPage = Int(estimatedIndex) + 1
-    }
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let contentXOffset = scrollView.contentOffset.x
-        let numberOfItems = CarouselConstants.dummyItemCount * 2 + data.count
-        let cellWidth = magazineCarousel.frame.width * CarouselConstants.visibleItemWidth + CarouselConstants.spacing
-        
-        if Int(contentXOffset) > Int(cellWidth) * (numberOfItems - CarouselConstants.dummyItemCount) {
-            let targetOffset = CGPoint(
-                x: cellWidth * CGFloat(CarouselConstants.dummyItemCount),
-                y: 0
-            )
-            magazineCarousel.setContentOffset(targetOffset, animated: false)
-        } else if Int(contentXOffset) <= Int(cellWidth) {
-            let targetOffset = CGPoint(
-                x: cellWidth * CGFloat(numberOfItems - CarouselConstants.dummyItemCount - 1),
-                y: 0
-            )
-            magazineCarousel.setContentOffset(targetOffset, animated: false)
-        }
+        listener?.itemSelected(model: dataModel[indexPath.row])
     }
 }

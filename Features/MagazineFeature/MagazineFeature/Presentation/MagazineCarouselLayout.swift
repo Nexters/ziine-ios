@@ -8,7 +8,12 @@
 import UIKit
 
 final class MagazineCarouselLayout: UICollectionViewFlowLayout {
+    
     private var isSetup: Bool = false
+    
+    private let visibleItemWidth: CGFloat = 0.8
+    private let spacing: CGFloat = 8.0
+    private let sideItemScale: CGFloat = 0.9
     
     override func prepare() {
         super.prepare()
@@ -23,7 +28,7 @@ final class MagazineCarouselLayout: UICollectionViewFlowLayout {
         guard let collectionView = collectionView else { return }
         
         let collectionViewSize = collectionView.bounds.size
-        let itemWidth = collectionViewSize.width * CarouselConstants.visibleItemWidth
+        let itemWidth = collectionViewSize.width * visibleItemWidth
         let itemHeight = collectionViewSize.height
         
         itemSize = CGSize(width: itemWidth, height: itemHeight)
@@ -31,7 +36,7 @@ final class MagazineCarouselLayout: UICollectionViewFlowLayout {
         let xInset = (collectionViewSize.width - itemWidth) / 2
         sectionInset = UIEdgeInsets(top: 0, left: xInset, bottom: 0, right: xInset)
         
-        minimumLineSpacing = CarouselConstants.spacing
+        minimumLineSpacing = spacing
         scrollDirection = .horizontal
     }
     
@@ -94,7 +99,7 @@ final class MagazineCarouselLayout: UICollectionViewFlowLayout {
         let maxDistance = itemSize.width + minimumLineSpacing
         let distance = min(abs(collectionCenter - center), maxDistance)
         let ratio = (maxDistance - distance) / maxDistance
-        let scale = ratio * (1 - CarouselConstants.sideItemScale) + CarouselConstants.sideItemScale
+        let scale = ratio * (1 - sideItemScale) + sideItemScale
         
         let visibleRect = CGRect(
             origin: collectionView.contentOffset,

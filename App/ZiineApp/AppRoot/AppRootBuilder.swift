@@ -30,6 +30,7 @@ final class AppRootBuilder: AppRootBuildable {
         let artworkBuilder = ArtworkViewBuilder()
         let artworkDetailBuilder = ArtworkDetailBuilder()
         let magazineBuilder = MagazineViewBuilder()
+        let magazineDetailBuilder = MagazineDetailBuilder()
         
         let router = AppRootRouter(
             viewController: viewController,
@@ -37,7 +38,8 @@ final class AppRootBuilder: AppRootBuildable {
             artworkBuildable: artworkBuilder,
             artworkDetailViewBuildable: artworkDetailBuilder,
             postingBuildable: postingBuilder,
-            magazineBuildable: magazineBuilder
+            magazineBuildable: magazineBuilder,
+            magazineDetailViewBuildable: magazineDetailBuilder
         )
         
         viewController.listener = interactor

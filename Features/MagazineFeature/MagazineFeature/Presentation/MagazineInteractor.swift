@@ -6,12 +6,14 @@
 //
 
 import UIKit
+import CommonUI
 import DesignSystem
 import MagazineFeatureInterface
 
 protocol MagazineViewPresentable: AnyObject {
     var listener: MagazineViewPresentableListener? { get set }
     func reloadMagazineCarousel(magazineModels: [MagazineModel])
+    func showsNetworkErrorUI()
 }
 
 protocol MagazineInteractorable: AnyObject {
@@ -37,6 +39,23 @@ final class MagazineInteractor:
         self.dependency = dependency
     }
     
+    func didBecomeActive() {
+        self.fetch()
+    }
+    
+    func itemSelected(model: MagazineModel) {
+        self.listener?.magazineDetail(dataModel: model)
+    }
+    
+    func networkError(action: CommonUI.NetworkErrorUIListener) {
+        switch action {
+        case .retryButtonTapped:
+            self.fetch()
+        @unknown default:
+            break
+        }
+    }
+    
     func fetch() {
         Task { @MainActor in
             let result = await dependency.fetchMagazineListUseCase.fetch()
@@ -44,13 +63,9 @@ final class MagazineInteractor:
             case .success(let data):
                 presenter?.reloadMagazineCarousel(magazineModels: data)
             case .failure(let failure):
-                print("failed to fetch magazine list: \(failure)")
+                presenter?.showsNetworkErrorUI()
                 break
             }
         }
-    }
-    
-    func itemSelected(indexPath: IndexPath) {
-        router?.pushToDetailView()
     }
 }

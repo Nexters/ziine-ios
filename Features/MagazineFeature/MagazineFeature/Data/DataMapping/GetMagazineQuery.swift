@@ -10,11 +10,31 @@ import MagazineFeatureInterface
 
 extension ResponseDTO {
     struct GetMagazineList: Respondable {
-        var status: String
-        var message: String
+        var magazines: [Magazine]
+        var totalCount: Int
+        
+        struct Magazine: Decodable {
+            var id: Int
+            var title: String
+            var summary: String
+            var thumbnailImageUrl: String
+            var keywords: [String]
+            var createdAt: String
+            var modifiedAt: String
+        }
         
         func toDomain() -> [MagazineModel] {
-            .init()
+            return magazines.map {
+                MagazineModel(
+                    id: $0.id,
+                    title: $0.title,
+                    summary: $0.summary,
+                    thumbnailImageURL: $0.thumbnailImageUrl,
+                    keywords: $0.keywords,
+                    createdAt: $0.createdAt,
+                    modifiedAt: $0.modifiedAt
+                )
+            }
         }
     }
 }
