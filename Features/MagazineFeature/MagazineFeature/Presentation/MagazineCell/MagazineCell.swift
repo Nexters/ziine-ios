@@ -15,7 +15,7 @@ internal import SnapKit
 internal import Kingfisher
 
 final class MagazineCell: UICollectionViewCell {
-    static let identifier = "MagazineCell"
+    public static let identifier = String(describing: MagazineCell.self)
     
     func configure(with model: MagazineModel) {
         titleLabel.setTextWithLineHeight(text: model.title, fontStyle: .h3)
