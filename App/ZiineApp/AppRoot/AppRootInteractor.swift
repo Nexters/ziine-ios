@@ -46,8 +46,9 @@ final class AppRootInteractor:
         router?.pushToPostingGuide()
     }
     
-    func artworkDetail(dataModel: ListDataModel) {
-        router?.pushToArtworkDetail(urlString: "https://www.naver.com")
+    func artworkDetail(dataModel: ArtworkModel) {
+        let urlString = "https://www.ziine.gallery/artwork/\(dataModel.id)"
+        router?.pushToArtworkDetail(urlString: urlString)
     }
     
     func magazineDetail(dataModel: MagazineModel) {

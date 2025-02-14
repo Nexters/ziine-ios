@@ -44,7 +44,6 @@ public final class ArtworkDetailViewController: UIViewController {
 
 extension ArtworkDetailViewController: ArtworkDetailViewPresentable {
     func loadWebView(urlString: String) {
-        print(#function)
-        webView.loadWebView(urlString: "https://www.naver.com")
+        webView.loadWebView(urlString: urlString)
     }
 }

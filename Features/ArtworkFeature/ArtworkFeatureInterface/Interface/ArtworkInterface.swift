@@ -10,7 +10,7 @@ import ListKit
 
 public protocol ArtworkListener: AnyObject {
     func addButtonTapped()
-    func artworkDetail(dataModel: ListDataModel)
+    func artworkDetail(dataModel: ArtworkModel)
 }
 
 public protocol ArtworkViewBuildable {

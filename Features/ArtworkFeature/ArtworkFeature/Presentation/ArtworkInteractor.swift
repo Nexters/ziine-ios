@@ -38,16 +38,19 @@ final class ArtworkInteractor:
     
     var dependency: ArtworkInteractorDependency
     
+    private var artworkModels: [ArtworkModel]
+    
     init(dependency: ArtworkInteractorDependency) {
         self.dependency = dependency
+        self.artworkModels = []
     }
     
     func didBecomeActive() {
         self.fetch()
     }
     
-    func modelSelected(dataModel: ListDataModel) {
-        self.listener?.artworkDetail(dataModel: dataModel)
+    func modelSelected(dataModel: ListDataModel, indexPath: IndexPath) {
+        self.listener?.artworkDetail(dataModel: artworkModels[indexPath.row])
     }
     
     func circleButton(action: DesignSystem.CircleButtonListener) {
@@ -73,6 +76,7 @@ final class ArtworkInteractor:
             let result = await dependency.fetchArtworkListUseCase.execute()
             switch result {
             case .success(let success):
+                artworkModels = success
                 presenter?.reloadCollectionUI(artworkModels: success)
             case .failure:
                 presenter?.showsNetworkErrorUI()

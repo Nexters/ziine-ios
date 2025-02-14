@@ -9,8 +9,6 @@ import Foundation
 
 public struct ListDataModel {
     
-    public init() { }
-    
     /// 타이틀
     public var title: String?
     
@@ -22,4 +20,16 @@ public struct ListDataModel {
     
     /// 썸네일 이미지
     public var thumbnailImageUrlString: String?
+    
+    public init(
+        title: String? = nil,
+        username: String? = nil,
+        profileImageUrlString: String? = nil,
+        thumbnailImageUrlString: String? = nil
+    ) {
+        self.title = title
+        self.username = username
+        self.profileImageUrlString = profileImageUrlString
+        self.thumbnailImageUrlString = thumbnailImageUrlString
+    }
 }
