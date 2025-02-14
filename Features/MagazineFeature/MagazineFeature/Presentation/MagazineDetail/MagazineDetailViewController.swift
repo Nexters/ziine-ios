@@ -43,6 +43,6 @@ public final class MagazineDetailViewController: UIViewController {
 
 extension MagazineDetailViewController: MagazineDetailViewPresentable {
     func loadWebView(urlString: String) {
-        webView.loadWebView(urlString: "https://www.naver.com")
+        webView.loadWebView(urlString: urlString)
     }
 }

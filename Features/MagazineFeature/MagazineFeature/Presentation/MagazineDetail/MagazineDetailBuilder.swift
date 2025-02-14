@@ -24,6 +24,8 @@ public final class MagazineDetailBuilder: MagazineDetailViewBuildable {
         interactor.listener = listener
         interactor.router = router
         interactor.presenter = viewController
+        
+        interactor.didBecomeActive()
 
         return router
     }
