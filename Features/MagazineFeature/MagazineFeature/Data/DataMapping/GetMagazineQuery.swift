@@ -26,6 +26,7 @@ extension ResponseDTO {
         func toDomain() -> [MagazineModel] {
             return magazines.map {
                 MagazineModel(
+                    id: $0.id,
                     title: $0.title,
                     summary: $0.summary,
                     thumbnailImageURL: $0.thumbnailImageUrl,

@@ -8,6 +8,7 @@
 import Foundation
 
 public struct MagazineModel {
+    public let id: Int
     public let title: String
     public let summary: String
     public let thumbnailImageURL: String
@@ -16,6 +17,7 @@ public struct MagazineModel {
     public let modifiedAt: String
     
     public init(
+        id: Int,
         title: String,
         summary: String,
         thumbnailImageURL: String,
@@ -23,6 +25,7 @@ public struct MagazineModel {
         createdAt: String,
         modifiedAt: String
     ) {
+        self.id = id
         self.title = title
         self.summary = summary
         self.thumbnailImageURL = thumbnailImageURL
