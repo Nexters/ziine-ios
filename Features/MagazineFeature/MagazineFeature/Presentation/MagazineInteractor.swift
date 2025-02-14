@@ -6,12 +6,14 @@
 //
 
 import UIKit
+import CommonUI
 import DesignSystem
 import MagazineFeatureInterface
 
 protocol MagazineViewPresentable: AnyObject {
     var listener: MagazineViewPresentableListener? { get set }
     func reloadMagazineCarousel(magazineModels: [MagazineModel])
+    func showsNetworkErrorUI()
 }
 
 protocol MagazineInteractorable: AnyObject {
@@ -35,6 +37,19 @@ final class MagazineInteractor:
     
     init(dependency: MagazineInteractorDependency) {
         self.dependency = dependency
+    }
+    
+    func didBecomeActive() {
+        self.fetch()
+    }
+    
+    func networkError(action: CommonUI.NetworkErrorUIListener) {
+        switch action {
+        case .retryButtonTapped:
+            self.fetch()
+        @unknown default:
+            break
+        }
     }
     
     func fetch() {

@@ -18,7 +18,7 @@ final class DefaultMagazineRepository: MagazineRepository {
         self.apiClient = apiClient
     }
     
-    func fetch(query: MagazineRequestQuery.GetMagazine) async -> Result<[MagazineModel], RepositoryError> {
+    func fetch() async -> Result<[MagazineModel], RepositoryError> {
         await withCheckedContinuation { continuation in
             self.apiClient.request(
                 ResponseDTO.GetMagazineList.self,
