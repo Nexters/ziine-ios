@@ -43,6 +43,10 @@ final class MagazineInteractor:
         self.fetch()
     }
     
+    func itemSelected(model: MagazineModel) {
+        router?.pushToDetailView()
+    }
+    
     func networkError(action: CommonUI.NetworkErrorUIListener) {
         switch action {
         case .retryButtonTapped:
@@ -63,9 +67,5 @@ final class MagazineInteractor:
                 break
             }
         }
-    }
-    
-    func itemSelected(indexPath: IndexPath) {
-        router?.pushToDetailView()
     }
 }

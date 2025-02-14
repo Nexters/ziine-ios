@@ -14,7 +14,7 @@ import MagazineFeatureInterface
 internal import SnapKit
 
 protocol MagazineViewPresentableListener: AnyObject {
-    func itemSelected(indexPath: IndexPath)
+    func itemSelected(model: MagazineModel)
     func didBecomeActive()
     func networkError(action: NetworkErrorUIListener)
 }
@@ -22,7 +22,7 @@ protocol MagazineViewPresentableListener: AnyObject {
 final class MagazineViewController: UIViewController {
     var listener: MagazineViewPresentableListener?
     
-    private var data: [MagazineModel] = []
+    private var dataModel: [MagazineModel] = []
     
     private var currentPage: Int = 1 {
         didSet {
@@ -64,7 +64,7 @@ final class MagazineViewController: UIViewController {
     
     private func updatePageCounter() {
         carouselPageCounter.setTextWithLineHeight(
-            text: "\(currentPage)/\(data.count)",
+            text: "\(currentPage)/\(dataModel.count)",
             fontStyle: .p5
         )
     }
@@ -117,7 +117,7 @@ extension MagazineViewController: MagazineViewPresentable {
         } else {
             showMagazineCarousel()
             
-            data = magazineModels
+            dataModel = magazineModels
             magazineCarousel.reloadData()
             updatePageCounter()
         }
@@ -160,7 +160,7 @@ extension MagazineViewController: UICollectionViewDelegate, UICollectionViewData
         _ collectionView: UICollectionView,
         numberOfItemsInSection section: Int
     ) -> Int {
-        return data.count
+        return dataModel.count
     }
 
     func collectionView(
@@ -174,7 +174,14 @@ extension MagazineViewController: UICollectionViewDelegate, UICollectionViewData
             return UICollectionViewCell()
         }
         
-        cell.configure(with: data[indexPath.row])
+        cell.configure(with: dataModel[indexPath.row])
         return cell
+    }
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        didSelectItemAt indexPath: IndexPath
+    ) {
+        listener?.itemSelected(model: dataModel[indexPath.row])
     }
 }
