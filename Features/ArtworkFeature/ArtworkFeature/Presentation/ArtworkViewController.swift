@@ -85,43 +85,43 @@ extension ArtworkViewController: ArtworkViewPresentable {
     }
     
     func reloadCollectionUI(artworkModels: [ArtworkFeatureInterface.ArtworkModel]) {
-        if artworkModels.isEmpty {
-            showsNetworkErrorUI()
-        } else {
-            networkErrorUI.isHidden = true
-            collectionUI.isHidden = false
-        }
+        updateUIVisibility(hasData: !artworkModels.isEmpty)
         
-        var uiModels: [ListDataModel] = []
-        var sectionItems: [CollectionUISectionItem] = []
+        let uiModels = convertToUIModels(from: artworkModels)
+        let sectionItems = buildSectionItems(from: uiModels)
         
-        // TODO: - 로직간소화
+        let sections: [CollectionUISection] = [.default(sectionItems)]
         
-        artworkModels.forEach { artworkModel in
-            var uiModel = ListDataModel()
-            uiModel.profileImageUrlString = artworkModel.artist.profileImageUrl
-            uiModel.thumbnailImageUrlString = artworkModel.artworkImageUrl
-            uiModel.title = artworkModel.title
-            uiModel.username = artworkModel.artist.name
-            
-            uiModels.append(uiModel)
-        }
-        
-        uiModels.forEach { dataModel in
-            let builder = ArtworkCellUIBuilder()
-            builder.configure(dataModel: dataModel, listener: self)
-            
-            sectionItems.append(.artworkThumbnail(builder))
-        }
-        
-        var sections: [CollectionUISection] = []
-        sections.append(.default(sectionItems))
-
-        collectionUI.configure(
-            sections: sections
-        )
+        collectionUI.configure(sections: sections)
     }
     
+    /// handle error ui
+    private func updateUIVisibility(hasData: Bool) {
+        networkErrorUI.isHidden = hasData
+        collectionUI.isHidden = !hasData
+    }
+    
+    /// ArtworkModel 변환
+    private func convertToUIModels(from artworkModels: [ArtworkFeatureInterface.ArtworkModel]) -> [ListDataModel] {
+        return artworkModels.map {
+            ListDataModel(
+                id: $0.id,
+                title: $0.title,
+                username: $0.artist.name,
+                profileImageUrlString: $0.artist.profileImageUrl,
+                thumbnailImageUrlString: $0.artworkImageUrl
+            )
+        }
+    }
+
+    /// For SectionItems
+    private func buildSectionItems(from uiModels: [ListDataModel]) -> [CollectionUISectionItem] {
+        return uiModels.map { dataModel in
+            let builder = ArtworkCellUIBuilder()
+            builder.configure(dataModel: dataModel, listener: self)
+            return .artworkThumbnail(builder)
+        }
+    }
 }
 
 extension ArtworkViewController: ArtworkCellUIBuilder.Listener {
