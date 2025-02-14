@@ -14,7 +14,7 @@ internal import SnapKit
 import ArtworkFeatureInterface
 
 protocol ArtworkViewPresentableListener: AnyObject {
-    func modelSelected(dataModel: ListDataModel)
+    func modelSelected(dataModel: ListDataModel, indexPath: IndexPath)
     func circleButton(action: CircleButtonListener)
     func didBecomeActive()
     func networkError(action: NetworkErrorUIListener)
@@ -105,7 +105,6 @@ extension ArtworkViewController: ArtworkViewPresentable {
     private func convertToUIModels(from artworkModels: [ArtworkFeatureInterface.ArtworkModel]) -> [ListDataModel] {
         return artworkModels.map {
             ListDataModel(
-                id: $0.id,
                 title: $0.title,
                 username: $0.artist.name,
                 profileImageUrlString: $0.artist.profileImageUrl,
@@ -125,7 +124,7 @@ extension ArtworkViewController: ArtworkViewPresentable {
 }
 
 extension ArtworkViewController: ArtworkCellUIBuilder.Listener {
-    func modelSelected(dataModel: ListDataModel) {
-        listener?.modelSelected(dataModel: dataModel)
+    func modelSelected(dataModel: ListDataModel, indexPath: IndexPath) {
+        listener?.modelSelected(dataModel: dataModel, indexPath: indexPath)
     }
 }

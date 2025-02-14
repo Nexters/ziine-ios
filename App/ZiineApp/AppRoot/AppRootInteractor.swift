@@ -46,9 +46,8 @@ final class AppRootInteractor:
         router?.pushToPostingGuide()
     }
     
-    func artworkDetail(dataModel: ListDataModel) {
-        guard let id = dataModel.id else { return }
-        let urlString = "https://www.ziine.gallery/artwork/\(id)"
+    func artworkDetail(dataModel: ArtworkModel) {
+        let urlString = "https://www.ziine.gallery/artwork/\(dataModel.id)"
         router?.pushToArtworkDetail(urlString: urlString)
     }
 }

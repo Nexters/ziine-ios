@@ -9,7 +9,7 @@ import ListKit
 import UIKit
 
 protocol ArtworkCellUIBuilderListener: AnyObject {
-    func modelSelected(dataModel: ListDataModel)
+    func modelSelected(dataModel: ListDataModel, indexPath: IndexPath)
 }
 
 final class ArtworkCellUIBuilder: CollectionUIBuildable {
@@ -60,7 +60,7 @@ final class ArtworkCellUIBuilder: CollectionUIBuildable {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let dataModel else { return }
-        listener?.modelSelected(dataModel: dataModel)
+        listener?.modelSelected(dataModel: dataModel, indexPath: indexPath)
     }
     
 }
