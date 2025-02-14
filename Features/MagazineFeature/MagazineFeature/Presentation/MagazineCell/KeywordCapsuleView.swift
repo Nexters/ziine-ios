@@ -10,7 +10,7 @@ import DesignSystem
 import MagazineFeatureInterface
 
 struct KeywordCapsuleView: View {
-    private let keywords: [String]
+    var keywords: [String]
     
     init(keywords: [String]) {
         self.keywords = keywords

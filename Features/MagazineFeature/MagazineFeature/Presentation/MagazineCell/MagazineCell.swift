@@ -7,27 +7,69 @@
 
 import UIKit
 import SwiftUI
+import ThirdParty
 import DesignSystem
 import MagazineFeatureInterface
 
-import ThirdParty
 internal import SnapKit
+internal import Kingfisher
 
 final class MagazineCell: UICollectionViewCell {
     static let identifier = "MagazineCell"
     
-    // MARK: UI Components
-    private var magazineTypeLogoImageView: UIImageView = {
-       let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
-        
-        // for test
-        imageView.layer.borderColor = UIColor.black.cgColor
-        imageView.layer.borderWidth = 1
-        
-        return imageView
-    }()
+    func configure(with model: MagazineModel) {
+        titleLabel.setTextWithLineHeight(text: model.title, fontStyle: .h3)
+        descriptionLabel.setTextWithLineHeight(text: model.summary, fontStyle: .p2)
+        keywordCapsuleView.rootView.keywords = model.keywords
+        thumbnailImageView.kf.setImage(
+            with: URL(string: model.thumbnailImageURL)
+        )
+    }
     
+    // MARK: - Initializer
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        configureUI()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        thumbnailImageView.image = nil
+    }
+    
+    private func configureUI() {
+        contentView.layer.cornerRadius = 20
+        contentView.backgroundColor = ZiineColor.uiColor(.p600)
+        
+        contentView.addSubview(titleLabel)
+        titleLabel.snp.makeConstraints {
+            $0.leading.trailing.top.equalToSuperview().inset(16)
+        }
+        
+        contentView.addSubview(descriptionLabel)
+        descriptionLabel.snp.makeConstraints {
+            $0.top.equalTo(titleLabel.snp.bottom).inset(-8)
+            $0.leading.trailing.equalToSuperview().inset(16)
+        }
+        
+        contentView.addSubview(keywordCapsuleView.view)
+        keywordCapsuleView.view.snp.makeConstraints {
+            $0.top.equalTo(descriptionLabel.snp.bottom).inset(-24)
+            $0.leading.trailing.equalToSuperview().inset(16)
+        }
+        
+        contentView.addSubview(thumbnailImageView)
+        thumbnailImageView.snp.makeConstraints {
+            $0.leading.bottom.trailing.equalToSuperview().inset(16)
+            $0.height.equalTo(thumbnailImageView.snp.width)
+        }
+    }
+    
+    // MARK: UI Components
     private var titleLabel: UILabel = {
         let label = UILabel()
         label.textColor = .black
@@ -46,20 +88,19 @@ final class MagazineCell: UICollectionViewCell {
         return label
     }()
     
-    private lazy var keywordCapsuleView: UIView = {
+    private lazy var keywordCapsuleView: UIHostingController<KeywordCapsuleView> = {
         let hostingController = UIHostingController(
-            rootView: KeywordCapsuleView(
-                keywords: ["키워드1", "키워드2", "키워드3"]
-            )
+            rootView: KeywordCapsuleView(keywords: [])
         )
         hostingController.view.backgroundColor = .clear
-        return hostingController.view
+        return hostingController
     }()
     
     private let thumbnailImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.layer.cornerRadius = 16
+        imageView.clipsToBounds = true
         
         // for test
         imageView.layer.borderColor = UIColor.black.cgColor
@@ -67,61 +108,4 @@ final class MagazineCell: UICollectionViewCell {
         
         return imageView
     }()
-    
-    // MARK: - Initializer
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        configureUI()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func prepareForReuse() {
-        super.prepareForReuse()
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-    }
-    
-    private func configureUI() {
-        contentView.layer.cornerRadius = 20
-        contentView.backgroundColor = ZiineColor.uiColor(.p600)
-        
-        contentView.addSubview(magazineTypeLogoImageView)
-        magazineTypeLogoImageView.snp.makeConstraints {
-            $0.top.leading.equalToSuperview().inset(16)
-            $0.width.height.equalTo(28)
-        }
-        
-        contentView.addSubview(titleLabel)
-        titleLabel.snp.makeConstraints {
-            $0.top.equalTo(magazineTypeLogoImageView.snp.bottom).inset(-8)
-            $0.leading.trailing.equalToSuperview().inset(16)
-        }
-        
-        contentView.addSubview(descriptionLabel)
-        descriptionLabel.snp.makeConstraints {
-            $0.top.equalTo(titleLabel.snp.bottom).inset(-8)
-            $0.leading.trailing.equalToSuperview().inset(16)
-        }
-        
-        contentView.addSubview(keywordCapsuleView)
-        keywordCapsuleView.snp.makeConstraints {
-            $0.top.equalTo(descriptionLabel.snp.bottom).inset(-24)
-            $0.leading.trailing.equalToSuperview().inset(16)
-        }
-        
-        contentView.addSubview(thumbnailImageView)
-        thumbnailImageView.snp.makeConstraints {
-            $0.leading.bottom.trailing.equalToSuperview().inset(16)
-            $0.height.equalTo(thumbnailImageView.snp.width)
-        }
-    }
-    
-    func configure(with model: MagazineModel) {
-        titleLabel.setTextWithLineHeight(text: model.title, fontStyle: .h3)
-    }
 }

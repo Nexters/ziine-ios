@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftUI
 import CommonUI
 import DesignSystem
 import MagazineFeatureInterface
@@ -14,17 +15,14 @@ internal import SnapKit
 
 protocol MagazineViewPresentableListener: AnyObject {
     func itemSelected(indexPath: IndexPath)
+    func didBecomeActive()
+    func networkError(action: NetworkErrorUIListener)
 }
 
 final class MagazineViewController: UIViewController {
     var listener: MagazineViewPresentableListener?
     
-    private var data: [MagazineModel] = [
-        MagazineModel(title: "매거진 제목1"),
-        MagazineModel(title: "매거진 제목2"),
-        MagazineModel(title: "매거진 제목3"),
-        MagazineModel(title: "매거진 제목4")
-    ]
+    private var data: [MagazineModel] = []
     
     private var currentPage: Int = 1 {
         didSet {
@@ -58,7 +56,10 @@ final class MagazineViewController: UIViewController {
             $0.bottom.equalTo(view.safeAreaLayoutGuide).inset(82)
         }
         
-        updatePageCounter()
+        view.addSubview(networkErrorUI)
+        networkErrorUI.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
     }
     
     private func updatePageCounter() {
@@ -95,16 +96,43 @@ final class MagazineViewController: UIViewController {
         label.layer.borderWidth = 1.5
         return label
     }()
+    
+    private lazy var networkErrorUI: UIView = {
+        let ui = NetworkErrorUI { [weak self] action in
+            self?.listener?.networkError(action: action)
+        }
+        let hostingController = UIHostingController(rootView: ui)
+        hostingController.view.backgroundColor = .clear
+        hostingController.view.isHidden = true
+        return hostingController.view
+    }()
 }
 
 // MARK: - MagazineViewPresentable
 
 extension MagazineViewController: MagazineViewPresentable {
     func reloadMagazineCarousel(magazineModels: [MagazineModel]) {
-        magazineCarousel.reloadData()
+        if magazineModels.isEmpty {
+            showsNetworkErrorUI()
+        } else {
+            showMagazineCarousel()
+            
+            data = magazineModels
+            magazineCarousel.reloadData()
+            updatePageCounter()
+        }
+    }
+    
+    private func showMagazineCarousel() {
+        networkErrorUI.isHidden = true
+        magazineCarousel.isHidden = false
+    }
+    
+    func showsNetworkErrorUI() {
+        networkErrorUI.isHidden = false
+        magazineCarousel.isHidden = true
     }
 }
-
 
 // MARK: - Scroll View Delegate (for Page Tracking)
 
