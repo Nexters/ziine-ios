@@ -22,7 +22,7 @@ public final actor DefaultFetchMagazineListUseCase: FetchMagazineListUseCase {
     }
     
     private func execute() async -> ResultType {
-        let result = await magazineRepository.fetch(query: .init())
+        let result = await magazineRepository.fetch()
         switch result {
         case .success(let success):
             return .success(success)

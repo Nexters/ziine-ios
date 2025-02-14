@@ -8,5 +8,5 @@
 import Utils
 
 public protocol MagazineRepository {
-    func fetch(query: MagazineRequestQuery.GetMagazine) async -> Result<[MagazineModel], RepositoryError>
+    func fetch() async -> Result<[MagazineModel], RepositoryError>
 }
