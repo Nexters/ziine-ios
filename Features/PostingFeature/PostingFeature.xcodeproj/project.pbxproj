@@ -8,13 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		1A9649862D4A8B4800268B29 /* PostingFeatureInterface.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A0B4B442D478032002D10DE /* PostingFeatureInterface.framework */; };
-		1A9649872D4A8B4800268B29 /* PostingFeatureInterface.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1A0B4B442D478032002D10DE /* PostingFeatureInterface.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1A96498A2D4A8B4800268B29 /* DesignSystem.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A9649852D4A8B4800268B29 /* DesignSystem.framework */; };
-		1A96498B2D4A8B4800268B29 /* DesignSystem.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1A9649852D4A8B4800268B29 /* DesignSystem.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1A9649D92D4A935900268B29 /* ThirdParty.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A9649D82D4A935900268B29 /* ThirdParty.framework */; };
-		1A9649DA2D4A935900268B29 /* ThirdParty.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1A9649D82D4A935900268B29 /* ThirdParty.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1AA6AAAA2D5A596C00A6CC9D /* CommonUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AA6AAA92D5A596C00A6CC9D /* CommonUI.framework */; };
-		1AA6AAAB2D5A596C00A6CC9D /* CommonUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1AA6AAA92D5A596C00A6CC9D /* CommonUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,23 +22,6 @@
 			remoteInfo = PostingFeatureInterface;
 		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		1A96498C2D4A8B4800268B29 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				1A9649872D4A8B4800268B29 /* PostingFeatureInterface.framework in Embed Frameworks */,
-				1AA6AAAB2D5A596C00A6CC9D /* CommonUI.framework in Embed Frameworks */,
-				1A9649DA2D4A935900268B29 /* ThirdParty.framework in Embed Frameworks */,
-				1A96498B2D4A8B4800268B29 /* DesignSystem.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		1A0B4B442D478032002D10DE /* PostingFeatureInterface.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PostingFeatureInterface.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -194,7 +173,6 @@
 				1A96496A2D4A538600268B29 /* Sources */,
 				1A96496B2D4A538600268B29 /* Frameworks */,
 				1A96496C2D4A538600268B29 /* Resources */,
-				1A96498C2D4A8B4800268B29 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);

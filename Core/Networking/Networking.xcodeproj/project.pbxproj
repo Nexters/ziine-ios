@@ -8,22 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1A4DB7952D4FD18400964DE0 /* ThirdParty.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A4DB7942D4FD18400964DE0 /* ThirdParty.framework */; };
-		1A4DB7962D4FD18400964DE0 /* ThirdParty.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1A4DB7942D4FD18400964DE0 /* ThirdParty.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		1A4DB7972D4FD18400964DE0 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				1A4DB7962D4FD18400964DE0 /* ThirdParty.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		1A4DB7842D4FD0DE00964DE0 /* Networking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Networking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -120,7 +105,6 @@
 				1A4DB7802D4FD0DE00964DE0 /* Sources */,
 				1A4DB7812D4FD0DE00964DE0 /* Frameworks */,
 				1A4DB7822D4FD0DE00964DE0 /* Resources */,
-				1A4DB7972D4FD18400964DE0 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);

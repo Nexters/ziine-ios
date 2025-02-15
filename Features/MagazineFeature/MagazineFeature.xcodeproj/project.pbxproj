@@ -8,19 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		C62073CA2D5B883600F87C75 /* CommonUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C62073C92D5B883600F87C75 /* CommonUI.framework */; };
-		C62073CB2D5B883600F87C75 /* CommonUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C62073C92D5B883600F87C75 /* CommonUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C64CCC102D50C24D003B8CFC /* MagazineFeatureInterface.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C64CCC072D50C214003B8CFC /* MagazineFeatureInterface.framework */; };
-		C64CCC112D50C24D003B8CFC /* MagazineFeatureInterface.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C64CCC072D50C214003B8CFC /* MagazineFeatureInterface.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C64CCC3C2D52002F003B8CFC /* Utils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C64CCC3B2D52002F003B8CFC /* Utils.framework */; };
-		C64CCC3D2D52002F003B8CFC /* Utils.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C64CCC3B2D52002F003B8CFC /* Utils.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C64CCC702D5208E2003B8CFC /* DesignSystem.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C64CCC6F2D5208E2003B8CFC /* DesignSystem.framework */; };
-		C64CCC712D5208E2003B8CFC /* DesignSystem.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C64CCC6F2D5208E2003B8CFC /* DesignSystem.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C64CCC732D5208E8003B8CFC /* Networking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C64CCC722D5208E8003B8CFC /* Networking.framework */; };
-		C64CCC742D5208E8003B8CFC /* Networking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C64CCC722D5208E8003B8CFC /* Networking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C64CCC772D5208EF003B8CFC /* ThirdParty.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C64CCC752D5208EF003B8CFC /* ThirdParty.framework */; };
-		C64CCC782D5208EF003B8CFC /* ThirdParty.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C64CCC752D5208EF003B8CFC /* ThirdParty.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C64CCC792D5208EF003B8CFC /* Utils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C64CCC762D5208EF003B8CFC /* Utils.framework */; };
-		C64CCC7A2D5208EF003B8CFC /* Utils.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C64CCC762D5208EF003B8CFC /* Utils.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,36 +25,6 @@
 			remoteInfo = MagazineFeatureInterface;
 		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		C64CCC142D50C24D003B8CFC /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				C64CCC112D50C24D003B8CFC /* MagazineFeatureInterface.framework in Embed Frameworks */,
-				C64CCC7A2D5208EF003B8CFC /* Utils.framework in Embed Frameworks */,
-				C64CCC712D5208E2003B8CFC /* DesignSystem.framework in Embed Frameworks */,
-				C62073CB2D5B883600F87C75 /* CommonUI.framework in Embed Frameworks */,
-				C64CCC742D5208E8003B8CFC /* Networking.framework in Embed Frameworks */,
-				C64CCC782D5208EF003B8CFC /* ThirdParty.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C64CCC3E2D52002F003B8CFC /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				C64CCC3D2D52002F003B8CFC /* Utils.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		C62073C92D5B883600F87C75 /* CommonUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CommonUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -195,7 +158,6 @@
 				C64CCC032D50C214003B8CFC /* Sources */,
 				C64CCC042D50C214003B8CFC /* Frameworks */,
 				C64CCC052D50C214003B8CFC /* Resources */,
-				C64CCC3E2D52002F003B8CFC /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -219,7 +181,6 @@
 				C651DECD2D50C15D007579F8 /* Sources */,
 				C651DECE2D50C15D007579F8 /* Frameworks */,
 				C651DECF2D50C15D007579F8 /* Resources */,
-				C64CCC142D50C24D003B8CFC /* Embed Frameworks */,
 			);
 			buildRules = (
 			);

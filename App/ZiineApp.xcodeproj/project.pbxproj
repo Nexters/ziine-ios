@@ -264,6 +264,7 @@
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 6JLYLDSW4U;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ZiineApp/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Ziine;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -301,6 +302,7 @@
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 6JLYLDSW4U;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ZiineApp/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Ziine;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;

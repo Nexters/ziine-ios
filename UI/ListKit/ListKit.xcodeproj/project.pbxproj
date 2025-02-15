@@ -8,22 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1A4DB91A2D57238000964DE0 /* ThirdParty.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A4DB9192D57238000964DE0 /* ThirdParty.framework */; };
-		1A4DB91B2D57238000964DE0 /* ThirdParty.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1A4DB9192D57238000964DE0 /* ThirdParty.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		1A4DB91C2D57238000964DE0 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				1A4DB91B2D57238000964DE0 /* ThirdParty.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		1A4DB6162D4FA46D00964DE0 /* ListKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ListKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -109,7 +94,6 @@
 				1A4DB6122D4FA46D00964DE0 /* Sources */,
 				1A4DB6132D4FA46D00964DE0 /* Frameworks */,
 				1A4DB6142D4FA46D00964DE0 /* Resources */,
-				1A4DB91C2D57238000964DE0 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
