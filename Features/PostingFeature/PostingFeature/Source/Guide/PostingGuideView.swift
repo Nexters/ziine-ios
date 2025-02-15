@@ -35,7 +35,10 @@ struct PostingGuideView: View {
             .padding(.vertical, 40)
             
             ForEach(Array(guideMessage.enumerated()), id: \ .offset) { index, message in
-                PostingGuideCell(index: index + 1, message: message)
+                PostingGuideCell(
+                    index: index + 1,
+                    message: message
+                )
             }
             .padding(.bottom, bottomButtonHeight)
         }

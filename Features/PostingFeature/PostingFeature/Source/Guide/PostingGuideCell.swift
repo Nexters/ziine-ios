@@ -10,9 +10,12 @@ import DesignSystem
 
 struct PostingGuideCell: View {
     private var guideMessage: PostingGuideMessage
-    private var index: Int
+    private var index: Int 
     
-    init(index: Int, message: PostingGuideMessage) {
+    init(
+        index: Int,
+        message: PostingGuideMessage
+    ) {
         self.index = index
         self.guideMessage = message
     }
@@ -37,11 +40,14 @@ struct PostingGuideCell: View {
             ZiineImage.image(guideMessage.imageName)
                 .resizable()
                 .frame(height: 240)
+                .cornerRadius(4)
                 .padding(.horizontal, 11.5)
                 .padding(.bottom, 24)
                 .foregroundStyle(.white)
+                
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(.horizontal, 16)
+        
     }
 }

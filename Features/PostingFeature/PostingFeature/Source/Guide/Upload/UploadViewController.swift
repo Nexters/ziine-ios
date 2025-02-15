@@ -7,6 +7,7 @@
 
 import UIKit
 import CommonUI
+import DesignSystem
 
 final class UploadViewController: UIViewController {
     
@@ -23,11 +24,25 @@ final class UploadViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func viewIsAppearing(_ animated: Bool) {
+        super.viewIsAppearing(animated)
+        
+        navigationController?.interactivePopGestureRecognizer?.delegate = self
+        navigationItem.leftBarButtonItem = .init(image: ZiineImage.uiImage(.directionLeft).withTintColor(.white), style: .plain, target: self, action: #selector(backButtonTapped))
+        navigationItem.leftBarButtonItem?.tintColor = .white
+    }
+    
+    @objc private func backButtonTapped() {
+        navigationController?.popViewController(animated: true)
+    }
+    
     // MARK: - UIComponents
     
     private let webView: ZiineWebViewPresentable = ZiineWebView()
     
     private func configureUI() {
+        view.backgroundColor = ZiineColor.uiColor(.g900)
+        
         let webView = webView.getView()
         view.addSubview(webView)
         webView.snp.makeConstraints {
@@ -40,3 +55,8 @@ final class UploadViewController: UIViewController {
     }
 }
 
+extension UploadViewController: UIGestureRecognizerDelegate {
+    public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldBeRequiredToFailBy otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
+    }
+}

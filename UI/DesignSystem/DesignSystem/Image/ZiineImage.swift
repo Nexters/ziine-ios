@@ -37,9 +37,9 @@ public struct ZiineImage {
         case dimBottom = "dim_bottom"
         case profile = "profile"
         
-        case guide1 = "guide1"
-        case guide2 = "guide2"
-        case guide3 = "guide3"
+        case guide1 = "guide_1"
+        case guide2 = "guide_2"
+        case guide3 = "guide_3"
         
         // Colorable Icons
         case instagramGray = "instagram_gray"
