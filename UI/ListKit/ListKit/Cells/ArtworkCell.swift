@@ -20,7 +20,8 @@ public final class ArtworkCell: UICollectionViewCell {
         )
         
         profileImageView.kf.setImage(
-            with: URL(string: dataModel.profileImageUrlString ?? "")
+            with: URL(string: dataModel.profileImageUrlString ?? ""),
+            placeholder: ZiineImage.uiImage(.profile)
         )
         
         userNameLabel.text = dataModel.username
