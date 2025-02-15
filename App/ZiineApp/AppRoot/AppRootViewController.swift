@@ -62,6 +62,11 @@ final class AppRootViewController: UIViewController,
         return pageViewController
     }()
     
+    private lazy var splashViewController: SplashViewController = {
+        let splashViewController = SplashViewController(listener: self)
+        return splashViewController
+    }()
+    
     private func configureUI() {
         view.backgroundColor = ZiineColor.uiColor(.g900)
         
@@ -81,9 +86,26 @@ final class AppRootViewController: UIViewController,
             $0.horizontalEdges.equalToSuperview()
             $0.bottom.equalToSuperview()
         }
+        
+        let spalshView = splashViewController.view!
+        view.addSubview(spalshView)
+        spalshView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
     }
     
     func set(page: UIViewController) {
         pageViewController.setViewController(page: page)
+    }
+}
+
+extension AppRootViewController: SplashViewControllerListener {
+    func didCompleteSplash() {
+        UIView.animate(withDuration: 0.3, animations: {
+            self.splashViewController.view.alpha = 0
+        }) { _ in
+            self.splashViewController.view.removeFromSuperview()
+            self.splashViewController.removeFromParent()
+        }
     }
 }

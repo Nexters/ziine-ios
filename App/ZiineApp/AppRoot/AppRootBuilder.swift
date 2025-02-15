@@ -7,7 +7,7 @@
 
 import UIKit
 import SwiftUI
-import SnapKit
+internal import SnapKit
 import ArtworkFeature
 import ArtworkFeatureInterface
 import PostingFeature
