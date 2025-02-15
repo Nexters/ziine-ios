@@ -33,7 +33,8 @@ public struct ZiineImage {
         case share = "share"
         case upload = "upload"
         
-        case dimm = "dimm"
+        case dimTop = "dim_top"
+        case dimBottom = "dim_bottom"
         
         // Colorable Icons
         case instagramGray = "instagram_gray"

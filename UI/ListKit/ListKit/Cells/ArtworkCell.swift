@@ -64,9 +64,15 @@ public final class ArtworkCell: UICollectionViewCell {
         return imageView
     }()
     
-    private let gradientImageView: UIImageView = {
+    private let gradientTopImageView: UIImageView = {
         let iv = UIImageView()
-        iv.image = ZiineImage.uiImage(.dimm)
+        iv.image = ZiineImage.uiImage(.dimTop)
+        return iv
+    }()
+    
+    private let gradientBottomImageView: UIImageView = {
+        let iv = UIImageView()
+        iv.image = ZiineImage.uiImage(.dimBottom)
         return iv
     }()
     
@@ -91,10 +97,16 @@ public final class ArtworkCell: UICollectionViewCell {
             $0.edges.equalToSuperview()
         }
         
-        thumbnailImageView.addSubview(gradientImageView)
-        gradientImageView.snp.makeConstraints {
+        thumbnailImageView.addSubview(gradientBottomImageView)
+        gradientBottomImageView.snp.makeConstraints {
+            $0.leading.top.trailing.equalToSuperview()
+            $0.height.equalTo(thumbnailImageView.snp.height).dividedBy(5)
+        }
+        
+        thumbnailImageView.addSubview(gradientBottomImageView)
+        gradientBottomImageView.snp.makeConstraints {
             $0.leading.bottom.trailing.equalToSuperview()
-            $0.height.equalTo(thumbnailImageView.snp.height).dividedBy(3)
+            $0.height.equalTo(thumbnailImageView.snp.height).dividedBy(6)
         }
         
         contentView.addSubview(profileImageView)
