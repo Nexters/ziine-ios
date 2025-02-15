@@ -7,33 +7,41 @@
 
 import UIKit
 import ThirdParty
-internal import Lottie
+import Lottie
+
+// FIXME: Bundle
+extension Bundle {
+    static var current: Bundle {
+        class __ { }
+        return Bundle(for: __.self)
+    }
+}
 
 // 외부 모듈에 제공 SDK
 public protocol ZiineLottieViewPresentable {
     func getView() -> UIView
-    func play()
+    func play(completion: @escaping () -> Void)
     func stop()
 }
 
 public class ZiineLottieView: UIView, ZiineLottieViewPresentable {
-    
     private let animationView: LottieAnimationView
-    private let withBackground: Bool
-    private let backgroundView = UIView()
+    private var width: CGFloat
+    private var height: CGFloat
     
-    init(
+    public init(
         assetName: String,
-        withBackground: Bool = false,
         contentMode: UIView.ContentMode = .scaleAspectFit,
         loopMode: LottieLoopMode = .loop,
-        completion: (() -> Void)? = nil
+        width: CGFloat = 100,
+        height: CGFloat = 100
     ) {
-        self.animationView = LottieAnimationView(name: assetName)
-        self.withBackground = withBackground
+        self.animationView = LottieAnimationView(name: assetName, bundle: .current)
+        self.width = width
+        self.height = height
         super.init(frame: .zero)
         
-        setupView(contentMode: contentMode, loopMode: loopMode, completion: completion)
+        setupView(contentMode: contentMode, loopMode: loopMode)
     }
     
     required init?(coder: NSCoder) {
@@ -42,36 +50,21 @@ public class ZiineLottieView: UIView, ZiineLottieViewPresentable {
     
     private func setupView(
         contentMode: UIView.ContentMode,
-        loopMode: LottieLoopMode,
-        completion: (() -> Void)?
+        loopMode: LottieLoopMode
     ) {
         animationView.translatesAutoresizingMaskIntoConstraints = false
         animationView.loopMode = loopMode
         animationView.contentMode = contentMode
         
-        backgroundView.translatesAutoresizingMaskIntoConstraints = false
-        backgroundView.backgroundColor = withBackground ? UIColor.gray.withAlphaComponent(0.6) : .clear
-        
-        addSubview(backgroundView)
         addSubview(animationView)
         
         NSLayoutConstraint.activate([
-            backgroundView.topAnchor.constraint(equalTo: topAnchor),
-            backgroundView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            backgroundView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            backgroundView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            
             animationView.centerXAnchor.constraint(equalTo: centerXAnchor),
             animationView.centerYAnchor.constraint(equalTo: centerYAnchor),
-            animationView.widthAnchor.constraint(equalTo: widthAnchor),
-            animationView.heightAnchor.constraint(equalTo: heightAnchor)
+            
+            animationView.widthAnchor.constraint(equalToConstant: width),
+            animationView.heightAnchor.constraint(equalToConstant: height)
         ])
-        
-        animationView.play { finished in
-            if finished {
-                completion?()
-            }
-        }
     }
     
     public func getView() -> UIView {
@@ -79,8 +72,12 @@ public class ZiineLottieView: UIView, ZiineLottieViewPresentable {
     }
     
     /// 애니메이션 시작
-    public func play() {
-        animationView.play()
+    public func play(completion: @escaping () -> Void) {
+        animationView.play { finished in
+            if finished {
+                completion()
+            }
+        }
     }
     
     /// 애니메이션 정지
