@@ -19,6 +19,7 @@ final class PostingRouter: PostingRouting {
     
     /// 업로드 화면 푸시
     func pushUploadView() {
-        self.viewController.navigationController?.pushViewController(UploadViewController(), animated: true)
+        let viewController = UploadViewController()
+        self.viewController.navigationController?.pushViewController(viewController, animated: true)
     }
 }

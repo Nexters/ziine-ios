@@ -51,7 +51,7 @@ final class UploadViewController: UIViewController {
     }
     
     private func load() {
-        webView.loadWebView(urlString: "https://www.naver.com")
+        webView.loadWebView(urlString: "https://www.ziine.gallery/artwork/register")
     }
 }
 
