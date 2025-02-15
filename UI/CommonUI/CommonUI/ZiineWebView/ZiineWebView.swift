@@ -10,6 +10,19 @@ import WebKit
 import DesignSystem
 internal import SnapKit
 
+/// 웹에서 떨어지는 이벤트에 대한 약속
+enum ZiineWebViewJavaScriptEventProtocol {
+    
+}
+
+protocol ZiineWebViewListener: AnyObject {
+    func event(_ event: ZiineWebViewJavaScriptEventProtocol)
+}
+
+extension ZiineWebViewListener {
+    func event(_ event: ZiineWebViewJavaScriptEventProtocol) {}
+}
+
 public final class ZiineWebView: UIView {
     public func loadWebView(urlString: String) {
         if let url = URL(string: urlString) {
