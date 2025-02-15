@@ -97,16 +97,16 @@ public final class ArtworkCell: UICollectionViewCell {
             $0.edges.equalToSuperview()
         }
         
-        thumbnailImageView.addSubview(gradientBottomImageView)
-        gradientBottomImageView.snp.makeConstraints {
+        thumbnailImageView.addSubview(gradientTopImageView)
+        gradientTopImageView.snp.makeConstraints {
             $0.leading.top.trailing.equalToSuperview()
-            $0.height.equalTo(thumbnailImageView.snp.height).dividedBy(5)
+            $0.height.equalTo(70)
         }
         
         thumbnailImageView.addSubview(gradientBottomImageView)
         gradientBottomImageView.snp.makeConstraints {
             $0.leading.bottom.trailing.equalToSuperview()
-            $0.height.equalTo(thumbnailImageView.snp.height).dividedBy(6)
+            $0.height.equalTo(90)
         }
         
         contentView.addSubview(profileImageView)
