@@ -44,7 +44,10 @@ public final class ArtworkDetailViewController: UIViewController {
     
     // MARK: - UIComponents
     
-    private let webView = ZiineWebView()
+    private lazy var webView = {
+        let wv = ZiineWebView(listener: self)
+        return wv
+    }()
     
     private func configureUI() {
         view.addSubview(webView)
@@ -64,4 +67,8 @@ extension ArtworkDetailViewController: UIGestureRecognizerDelegate {
     public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldBeRequiredToFailBy otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return true
     }
+}
+
+extension ArtworkDetailViewController: ZiineWebViewListener {
+    
 }
