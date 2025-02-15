@@ -7,19 +7,10 @@
 
 import UIKit
 import WebKit
+import DesignSystem
 internal import SnapKit
 
-public protocol ZiineWebViewPresentable: AnyObject {
-    func getView() -> UIView
-    func loadWebView(urlString: String)
-}
-
-public final class ZiineWebView: UIView, ZiineWebViewPresentable {
-    
-    public func getView() -> UIView {
-        webView
-    }
-    
+public final class ZiineWebView: UIView {
     public func loadWebView(urlString: String) {
         if let url = URL(string: urlString) {
             let urlRequest = URLRequest(url: url)
@@ -42,15 +33,29 @@ public final class ZiineWebView: UIView, ZiineWebViewPresentable {
     
     // MARK: - UIComponents
     
+    private let placeholderView: UIView =  {
+       let view = UIView()
+        view.backgroundColor = ZiineColor.uiColor(.g900)
+        return view
+    }()
+    
     /// 웹뷰 객체
     private lazy var webView: WKWebView = {
         $0.uiDelegate = self
         $0.navigationDelegate = self
         $0.isHidden = true
+        $0.backgroundColor = ZiineColor.uiColor(.g900)
         return $0
     }(WKWebView())
     
     private func configureUI() {
+        backgroundColor = ZiineColor.uiColor(.g900)
+        
+        addSubview(placeholderView)
+        placeholderView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+        
         addSubview(webView)
         webView.snp.makeConstraints {
             $0.edges.equalToSuperview()
@@ -67,9 +72,9 @@ extension ZiineWebView: WKScriptMessageHandler,
         print("🐼", #function)
         webView.isHidden = false
         
-        webView.evaluateJavaScript("") { message, error in
-            print("🐼🐼🐼🐼",message, error?.localizedDescription)
-        }
+//        webView.evaluateJavaScript("") { message, error in
+//            print("🐼🐼🐼🐼",message, error?.localizedDescription)
+//        }
     }
     
     public func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
@@ -78,7 +83,6 @@ extension ZiineWebView: WKScriptMessageHandler,
     
     public func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
         print("🐼", #function)
-        webView.isHidden = true
     }
     
     public func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, preferences: WKWebpagePreferences) async -> (WKNavigationActionPolicy, WKWebpagePreferences) {

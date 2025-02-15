@@ -38,12 +38,11 @@ final class UploadViewController: UIViewController {
     
     // MARK: - UIComponents
     
-    private let webView: ZiineWebViewPresentable = ZiineWebView()
+    private let webView = ZiineWebView()
     
     private func configureUI() {
         view.backgroundColor = ZiineColor.uiColor(.g900)
         
-        let webView = webView.getView()
         view.addSubview(webView)
         webView.snp.makeConstraints {
             $0.edges.equalToSuperview()

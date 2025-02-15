@@ -42,12 +42,9 @@ public final class MagazineDetailViewController: UIViewController {
     
     // MARK: - UIComponents
     
-    private let webView: ZiineWebViewPresentable = ZiineWebView()
+    private let webView = ZiineWebView()
     
     private func configureUI() {
-        let webView = webView.getView()
-        webView.backgroundColor = ZiineColor.uiColor(.g900)
-        
         view.addSubview(webView)
         webView.snp.makeConstraints {
             $0.edges.equalToSuperview()
