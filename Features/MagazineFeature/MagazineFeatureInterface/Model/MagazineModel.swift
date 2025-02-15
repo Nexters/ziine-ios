@@ -13,6 +13,7 @@ public struct MagazineModel {
     public let summary: String
     public let thumbnailImageURL: String
     public let keywords: [String]
+    public let backgroundColor: String
     public let createdAt: String
     public let modifiedAt: String
     
@@ -22,6 +23,7 @@ public struct MagazineModel {
         summary: String,
         thumbnailImageURL: String,
         keywords: [String],
+        backgroundColor: String,
         createdAt: String,
         modifiedAt: String
     ) {
@@ -30,6 +32,7 @@ public struct MagazineModel {
         self.summary = summary
         self.thumbnailImageURL = thumbnailImageURL
         self.keywords = keywords
+        self.backgroundColor = backgroundColor
         self.createdAt = createdAt
         self.modifiedAt = modifiedAt
     }
