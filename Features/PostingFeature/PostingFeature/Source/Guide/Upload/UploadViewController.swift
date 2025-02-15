@@ -38,7 +38,10 @@ final class UploadViewController: UIViewController {
     
     // MARK: - UIComponents
     
-    private let webView = ZiineWebView()
+    private lazy var webView = {
+        let wv = ZiineWebView(listener: self)
+        return wv
+    }()
     
     private func configureUI() {
         view.backgroundColor = ZiineColor.uiColor(.g900)
@@ -58,4 +61,8 @@ extension UploadViewController: UIGestureRecognizerDelegate {
     public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldBeRequiredToFailBy otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return true
     }
+}
+
+extension UploadViewController: ZiineWebViewListener {
+    
 }

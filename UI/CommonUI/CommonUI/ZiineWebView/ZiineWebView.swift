@@ -11,19 +11,25 @@ import DesignSystem
 internal import SnapKit
 
 /// 웹에서 떨어지는 이벤트에 대한 약속
-enum ZiineWebViewJavaScriptEventProtocol {
-    
+public enum ZiineWebViewJavaScriptEventProtocol {
+    /// 시스템 공유하기
+    case systemSharing(string: String)
 }
 
-protocol ZiineWebViewListener: AnyObject {
+public protocol ZiineWebViewListener: AnyObject {
     func event(_ event: ZiineWebViewJavaScriptEventProtocol)
 }
 
-extension ZiineWebViewListener {
+public extension ZiineWebViewListener {
     func event(_ event: ZiineWebViewJavaScriptEventProtocol) {}
 }
 
 public final class ZiineWebView: UIView {
+    
+    public typealias Listener = ZiineWebViewListener
+    
+    private var listener: Listener?
+    
     public func loadWebView(urlString: String) {
         if let url = URL(string: urlString) {
             let urlRequest = URLRequest(url: url)
@@ -34,7 +40,9 @@ public final class ZiineWebView: UIView {
     
     // MARK: - Initialize
     
-    public init() {
+    public init(listener: Listener?) {
+        self.listener = listener
+        
         super.init(frame: .zero)
         
         configureUI()
