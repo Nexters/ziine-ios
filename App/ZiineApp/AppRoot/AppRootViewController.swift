@@ -82,7 +82,7 @@ final class AppRootViewController: UIViewController,
         let pagerView = pageViewController.view!
         view.addSubview(pagerView)
         pagerView.snp.makeConstraints {
-            $0.top.equalTo(statusBar.snp.bottom)
+            $0.top.equalTo(statusBar.snp.bottom).offset(8)
             $0.horizontalEdges.equalToSuperview()
             $0.bottom.equalToSuperview()
         }

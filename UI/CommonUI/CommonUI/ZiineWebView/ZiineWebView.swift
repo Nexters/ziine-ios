@@ -42,12 +42,43 @@ public final class ZiineWebView: UIView, ZiineWebViewPresentable {
     
     // MARK: - UIComponents
     
-    private let webView = WKWebView()
+    /// 웹뷰 객체
+    private lazy var webView: WKWebView = {
+        $0.uiDelegate = self
+        $0.navigationDelegate = self
+        return $0
+    }(WKWebView())
     
     private func configureUI() {
         addSubview(webView)
         webView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
+    }
+}
+
+extension ZiineWebView: WKScriptMessageHandler,
+                        WKUIDelegate,
+                        WKNavigationDelegate {
+    
+    /// 웹뷰가 로드가 끝난 시점에 호출
+    public func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        print("🐼", #function)
+        webView.evaluateJavaScript("") { message, error in
+            print(message, error?.localizedDescription)
+        }
+    }
+    
+    public func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
+        print("🐼", #function)
+    }
+    
+    public func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
+        print("🐼", #function)
+    }
+    
+    public func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, preferences: WKWebpagePreferences) async -> (WKNavigationActionPolicy, WKWebpagePreferences) {
+        print("🐼", #function)
+        return (.allow, preferences)
     }
 }
