@@ -40,7 +40,7 @@ struct PostingGuideCell: View {
             ZiineImage.image(guideMessage.imageName)
                 .resizable()
                 .frame(height: 240)
-                .cornerRadius(4)
+                .cornerRadius(6)
                 .padding(.horizontal, 11.5)
                 .padding(.bottom, 24)
                 .foregroundStyle(.white)

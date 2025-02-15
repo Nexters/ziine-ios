@@ -48,7 +48,7 @@ struct PostingGuideView: View {
             Button {
                 listener?(.postingButtonTapped)
             } label: {
-                RoundedRectangle(cornerRadius: 16)
+                RoundedRectangle(cornerRadius: 6)
                     .frame(height: bottomButtonHeight)
                     .padding(.horizontal, 16)
                     .foregroundStyle(ZiineColor.color(.p500))
