@@ -47,12 +47,12 @@ final class AppRootInteractor:
     }
     
     func artworkDetail(dataModel: ArtworkModel) {
-        let urlString = "https://www.ziine.gallery/artwork/\(dataModel.id)"
+        let urlString = "https://www.ziine.gallery/artwork-webview/\(dataModel.id)"
         router?.pushToArtworkDetail(urlString: urlString)
     }
     
     func magazineDetail(dataModel: MagazineModel) {
-        let urlString = "https://www.ziine.gallery/magazine/\(dataModel.id)"
+        let urlString = "https://www.ziine.gallery/magazine-webview/\(dataModel.id)"
         router?.pushToMagazineDetail(urlString: urlString)
     }
 }
