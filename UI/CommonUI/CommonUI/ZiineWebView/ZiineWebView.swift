@@ -46,6 +46,7 @@ public final class ZiineWebView: UIView, ZiineWebViewPresentable {
     private lazy var webView: WKWebView = {
         $0.uiDelegate = self
         $0.navigationDelegate = self
+        $0.isHidden = true
         return $0
     }(WKWebView())
     
@@ -64,8 +65,10 @@ extension ZiineWebView: WKScriptMessageHandler,
     /// 웹뷰가 로드가 끝난 시점에 호출
     public func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         print("🐼", #function)
+        webView.isHidden = false
+        
         webView.evaluateJavaScript("") { message, error in
-            print(message, error?.localizedDescription)
+            print("🐼🐼🐼🐼",message, error?.localizedDescription)
         }
     }
     
@@ -75,6 +78,7 @@ extension ZiineWebView: WKScriptMessageHandler,
     
     public func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
         print("🐼", #function)
+        webView.isHidden = true
     }
     
     public func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, preferences: WKWebpagePreferences) async -> (WKNavigationActionPolicy, WKWebpagePreferences) {
