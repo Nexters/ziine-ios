@@ -32,13 +32,7 @@ public final class ZiineWebView: UIView {
     }
     
     // MARK: - UIComponents
-    
-    private let placeholderView: UIView =  {
-       let view = UIView()
-        view.backgroundColor = ZiineColor.uiColor(.g900)
-        return view
-    }()
-    
+
     /// 웹뷰 객체
     private lazy var webView: WKWebView = {
         $0.uiDelegate = self
@@ -50,11 +44,6 @@ public final class ZiineWebView: UIView {
     
     private func configureUI() {
         backgroundColor = ZiineColor.uiColor(.g900)
-        
-        addSubview(placeholderView)
-        placeholderView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
-        }
         
         addSubview(webView)
         webView.snp.makeConstraints {
@@ -82,6 +71,7 @@ extension ZiineWebView: WKScriptMessageHandler,
     }
     
     public func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
+        webView.isHidden = true
         print("🐼", #function)
     }
     
