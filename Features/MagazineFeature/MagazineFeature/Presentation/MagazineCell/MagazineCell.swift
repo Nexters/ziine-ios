@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Utils
 import SwiftUI
 import ThirdParty
 import DesignSystem
@@ -24,6 +25,8 @@ final class MagazineCell: UICollectionViewCell {
         thumbnailImageView.kf.setImage(
             with: URL(string: model.thumbnailImageURL)
         )
+        
+        contentView.backgroundColor = UIColor(hex: model.backgroundColor)
     }
     
     // MARK: - Initializer
@@ -43,7 +46,6 @@ final class MagazineCell: UICollectionViewCell {
     
     private func configureUI() {
         contentView.layer.cornerRadius = 20
-        contentView.backgroundColor = ZiineColor.uiColor(.p600)
         
         contentView.addSubview(titleLabel)
         titleLabel.snp.makeConstraints {

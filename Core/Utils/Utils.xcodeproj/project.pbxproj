@@ -29,6 +29,11 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
+		C60190BE2D60D93900FE5EBD /* Extensions */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +52,7 @@
 			children = (
 				1A4DB7CA2D4FDD7B00964DE0 /* Utils */,
 				1A4DB7C92D4FDD7B00964DE0 /* Products */,
+				C60190BE2D60D93900FE5EBD /* Extensions */,
 			);
 			sourceTree = "<group>";
 		};
@@ -86,6 +92,7 @@
 			);
 			fileSystemSynchronizedGroups = (
 				1A4DB7CA2D4FDD7B00964DE0 /* Utils */,
+				C60190BE2D60D93900FE5EBD /* Extensions */,
 			);
 			name = Utils;
 			packageProductDependencies = (
@@ -175,6 +182,10 @@
 				PRODUCT_BUNDLE_IDENTIFIER = kr.com.Utils;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -209,6 +220,10 @@
 				PRODUCT_BUNDLE_IDENTIFIER = kr.com.Utils;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_VERSION = 5.0;

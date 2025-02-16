@@ -19,6 +19,7 @@ extension ResponseDTO {
             var summary: String
             var thumbnailImageUrl: String
             var keywords: [String]
+            var backgroundColor: String
             var createdAt: String
             var modifiedAt: String
         }
@@ -31,6 +32,7 @@ extension ResponseDTO {
                     summary: $0.summary,
                     thumbnailImageURL: $0.thumbnailImageUrl,
                     keywords: $0.keywords,
+                    backgroundColor: $0.backgroundColor,
                     createdAt: $0.createdAt,
                     modifiedAt: $0.modifiedAt
                 )

@@ -31,8 +31,8 @@ public final class CollectionUI: UICollectionView {
         self.dataSource = self
         
         self.backgroundColor = .clear
-        self.showsVerticalScrollIndicator = true
-        self.showsHorizontalScrollIndicator = true
+        self.showsVerticalScrollIndicator = false
+        self.showsHorizontalScrollIndicator = false
         
         self.register(ArtworkCell.self, forCellWithReuseIdentifier: ArtworkCell.id)
     }
