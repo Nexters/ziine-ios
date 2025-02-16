@@ -17,6 +17,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window = UIWindow(windowScene: windowScene)
         window?.backgroundColor = .systemBackground
+        window?.overrideUserInterfaceStyle = .dark
         
         let builder = AppRootBuilder()
         let routing = builder.build()
