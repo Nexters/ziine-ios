@@ -82,9 +82,19 @@ extension ZiineWebView: WKScriptMessageHandler,
         print("🐼", #function)
         webView.isHidden = false
         
-//        webView.evaluateJavaScript("") { message, error in
-//            print("🐼🐼🐼🐼",message, error?.localizedDescription)
-//        }
+        //        webView.evaluateJavaScript("") { message, error in
+        //            print("🐼🐼🐼🐼",message, error?.localizedDescription)
+        //        }
+        
+        // 줌 방지
+        let zoomDisableScript = """
+            var meta = document.createElement('meta');
+            meta.name = 'viewport';
+            meta.content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no';
+            document.getElementsByTagName('head')[0].appendChild(meta);
+            """
+        
+        webView.evaluateJavaScript(zoomDisableScript, completionHandler: nil)
     }
     
     public func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
@@ -96,7 +106,11 @@ extension ZiineWebView: WKScriptMessageHandler,
         print("🐼", #function)
     }
     
-    public func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, preferences: WKWebpagePreferences) async -> (WKNavigationActionPolicy, WKWebpagePreferences) {
+    public func webView(
+        _ webView: WKWebView,
+        decidePolicyFor navigationAction: WKNavigationAction,
+        preferences: WKWebpagePreferences
+    ) async -> (WKNavigationActionPolicy, WKWebpagePreferences) {
         print("🐼", #function)
         return (.allow, preferences)
     }
