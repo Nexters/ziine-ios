@@ -39,9 +39,10 @@ struct PostingGuideView: View {
                     index: index + 1,
                     message: message
                 )
+                .padding(.bottom, index == guideMessage.count - 1 ? bottomButtonHeight + 35 : 0)
             }
-            .padding(.bottom, bottomButtonHeight)
         }
+        .scrollIndicators(.hidden, axes: .vertical)
         .containerRelativeFrame(.horizontal)
         .background(ZiineColor.color(.g900))
         .overlay(alignment: .bottom) {
