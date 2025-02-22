@@ -24,6 +24,12 @@ struct LottieViewRepresentable: UIViewRepresentable {
 }
 
 struct PostingCompleteView: View {
+    private var completion: ((Void) -> ())?
+    
+    init(completion: ((Void) -> ())?) {
+        self.completion = completion
+    }
+    
     var body: some View {
         VStack {
             Group {
@@ -50,7 +56,7 @@ struct PostingCompleteView: View {
             Spacer()
             
             Button {
-                // TODO: action.
+                completion?(())
             } label: {
                 RoundedRectangle(cornerRadius: 6)
                     .stroke(style: .init(lineWidth: 1.5))
@@ -67,9 +73,10 @@ struct PostingCompleteView: View {
         }
         .containerRelativeFrame(.horizontal)
         .background(ZiineColor.color(.g900))
+        .navigationBarBackButtonHidden()
     }
 }
 
 #Preview {
-    PostingCompleteView()
+    PostingCompleteView(completion: nil)
 }

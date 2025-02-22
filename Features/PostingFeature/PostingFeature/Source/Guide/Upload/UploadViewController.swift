@@ -8,6 +8,7 @@
 import UIKit
 import CommonUI
 import DesignSystem
+import SwiftUI
 
 final class UploadViewController: UIViewController {
     
@@ -64,5 +65,18 @@ extension UploadViewController: UIGestureRecognizerDelegate {
 }
 
 extension UploadViewController: ZiineWebViewListener {
-    
+    func event(_ event: ZiineWebViewJavaScriptEventProtocol) {
+        switch event {
+        case .systemSharing(_):
+            break
+        case .didFinishUpload:
+            let v = PostingCompleteView { [weak self] _ in
+                self?.navigationController?.popToRootViewController(animated: true)
+            }
+            let vc = UIHostingController(rootView: v)
+            self.navigationController?.pushViewController(vc, animated: true)
+        @unknown default:
+            break
+        }
+    }
 }

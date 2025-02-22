@@ -14,6 +14,8 @@ internal import SnapKit
 public enum ZiineWebViewJavaScriptEventProtocol {
     /// 시스템 공유하기
     case systemSharing(string: String)
+    /// 업로드 종료
+    case didFinishUpload
 }
 
 public protocol ZiineWebViewListener: AnyObject {
@@ -56,12 +58,18 @@ public final class ZiineWebView: UIView {
 
     /// 웹뷰 객체
     private lazy var webView: WKWebView = {
-        $0.uiDelegate = self
-        $0.navigationDelegate = self
-        $0.isHidden = true
-        $0.backgroundColor = ZiineColor.uiColor(.g900)
-        return $0
-    }(WKWebView())
+        let v = WKUserContentController()
+        v.add(self, name: "callbackHandler")
+        let configuration = WKWebViewConfiguration()
+        configuration.userContentController = v
+        
+        let wv = WKWebView(frame: .zero, configuration: configuration)
+        wv.uiDelegate = self
+        wv.navigationDelegate = self
+        wv.isHidden = true
+        wv.backgroundColor = ZiineColor.uiColor(.g900)
+        return wv
+    }()
     
     private func configureUI() {
         backgroundColor = ZiineColor.uiColor(.g900)
@@ -98,7 +106,9 @@ extension ZiineWebView: WKScriptMessageHandler,
     }
     
     public func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
-        print("🐼", #function)
+        print("🐼", #function, message)
+        
+        listener?.event(.didFinishUpload)
     }
     
     public func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
